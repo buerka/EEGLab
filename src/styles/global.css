@@ -1,0 +1,123 @@
+/* ── DESIGN TOKENS ─────────────────────────────────── */
+:root {
+  --bg:          #000000;
+  --bg-surface:  #080808;
+  --bg-elevated: #111111;
+
+  --accent:      #5B8DEE;
+  --accent-dim:  rgba(91, 141, 238, 0.08);
+  --accent-mid:  rgba(91, 141, 238, 0.2);
+
+  --text:        #FFFFFF;
+  --text-2:      #A0A0A0;
+  --text-3:      #707070;
+
+  --border:      rgba(255, 255, 255, 0.1);
+  --border-md:   rgba(255, 255, 255, 0.18);
+
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+
+  --font-sans:   -apple-system, 'PingFang SC', 'Microsoft YaHei', BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono:   'SF Mono', 'Fira Code', ui-monospace, monospace;
+}
+
+/* ── RESET ─────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; background: #000; }
+
+body {
+  font-family: var(--font-sans);
+  background: #000;
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── SCROLLBAR ─────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+
+/* ── UTILITY ───────────────────────────────────────── */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 6vw;
+}
+
+/* ── SECTION SHARED ────────────────────────────────── */
+.section-label {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--text-3);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.section-desc {
+  font-size: clamp(16px, 2vw, 20px);
+  color: var(--text-2);
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+/* ── FADE-IN ───────────────────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* ── ANIMATED ARROW LINK ───────────────────────────── */
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  position: relative;
+  transition: gap 0.3s ease;
+}
+.link-arrow svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s ease;
+}
+.link-arrow:hover { gap: 14px; }
+.link-arrow:hover svg { transform: translate(4px, -4px); }

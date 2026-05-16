@@ -1,0 +1,608 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import HeroEEG from '../components/HeroEEG';
+import { papers } from '../data/papers';
+import { research } from '../data/research';
+
+const featuredPapers = papers.slice(0, 3);
+---
+
+<Layout title="金牛湖脑机实验室 · 南京信息工程大学">
+  <Nav active="home" />
+
+  <!-- ── HERO ─────────────────────────────────────────── -->
+  <section id="hero">
+    <HeroEEG client:load />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-tagline">探索人机融合边界，打造下一代脑控交互系统</p>
+      <h1 class="hero-title">金牛湖<span class="hero-accent">脑机</span>实验室</h1>
+      <p class="hero-sub">南京信息工程大学 · 金牛湖产教融合园区</p>
+      <div class="hero-links">
+        <a href="#research" class="link-arrow">
+          了解研究方向
+          <svg viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+        </a>
+        <a href="#contact" class="link-arrow hero-link-dim">
+          联系我们
+          <svg viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>SCROLL</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── RESEARCH ──────────────────────────────────────── -->
+  <section id="research">
+    <div class="container">
+      <div class="research-grid">
+        {research.map((r, i) => (
+          <a href={`/research/${r.slug}`} class={`r-card fade-up delay-${i + 1}`}>
+            <span class="r-num">{r.num}</span>
+            <div class="r-body">
+              <h3 class="r-title">{r.title}</h3>
+              <p class="r-title-en">{r.titleEn}</p>
+              <p class="r-desc">{r.desc}</p>
+              <span class="r-arrow">
+                <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TEAM ──────────────────────────────────────────── -->
+  <section id="team">
+    <div class="container">
+      <div class="section-label fade-up">TEAM</div>
+      <h2 class="section-title fade-up delay-1">团队成员</h2>
+      <p class="section-desc fade-up delay-2">汇聚神经工程、信号处理、机器人控制等多学科背景的研究人员，共同推进脑机接口前沿探索。</p>
+
+      <div class="mentor-card fade-up delay-3">
+        <div class="mentor-avatar">颖</div>
+        <div class="mentor-info">
+          <span class="mentor-role">副教授 · 硕士生导师</span>
+          <h3 class="mentor-name">严颖</h3>
+          <p class="mentor-bio">南京信息工程大学自动化学院副教授、硕士生导师。博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。现兼任电气工程系副系主任、江苏省气象能源利用与控制工程技术研究中心副主任。</p>
+          <a href="https://faculty.nuist.edu.cn/yanying/zh_CN/index.htm" target="_blank" rel="noopener" class="link-arrow mentor-link-arrow">
+            查看个人主页
+            <svg viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="members-grid">
+        <div class="member-card fade-up delay-1">
+          <div class="member-avatar">杨</div>
+          <div class="member-name">许穆杨</div>
+          <div class="member-year">24届本科生</div>
+          <div class="member-focus">脑电信号处理 · 运动意图解码</div>
+        </div>
+        {[2,3,4,5].map(i => (
+          <div class={`member-card placeholder fade-up delay-${i}`}>
+            <div class="member-avatar ph">+</div>
+            <div class="member-name muted">待添加成员</div>
+            <div class="member-year">—</div>
+            <div class="member-focus">研究方向待填写</div>
+          </div>
+        ))}
+      </div>
+      <p class="team-hint fade-up delay-3">欢迎对脑机接口研究感兴趣的同学加入我们的团队</p>
+    </div>
+  </section>
+
+  <!-- ── ACHIEVEMENTS ──────────────────────────────────── -->
+  <section id="achievements">
+    <div class="container">
+      <div class="ach-header fade-up">
+        <div>
+          <div class="section-label">ACHIEVEMENTS</div>
+          <h2 class="section-title">科研成果</h2>
+        </div>
+        <div class="ach-stats">
+          <div class="stat"><span class="stat-num">60+</span><span class="stat-label">期刊论文</span></div>
+          <div class="stat"><span class="stat-num">40+</span><span class="stat-label">授权专利</span></div>
+          <div class="stat"><span class="stat-num">7</span><span class="stat-label">代表奖项</span></div>
+        </div>
+      </div>
+
+      <div class="paper-previews fade-up delay-2">
+        {featuredPapers.map(p => (
+          <a href="/achievements" class="paper-preview">
+            <span class="pp-year">{p.year}</span>
+            <div class="pp-body">
+              <div class="pp-title">{p.title}</div>
+              <div class="pp-journal">{p.journal}{p.impactFactor ? ` · IF ${p.impactFactor}` : ''}</div>
+            </div>
+            <svg class="pp-arrow" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+          </a>
+        ))}
+      </div>
+
+      <div class="ach-cta fade-up delay-3">
+        <a href="/achievements" class="link-arrow">
+          查看全部成果
+          <svg viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ───────────────────────────────────────── -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info fade-up">
+          <div class="section-label">CONTACT</div>
+          <h2 class="contact-title">联系我们</h2>
+          <p class="contact-desc">欢迎对脑机接口研究感兴趣的同学加入我们</p>
+          <a href="mailto:ying.yan@nuist.edu.cn" class="contact-email">ying.yan@nuist.edu.cn</a>
+        </div>
+        <div class="contact-details fade-up delay-2">
+          <div class="cd-item">
+            <div class="cd-label">邮箱</div>
+            <div class="cd-value">ying.yan@nuist.edu.cn</div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-label">电话</div>
+            <div class="cd-value">+86 152-0517-6357</div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-label">地址</div>
+            <div class="cd-value">南京信息工程大学 金牛湖产教融合园区</div>
+          </div>
+          <a href="https://faculty.nuist.edu.cn/yanying/zh_CN/index.htm" target="_blank" rel="noopener" class="link-arrow" style="margin-top:24px">
+            导师主页
+            <svg viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+
+<style>
+  /* ═══════════════════════════════════════════════════════
+     HERO
+     ═══════════════════════════════════════════════════════ */
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #000;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 90% 50%, rgba(91,141,238,0.04) 0%, transparent 60%),
+                linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 6vw 80px;
+    max-width: 900px;
+  }
+  .hero-tagline {
+    font-size: clamp(14px, 1.6vw, 18px);
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 20px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.5;
+  }
+  .hero-title {
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .hero-accent {
+    color: var(--accent);
+    letter-spacing: -0.04em;
+  }
+  .hero-sub {
+    font-size: clamp(13px, 1.4vw, 15px);
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin-bottom: 40px;
+  }
+  .hero-links {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .hero-link-dim {
+    color: rgba(255,255,255,0.55);
+  }
+  .hero-link-dim:hover { color: rgba(255,255,255,0.85); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    right: 6vw;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .hero-scroll span {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.5);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+    animation: scrollPulse 3s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.15; }
+    50% { opacity: 0.6; }
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     SECTIONS
+     ═══════════════════════════════════════════════════════ */
+  section { padding: clamp(100px, 12vw, 160px) 0; }
+  #team { background: #040404; }
+  #contact { background: #020202; }
+
+  /* ═══════════════════════════════════════════════════════
+     RESEARCH
+     ═══════════════════════════════════════════════════════ */
+  .research-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  .r-card {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 32px;
+    align-items: start;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: padding-left 0.3s ease;
+  }
+  .r-card:first-child {
+    border-top: 1px solid var(--border);
+  }
+  .r-card:hover { padding-left: 12px; }
+  .r-card:hover .r-title { color: var(--accent); }
+  .r-card:hover .r-arrow { opacity: 1; transform: translateX(4px); }
+
+  .r-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-3);
+    padding-top: 6px;
+    font-variant-numeric: tabular-nums;
+  }
+  .r-body { position: relative; }
+  .r-title {
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
+  }
+  .r-title-en {
+    font-size: 14px;
+    font-family: var(--font-mono);
+    color: var(--text-3);
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+  .r-desc {
+    font-size: 15px;
+    color: var(--text-2);
+    line-height: 1.7;
+    max-width: 520px;
+  }
+  .r-arrow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--text-3);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  .r-arrow svg {
+    width: 100%;
+    height: 100%;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     TEAM
+     ═══════════════════════════════════════════════════════ */
+  #team .section-title { margin-top: 12px; }
+  #team .section-desc { margin-bottom: 60px; }
+
+  .mentor-card {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 40px;
+    align-items: start;
+    padding: 48px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .mentor-avatar {
+    width: 88px; height: 88px;
+    border-radius: 50%;
+    background: rgba(91,141,238,0.06);
+    border: 1px solid rgba(91,141,238,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px; font-weight: 700; color: var(--accent);
+    flex-shrink: 0;
+  }
+  .mentor-role {
+    display: inline-block;
+    font-size: 11px; font-family: var(--font-mono); letter-spacing: 2px;
+    color: var(--accent); opacity: 0.85;
+    margin-bottom: 10px;
+  }
+  .mentor-name { font-size: 28px; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.02em; }
+  .mentor-bio { font-size: 15px; color: var(--text-2); line-height: 1.85; margin-bottom: 24px; max-width: 620px; }
+  .mentor-link-arrow { font-size: 15px; }
+
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .member-card {
+    background: #040404;
+    padding: 32px 24px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .member-card:hover { background: #0a0a0a; }
+  .member-card.placeholder { opacity: 0.3; }
+  .member-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: rgba(91,141,238,0.06);
+    border: 1px solid rgba(91,141,238,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 600; color: var(--accent);
+    margin: 0 auto 14px;
+  }
+  .member-avatar.ph { color: var(--text-3); font-size: 20px; }
+  .member-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .member-name.muted { color: var(--text-3); }
+  .member-year { font-size: 11px; color: var(--text-3); font-family: var(--font-mono); margin-bottom: 6px; }
+  .member-focus { font-size: 12px; color: var(--text-3); line-height: 1.5; }
+  .team-hint {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-3);
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     ACHIEVEMENTS
+     ═══════════════════════════════════════════════════════ */
+  .ach-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 48px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+  .ach-stats {
+    display: flex;
+    gap: 56px;
+    flex-shrink: 0;
+    padding-top: 12px;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .stat-num {
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-3);
+    font-family: var(--font-mono);
+    letter-spacing: 2px;
+  }
+
+  .paper-previews {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--border);
+    margin-bottom: 36px;
+  }
+  .paper-preview {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: inherit;
+    transition: padding-left 0.3s ease;
+    position: relative;
+  }
+  .paper-preview:hover { padding-left: 12px; }
+  .paper-preview:hover .pp-arrow { opacity: 1; transform: translate(4px, -4px); }
+
+  .pp-year {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-3);
+    min-width: 44px;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+  }
+  .pp-body { flex: 1; min-width: 0; }
+  .pp-title {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 4px;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .pp-journal {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-3);
+    letter-spacing: 0.5px;
+  }
+  .pp-arrow {
+    width: 16px;
+    height: 16px;
+    stroke: var(--text-3);
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .ach-cta { margin-top: 8px; }
+
+  /* ═══════════════════════════════════════════════════════
+     CONTACT
+     ═══════════════════════════════════════════════════════ */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-title {
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    margin-bottom: 20px;
+    margin-top: 8px;
+  }
+  .contact-desc {
+    font-size: 18px;
+    color: var(--text-2);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    max-width: 360px;
+  }
+  .contact-email {
+    font-size: 16px;
+    color: var(--accent);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    transition: opacity 0.2s;
+  }
+  .contact-email:hover { opacity: 0.7; }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .cd-item {
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cd-label {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    letter-spacing: 3px;
+    color: var(--text-3);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .cd-value {
+    font-size: 16px;
+    color: var(--text-2);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  /* ═══════════════════════════════════════════════════════
+     RESPONSIVE
+     ═══════════════════════════════════════════════════════ */
+  @media (max-width: 1000px) {
+    .r-card { grid-template-columns: 36px 1fr; gap: 20px; }
+  }
+  @media (max-width: 768px) {
+    section { padding: 80px 0; }
+    .hero-content { padding-bottom: 100px; }
+    .hero-links { gap: 28px; }
+    .hero-scroll { right: 6vw; bottom: 28px; }
+    .r-card { padding: 28px 0; }
+    .r-arrow { display: none; }
+    .mentor-card { grid-template-columns: 1fr; gap: 20px; }
+    .mentor-card .mentor-avatar { width: 64px; height: 64px; font-size: 22px; }
+    .ach-stats { gap: 32px; }
+    .stat-num { font-size: 36px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .paper-preview:hover { padding-left: 0; }
+    .pp-arrow { display: none; }
+  }
+  @media (max-width: 480px) {
+    section { padding: 64px 0; }
+    .hero-title { font-size: clamp(40px, 12vw, 56px); }
+    .hero-content { padding-bottom: 120px; }
+    .hero-links { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .ach-header { flex-direction: column; gap: 24px; }
+    .members-grid { grid-template-columns: 1fr 1fr; }
+    .r-card { grid-template-columns: 1fr; }
+    .r-num { display: none; }
+  }
+</style>
