@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import HeroEEG from '../components/HeroEEG';
 import { papers } from '../data/papers';
 import { research } from '../data/research';
 
@@ -12,597 +11,849 @@ const featuredPapers = papers.slice(0, 3);
 <Layout title="金牛湖脑机实验室 · 南京信息工程大学">
   <Nav active="home" />
 
-  <!-- ── HERO ─────────────────────────────────────────── -->
-  <section id="hero">
-    <HeroEEG client:load />
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-tagline">探索人机融合边界，打造下一代脑控交互系统</p>
-      <h1 class="hero-title">金牛湖<span class="hero-accent">脑机</span>实验室</h1>
-      <p class="hero-sub">南京信息工程大学 · 金牛湖产教融合园区</p>
-      <div class="hero-links">
-        <a href="#research" class="link-arrow">
-          了解研究方向
-          <svg viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
-        </a>
-        <a href="#contact" class="link-arrow hero-link-dim">
-          联系我们
-          <svg viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
-        </a>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <span>SCROLL</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
+  <!-- ── RIGHT SECTION NAV ──────────────────────────────── -->
+  <nav id="section-nav" aria-label="页面导航">
+    <button class="sn-dot active" data-target="hero">
+      <span class="sn-label">首页</span>
+      <span class="sn-line"></span>
+    </button>
+    <button class="sn-dot" data-target="statement">
+      <span class="sn-label">理念</span>
+      <span class="sn-line"></span>
+    </button>
+    <button class="sn-dot" data-target="stats">
+      <span class="sn-label">数据</span>
+      <span class="sn-line"></span>
+    </button>
+    <button class="sn-dot" data-target="research">
+      <span class="sn-label">研究</span>
+      <span class="sn-line"></span>
+    </button>
+    <button class="sn-dot" data-target="team">
+      <span class="sn-label">团队</span>
+      <span class="sn-line"></span>
+    </button>
+    <button class="sn-dot" data-target="papers">
+      <span class="sn-label">论文</span>
+      <span class="sn-line"></span>
+    </button>
+    <button class="sn-dot" data-target="contact">
+      <span class="sn-label">联系</span>
+      <span class="sn-line"></span>
+    </button>
+  </nav>
 
-  <!-- ── RESEARCH ──────────────────────────────────────── -->
-  <section id="research">
-    <div class="container">
-      <div class="research-grid">
-        {research.map((r, i) => (
-          <a href={`/research/${r.slug}`} class={`r-card fade-up delay-${i + 1}`}>
-            <span class="r-num">{r.num}</span>
-            <div class="r-body">
+  <!-- ── FULL-PAGE SCROLL CONTAINER ────────────────────── -->
+  <div id="fp-container">
+
+    <!-- 01 · HERO ─────────────────────────────────────── -->
+    <section id="hero" class="fp-section fp-hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="/videos/promo.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Brain-Computer Interface Lab · NUIST</p>
+        <h1 class="hero-title">让<em>思想</em><br/>驱动未来</h1>
+        <div class="hero-actions">
+          <a href="/research" class="btn btn-dark">探索研究方向</a>
+          <a href="/achievements" class="btn btn-outline hero-btn-outline">查看科研成果</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · SLOGAN ──────────────────────────────────── -->
+    <section id="statement" class="fp-section fp-statement">
+      <div class="container">
+        <p class="statement-text">
+          从<strong>脑电信号</strong>到运动控制，<br/>
+          让<strong>思想</strong>驱动<span id="tw-word">未来</span><span class="tw-cursor"></span>
+        </p>
+        <p class="statement-en fade-up delay-1">From EEG Signal to Motion Control — Let Thought Drive the Future</p>
+      </div>
+    </section>
+
+    <!-- 03 · STATS ───────────────────────────────────── -->
+    <section id="stats" class="fp-section fp-stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item fade-up">
+            <span class="stat-num">60<sup>+</sup></span>
+            <span class="stat-label">期刊论文</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item fade-up delay-1">
+            <span class="stat-num">40<sup>+</sup></span>
+            <span class="stat-label">授权专利</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item fade-up delay-2">
+            <span class="stat-num">5</span>
+            <span class="stat-label">核心研究方向</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item fade-up delay-3">
+            <span class="stat-num">7</span>
+            <span class="stat-label">代表性奖项</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · RESEARCH ────────────────────────────────── -->
+    <section id="research" class="fp-section fp-research">
+      <div class="container">
+        <div class="split-header">
+          <div>
+            <div class="section-label fade-up">Research Directions</div>
+            <h2 class="section-title fade-up delay-1">五大研究方向</h2>
+          </div>
+          <p class="section-desc fade-up delay-2">围绕脑机接口核心技术，探索从信号采集到运动控制的完整链路。</p>
+        </div>
+
+        <div class="research-grid fade-up delay-3">
+          {research.map(r => (
+            <a href={`/research/${r.slug}`} class="r-card">
+              <div class="r-card-header">
+                <span class="r-num">{r.num}</span>
+                <svg class="r-arrow" viewBox="0 0 20 20" fill="none">
+                  <path d="M4 16L16 4M16 4H7M16 4V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
               <h3 class="r-title">{r.title}</h3>
-              <p class="r-title-en">{r.titleEn}</p>
+              <p class="r-en">{r.titleEn}</p>
               <p class="r-desc">{r.desc}</p>
-              <span class="r-arrow">
-                <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </span>
+              <div class="r-tags">
+                {r.tags.slice(0, 3).map(tag => <span class="r-tag">{tag}</span>)}
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="section-cta fade-up delay-4">
+          <a href="/research" class="arrow-link">
+            查看全部研究方向
+            <span class="arrow-icon">
+              <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+              <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · TEAM ────────────────────────────────────── -->
+    <section id="team" class="fp-section fp-team">
+      <div class="container">
+        <div class="split-header">
+          <div>
+            <div class="section-label fade-up">Team</div>
+            <h2 class="section-title fade-up delay-1">核心团队</h2>
+          </div>
+          <p class="section-desc fade-up delay-2">汇聚神经工程、信号处理、机器人控制等多学科背景的研究人员，共同推进脑机接口前沿探索。</p>
+        </div>
+
+        <div class="mentor-block fade-up delay-2">
+          <div class="mentor-avatar">颖</div>
+          <div class="mentor-right">
+            <span class="mentor-role">副教授 · 硕士生导师</span>
+            <h3 class="mentor-name">严颖</h3>
+            <p class="mentor-bio">博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。主持多项国家自然科学基金及省部级科研项目，在 IEEE 系列期刊发表论文 60 余篇。</p>
+            <div class="mentor-tags">
+              <span>EEG 信号分析</span>
+              <span>模式识别</span>
+              <span>深度学习</span>
             </div>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ── TEAM ──────────────────────────────────────────── -->
-  <section id="team">
-    <div class="container">
-      <div class="section-label fade-up">TEAM</div>
-      <h2 class="section-title fade-up delay-1">团队成员</h2>
-      <p class="section-desc fade-up delay-2">汇聚神经工程、信号处理、机器人控制等多学科背景的研究人员，共同推进脑机接口前沿探索。</p>
-
-      <div class="mentor-card fade-up delay-3">
-        <div class="mentor-avatar">颖</div>
-        <div class="mentor-info">
-          <span class="mentor-role">副教授 · 硕士生导师</span>
-          <h3 class="mentor-name">严颖</h3>
-          <p class="mentor-bio">南京信息工程大学自动化学院副教授、硕士生导师。博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。现兼任电气工程系副系主任、江苏省气象能源利用与控制工程技术研究中心副主任。</p>
-          <a href="https://faculty.nuist.edu.cn/yanying/zh_CN/index.htm" target="_blank" rel="noopener" class="link-arrow mentor-link-arrow">
-            查看个人主页
-            <svg viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <div class="members-grid">
-        <div class="member-card fade-up delay-1">
-          <div class="member-avatar">杨</div>
-          <div class="member-name">许穆杨</div>
-          <div class="member-year">24届本科生</div>
-          <div class="member-focus">脑电信号处理 · 运动意图解码</div>
-        </div>
-        {[2,3,4,5].map(i => (
-          <div class={`member-card placeholder fade-up delay-${i}`}>
-            <div class="member-avatar ph">+</div>
-            <div class="member-name muted">待添加成员</div>
-            <div class="member-year">—</div>
-            <div class="member-focus">研究方向待填写</div>
           </div>
-        ))}
-      </div>
-      <p class="team-hint fade-up delay-3">欢迎对脑机接口研究感兴趣的同学加入我们的团队</p>
-    </div>
-  </section>
-
-  <!-- ── ACHIEVEMENTS ──────────────────────────────────── -->
-  <section id="achievements">
-    <div class="container">
-      <div class="ach-header fade-up">
-        <div>
-          <div class="section-label">ACHIEVEMENTS</div>
-          <h2 class="section-title">科研成果</h2>
         </div>
-        <div class="ach-stats">
-          <div class="stat"><span class="stat-num">60+</span><span class="stat-label">期刊论文</span></div>
-          <div class="stat"><span class="stat-num">40+</span><span class="stat-label">授权专利</span></div>
-          <div class="stat"><span class="stat-num">7</span><span class="stat-label">代表奖项</span></div>
+
+        <div class="section-cta fade-up delay-3">
+          <a href="/team" class="arrow-link">
+            查看完整团队
+            <span class="arrow-icon">
+              <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+              <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+            </span>
+          </a>
         </div>
       </div>
+    </section>
 
-      <div class="paper-previews fade-up delay-2">
-        {featuredPapers.map(p => (
-          <a href="/achievements" class="paper-preview">
-            <span class="pp-year">{p.year}</span>
-            <div class="pp-body">
-              <div class="pp-title">{p.title}</div>
-              <div class="pp-journal">{p.journal}{p.impactFactor ? ` · IF ${p.impactFactor}` : ''}</div>
+    <!-- 06 · PAPERS ──────────────────────────────────── -->
+    <section id="papers" class="fp-section fp-papers">
+      <div class="container">
+        <div class="split-header">
+          <div>
+            <div class="section-label fade-up">Publications</div>
+            <h2 class="section-title fade-up delay-1">代表论文</h2>
+          </div>
+          <p class="section-desc fade-up delay-2">团队在脑机接口、EEG 信号分析等领域发表期刊论文 60 余篇。</p>
+        </div>
+
+        <div class="paper-list fade-up delay-2">
+          {featuredPapers.map(p => (
+            <a href="/achievements" class="paper-row">
+              <span class="pr-year">{p.year}</span>
+              <div class="pr-body">
+                <p class="pr-title">{p.title}</p>
+                <p class="pr-journal">{p.journal}{p.impactFactor ? ` · IF ${p.impactFactor}` : ''}</p>
+              </div>
+              <svg class="pr-icon" viewBox="0 0 20 20" fill="none">
+                <path d="M3 10h14M12 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          ))}
+        </div>
+
+        <div class="section-cta fade-up delay-3">
+          <a href="/achievements" class="arrow-link">
+            查看全部科研成果
+            <span class="arrow-icon">
+              <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+              <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 · CONTACT ─────────────────────────────────── -->
+    <section id="contact" class="fp-section fp-contact">
+      <div class="container contact-wrap">
+        <div class="contact-inner">
+          <div class="contact-left fade-up">
+            <div class="section-label">Contact</div>
+            <h2 class="section-title">共筑脑机未来</h2>
+            <p class="section-desc">汇聚跨学科智慧，诚邀各界英才共同探索脑机接口前沿</p>
+            <a href="mailto:ying.yan@nuist.edu.cn" class="btn btn-dark btn-sm" style="margin-top:32px">
+              发送邮件
+            </a>
+          </div>
+          <div class="contact-right fade-up delay-2">
+            <div class="cd-row">
+              <span class="cd-label">邮箱</span>
+              <span class="cd-value">ying.yan@nuist.edu.cn</span>
             </div>
-            <svg class="pp-arrow" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
-          </a>
-        ))}
-      </div>
-
-      <div class="ach-cta fade-up delay-3">
-        <a href="/achievements" class="link-arrow">
-          查看全部成果
-          <svg viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CONTACT ───────────────────────────────────────── -->
-  <section id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info fade-up">
-          <div class="section-label">CONTACT</div>
-          <h2 class="contact-title">联系我们</h2>
-          <p class="contact-desc">欢迎对脑机接口研究感兴趣的同学加入我们</p>
-          <a href="mailto:ying.yan@nuist.edu.cn" class="contact-email">ying.yan@nuist.edu.cn</a>
-        </div>
-        <div class="contact-details fade-up delay-2">
-          <div class="cd-item">
-            <div class="cd-label">邮箱</div>
-            <div class="cd-value">ying.yan@nuist.edu.cn</div>
+            <div class="cd-row">
+              <span class="cd-label">电话</span>
+              <span class="cd-value">+86 152-0517-6357</span>
+            </div>
+            <div class="cd-row">
+              <span class="cd-label">地址</span>
+              <span class="cd-value">南京信息工程大学 · 金牛湖产教融合园区</span>
+            </div>
           </div>
-          <div class="cd-item">
-            <div class="cd-label">电话</div>
-            <div class="cd-value">+86 152-0517-6357</div>
-          </div>
-          <div class="cd-item">
-            <div class="cd-label">地址</div>
-            <div class="cd-value">南京信息工程大学 金牛湖产教融合园区</div>
-          </div>
-          <a href="https://faculty.nuist.edu.cn/yanying/zh_CN/index.htm" target="_blank" rel="noopener" class="link-arrow" style="margin-top:24px">
-            导师主页
-            <svg viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
-          </a>
         </div>
       </div>
-    </div>
-  </section>
+      <Footer />
+    </section>
 
-  <Footer />
+  </div>
 </Layout>
 
+<!-- ── SCRIPTS ──────────────────────────────────────────── -->
 <script>
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+  /* ── 0. Setup: make html/body allow the custom scroller ── */
+  document.documentElement.style.height = '100%';
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.height = '100%';
+  document.body.style.overflow = 'hidden';
+
+  const container = document.getElementById('fp-container')!;
+  const fpSections = [...document.querySelectorAll<HTMLElement>('.fp-section')];
+  const snDots = [...document.querySelectorAll<HTMLButtonElement>('.sn-dot')];
+  const badge = document.getElementById('nav-section-badge')!;
+
+  /* Section metadata */
+  const sectionMeta: Record<string, { label: string; navHref: string | null }> = {
+    hero:      { label: '首页',   navHref: null },
+    statement: { label: '理念',   navHref: null },
+    stats:     { label: '数据',   navHref: null },
+    research:  { label: '研究方向', navHref: '/research' },
+    team:      { label: '团队成员', navHref: '/team' },
+    papers:    { label: '科研成果', navHref: '/achievements' },
+    contact:   { label: '联系我们', navHref: '/contact' },
+  };
+
+  let currentIdx = 0;
+
+  /* ── 1. Dash nav: click to jump ── */
+  snDots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      container.scrollTo({ top: fpSections[i].offsetTop, behavior: 'smooth' });
+    });
+  });
+
+  /* ── 2. Update active state in dash nav + navbar ── */
+  function setActive(idx: number) {
+    if (idx === currentIdx) return;
+    currentIdx = idx;
+
+    // Dash nav
+    snDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+
+    // Navbar links
+    const sectionId = fpSections[idx]?.id ?? '';
+    const meta = sectionMeta[sectionId];
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    if (meta?.navHref) {
+      const link = document.querySelector<HTMLAnchorElement>(
+        `.nav-links a[href="${meta.navHref}"]`
+      );
+      link?.classList.add('active');
+    }
+
+    // Badge
+    if (meta) {
+      badge.textContent = meta.label;
+      badge.classList.add('visible');
+    }
+  }
+
+  /* ── 3. Track sections via IntersectionObserver ── */
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+        const idx = fpSections.indexOf(entry.target as HTMLElement);
+        if (idx !== -1) setActive(idx);
+      }
+    });
+  }, { root: container, threshold: 0.5 });
+
+  fpSections.forEach(s => sectionObserver.observe(s));
+
+  /* ── 4. Fade-up animations (root = scroll container) ── */
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        fadeObserver.unobserve(e.target);
+      }
+    });
+  }, { root: container, threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+  /* ── 5. Wheel → scroll one section at a time ── */
+  let isScrolling = false;
+  container.addEventListener('wheel', (e: WheelEvent) => {
+    e.preventDefault();
+    if (isScrolling) return;
+    isScrolling = true;
+
+    const dir = e.deltaY > 0 ? 1 : -1;
+    const next = Math.max(0, Math.min(fpSections.length - 1, currentIdx + dir));
+    container.scrollTo({ top: fpSections[next].offsetTop, behavior: 'smooth' });
+
+    // Unlock after animation (~700ms)
+    setTimeout(() => { isScrolling = false; }, 700);
+  }, { passive: false });
+
+  /* ── 6. Touch swipe support ── */
+  let touchStartY = 0;
+  container.addEventListener('touchstart', (e: TouchEvent) => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', (e: TouchEvent) => {
+    if (isScrolling) return;
+    const dy = touchStartY - e.changedTouches[0].clientY;
+    if (Math.abs(dy) < 30) return;
+    isScrolling = true;
+    const dir = dy > 0 ? 1 : -1;
+    const next = Math.max(0, Math.min(fpSections.length - 1, currentIdx + dir));
+    container.scrollTo({ top: fpSections[next].offsetTop, behavior: 'smooth' });
+    setTimeout(() => { isScrolling = false; }, 700);
+  }, { passive: true });
+
+  /* ── 7. Keyboard navigation ── */
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (isScrolling) return;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      isScrolling = true;
+      const next = Math.min(fpSections.length - 1, currentIdx + 1);
+      container.scrollTo({ top: fpSections[next].offsetTop, behavior: 'smooth' });
+      setTimeout(() => { isScrolling = false; }, 700);
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      isScrolling = true;
+      const next = Math.max(0, currentIdx - 1);
+      container.scrollTo({ top: fpSections[next].offsetTop, behavior: 'smooth' });
+      setTimeout(() => { isScrolling = false; }, 700);
+    }
+  });
+
+  /* ── 8. Initial badge ── */
+  setActive(0);
+
+  /* ── 9. Typewriter on statement section ── */
+  {
+    const words = ['未来', '机器', '世界', '生命'];
+    let wordIdx = 0;
+    let charIdx = words[0].length; // start fully typed
+    let isDeleting = false;
+    let twStarted = false;
+    const twWordEl = document.getElementById('tw-word')!;
+
+    function typeStep() {
+      const target = words[wordIdx];
+      if (isDeleting) {
+        charIdx--;
+        twWordEl.textContent = target.slice(0, charIdx);
+        if (charIdx === 0) {
+          isDeleting = false;
+          wordIdx = (wordIdx + 1) % words.length;
+          setTimeout(typeStep, 380);
+          return;
+        }
+        setTimeout(typeStep, 90);
+      } else {
+        charIdx++;
+        twWordEl.textContent = words[wordIdx].slice(0, charIdx);
+        if (charIdx === words[wordIdx].length) {
+          isDeleting = true;
+          setTimeout(typeStep, 2400);
+          return;
+        }
+        setTimeout(typeStep, 140);
+      }
+    }
+
+    const stmtSection = document.getElementById('statement')!;
+    new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !twStarted) {
+          twStarted = true;
+          setTimeout(() => { isDeleting = true; typeStep(); }, 1200);
+        }
+      });
+    }, { root: container, threshold: 0.5 }).observe(stmtSection);
+  }
 </script>
 
 <style>
-  /* ═══════════════════════════════════════════════════════
-     HERO
-     ═══════════════════════════════════════════════════════ */
-  #hero {
-    position: relative;
+  /* ── FULLPAGE SCROLL CONTAINER ──────────────────────── */
+  #fp-container {
+    position: fixed;
+    inset: 0;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  #fp-container::-webkit-scrollbar { display: none; }
+
+  /* ── SECTION BASE ────────────────────────────────────── */
+  .fp-section {
     height: 100vh;
-    min-height: 700px;
-    display: flex;
-    align-items: flex-end;
+    scroll-snap-align: start;
     overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 68px; /* clear fixed nav */
+    box-sizing: border-box;
+  }
+
+  /* ── RIGHT SIDE SECTION NAV ──────────────────────────── */
+  #section-nav {
+    position: fixed;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-end;
+  }
+  .sn-dot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 3px 0;
+  }
+  .sn-label {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: var(--text-3);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .sn-line {
+    display: block;
+    height: 1.5px;
+    width: 12px;
+    background: rgba(0,0,0,0.18);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.3s ease;
+    flex-shrink: 0;
+  }
+  .sn-dot:hover .sn-label { opacity: 1; transform: none; }
+  .sn-dot:hover .sn-line { background: rgba(0,0,0,0.35); width: 16px; }
+  .sn-dot.active .sn-label { opacity: 1; transform: none; color: var(--accent); }
+  .sn-dot.active .sn-line { width: 21px; background: var(--accent); }
+
+  @media (max-width: 768px) { #section-nav { display: none; } }
+
+  /* ═══════════════════════════════════════════════════
+     01 HERO
+  ═══════════════════════════════════════════════════ */
+  .fp-hero {
+    justify-content: flex-end;
+    align-items: stretch;
     background: #000;
+    border-bottom: none;
+    padding-top: 0;
+  }
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
   }
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 90% 50%, rgba(91,141,238,0.04) 0%, transparent 60%),
-                linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%);
-    pointer-events: none;
+    background: rgba(0, 0, 0, 0.20); 
+    /* 视频太暗或太亮，可以调整 hero-overlay 的 rgba(0,0,0,0.52) 这个透明度 */
     z-index: 1;
   }
   .hero-content {
     position: relative;
     z-index: 2;
-    padding: 0 6vw 80px;
-    max-width: 900px;
+    width: 100%;
+    padding: 0 6vw clamp(48px, 7vw, 88px) 6vw;
   }
-  .hero-tagline {
-    font-size: clamp(14px, 1.6vw, 18px);
-    color: rgba(255,255,255,0.6);
-    margin-bottom: 20px;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 1.5;
-  }
-  .hero-title {
-    font-size: clamp(40px, 7vw, 80px);
-    font-weight: 700;
-    line-height: 0.95;
-    letter-spacing: -0.04em;
-    color: #fff;
-    margin-bottom: 16px;
-  }
-  .hero-accent {
-    color: var(--accent);
-    letter-spacing: -0.04em;
-  }
-  .hero-sub {
-    font-size: clamp(13px, 1.4vw, 15px);
-    color: rgba(255,255,255,0.55);
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    margin-bottom: 40px;
-  }
-  .hero-links {
-    display: flex;
-    gap: 40px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .hero-link-dim {
-    color: rgba(255,255,255,0.55);
-  }
-  .hero-link-dim:hover { color: rgba(255,255,255,0.85); }
-
-  .hero-scroll {
-    position: absolute;
-    bottom: 32px;
-    right: 6vw;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .hero-scroll span {
-    font-size: 10px;
+  .hero-eyebrow {
+    font-size: 11px;
     font-family: var(--font-mono);
     letter-spacing: 3px;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+    margin-bottom: 20px;
   }
-  .scroll-line {
-    width: 1px;
-    height: 32px;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
-    animation: scrollPulse 3s ease-in-out infinite;
+  .hero-title {
+    font-size: clamp(38px, 5.5vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: #fff;
+    margin-bottom: 40px;
   }
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.15; }
-    50% { opacity: 0.6; }
+  .hero-title em {
+    font-style: normal;
+    color: var(--accent);
   }
-
-  /* ═══════════════════════════════════════════════════════
-     SECTIONS
-     ═══════════════════════════════════════════════════════ */
-  section { padding: clamp(100px, 12vw, 160px) 0; }
-  #team { background: #040404; }
-  #contact { background: #020202; }
-
-  /* ═══════════════════════════════════════════════════════
-     RESEARCH
-     ═══════════════════════════════════════════════════════ */
-  .research-grid {
+  .hero-actions {
     display: flex;
-    flex-direction: column;
-  }
-  .r-card {
-    display: grid;
-    grid-template-columns: 48px 1fr;
-    gap: 32px;
-    align-items: start;
-    padding: 40px 0;
-    border-bottom: 1px solid var(--border);
-    text-decoration: none;
-    color: inherit;
-    position: relative;
-    transition: padding-left 0.3s ease;
-  }
-  .r-card:first-child {
-    border-top: 1px solid var(--border);
-  }
-  .r-card:hover { padding-left: 12px; }
-  .r-card:hover .r-title { color: var(--accent); }
-  .r-card:hover .r-arrow { opacity: 1; transform: translateX(4px); }
-
-  .r-num {
-    font-family: var(--font-mono);
-    font-size: 13px;
-    color: var(--text-3);
-    padding-top: 6px;
-    font-variant-numeric: tabular-nums;
-  }
-  .r-body { position: relative; }
-  .r-title {
-    font-size: clamp(22px, 3vw, 32px);
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 6px;
-    transition: color 0.3s ease;
-  }
-  .r-title-en {
-    font-size: 14px;
-    font-family: var(--font-mono);
-    color: var(--text-3);
-    margin-bottom: 12px;
-    letter-spacing: 0.05em;
-  }
-  .r-desc {
-    font-size: 15px;
-    color: var(--text-2);
-    line-height: 1.7;
-    max-width: 520px;
-  }
-  .r-arrow {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    color: var(--text-3);
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-  .r-arrow svg {
-    width: 100%;
-    height: 100%;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 1.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  /* ═══════════════════════════════════════════════════════
-     TEAM
-     ═══════════════════════════════════════════════════════ */
-  #team .section-title { margin-top: 12px; }
-  #team .section-desc { margin-bottom: 60px; }
-
-  .mentor-card {
-    display: grid;
-    grid-template-columns: 88px 1fr;
-    gap: 40px;
-    align-items: start;
-    padding: 48px 0;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 48px;
-  }
-  .mentor-avatar {
-    width: 88px; height: 88px;
-    border-radius: 50%;
-    background: rgba(91,141,238,0.06);
-    border: 1px solid rgba(91,141,238,0.12);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 28px; font-weight: 700; color: var(--accent);
-    flex-shrink: 0;
-  }
-  .mentor-role {
-    display: inline-block;
-    font-size: 11px; font-family: var(--font-mono); letter-spacing: 2px;
-    color: var(--accent); opacity: 0.85;
-    margin-bottom: 10px;
-  }
-  .mentor-name { font-size: 28px; font-weight: 700; margin-bottom: 14px; letter-spacing: -0.02em; }
-  .mentor-bio { font-size: 15px; color: var(--text-2); line-height: 1.85; margin-bottom: 24px; max-width: 620px; }
-  .mentor-link-arrow { font-size: 15px; }
-
-  .members-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    margin-bottom: 48px;
-  }
-  .member-card {
-    background: #040404;
-    padding: 32px 24px;
-    text-align: center;
-    transition: background 0.2s;
-  }
-  .member-card:hover { background: #0a0a0a; }
-  .member-card.placeholder { opacity: 0.3; }
-  .member-avatar {
-    width: 52px; height: 52px;
-    border-radius: 50%;
-    background: rgba(91,141,238,0.06);
-    border: 1px solid rgba(91,141,238,0.1);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; font-weight: 600; color: var(--accent);
-    margin: 0 auto 14px;
-  }
-  .member-avatar.ph { color: var(--text-3); font-size: 20px; }
-  .member-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
-  .member-name.muted { color: var(--text-3); }
-  .member-year { font-size: 11px; color: var(--text-3); font-family: var(--font-mono); margin-bottom: 6px; }
-  .member-focus { font-size: 12px; color: var(--text-3); line-height: 1.5; }
-  .team-hint {
-    text-align: center;
-    font-size: 14px;
-    color: var(--text-3);
-  }
-
-  /* ═══════════════════════════════════════════════════════
-     ACHIEVEMENTS
-     ═══════════════════════════════════════════════════════ */
-  .ach-header {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 48px;
-    margin-bottom: 48px;
+    gap: 12px;
     flex-wrap: wrap;
   }
-  .ach-stats {
-    display: flex;
-    gap: 56px;
-    flex-shrink: 0;
-    padding-top: 12px;
+  .hero-btn-outline {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
   }
-  .stat {
+  .hero-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     02 SLOGAN
+  ═══════════════════════════════════════════════════ */
+  .fp-statement {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    justify-content: center;
+    text-align: center;
+  }
+  .statement-text {
+    font-size: clamp(26px, 4vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+    color: var(--text);
+    max-width: 720px;
+    margin: 0 auto 20px;
+  }
+  .statement-text strong {
+    color: var(--text);
+    position: relative;
+  }
+  .statement-text strong::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .statement-en {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-3);
+    letter-spacing: 2px;
+  }
+  .tw-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 0.78em;
+    background: var(--accent);
+    margin-left: 3px;
+    vertical-align: -0.04em;
+    border-radius: 1.5px;
+    animation: tw-blink 1s step-end infinite;
+  }
+  @keyframes tw-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     03 STATS
+  ═══════════════════════════════════════════════════ */
+  .fp-stats {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  .stats-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+  }
+  .stat-item {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    align-items: center;
+    gap: 10px;
+    padding: 0 clamp(28px, 5vw, 72px);
+  }
+  .stat-divider {
+    width: 1px;
+    height: 64px;
+    background: var(--border-md);
+    flex-shrink: 0;
   }
   .stat-num {
-    font-size: 52px;
-    font-weight: 700;
+    font-size: clamp(48px, 7vw, 80px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
     color: var(--text);
     line-height: 1;
-    letter-spacing: -0.03em;
     font-variant-numeric: tabular-nums;
+  }
+  .stat-num sup {
+    font-size: 0.45em;
+    vertical-align: super;
+    font-weight: 700;
   }
   .stat-label {
     font-size: 11px;
     color: var(--text-3);
     font-family: var(--font-mono);
     letter-spacing: 2px;
+    text-transform: uppercase;
   }
 
-  .paper-previews {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid var(--border);
-    margin-bottom: 36px;
-  }
-  .paper-preview {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    padding: 24px 0;
+  /* ═══════════════════════════════════════════════════
+     04 RESEARCH
+  ═══════════════════════════════════════════════════ */
+  .fp-research {
+    background: var(--bg-surface);
     border-bottom: 1px solid var(--border);
+  }
+  .split-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .split-header .section-desc { margin-bottom: 0; max-width: 380px; }
+  .section-cta { margin-top: 28px; }
+
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .r-card {
+    background: var(--bg);
+    padding: 28px 22px 24px;
     text-decoration: none;
     color: inherit;
-    transition: padding-left 0.3s ease;
-    position: relative;
-  }
-  .paper-preview:hover { padding-left: 12px; }
-  .paper-preview:hover .pp-arrow { opacity: 1; transform: translate(4px, -4px); }
-
-  .pp-year {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--text-3);
-    min-width: 44px;
-    flex-shrink: 0;
-    font-variant-numeric: tabular-nums;
-  }
-  .pp-body { flex: 1; min-width: 0; }
-  .pp-title {
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1.5;
-    margin-bottom: 4px;
-    color: var(--text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .pp-journal {
-    font-size: 12px;
-    font-family: var(--font-mono);
-    color: var(--text-3);
-    letter-spacing: 0.5px;
-  }
-  .pp-arrow {
-    width: 16px;
-    height: 16px;
-    stroke: var(--text-3);
-    fill: none;
-    stroke-width: 1.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    flex-shrink: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-  }
-
-  .ach-cta { margin-top: 8px; }
-
-  /* ═══════════════════════════════════════════════════════
-     CONTACT
-     ═══════════════════════════════════════════════════════ */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-  .contact-title {
-    font-size: clamp(48px, 7vw, 88px);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 0.95;
-    margin-bottom: 20px;
-    margin-top: 8px;
-  }
-  .contact-desc {
-    font-size: 18px;
-    color: var(--text-2);
-    line-height: 1.6;
-    margin-bottom: 16px;
-    max-width: 360px;
-  }
-  .contact-email {
-    font-size: 16px;
-    color: var(--accent);
-    text-decoration: none;
-    font-family: var(--font-mono);
-    transition: opacity 0.2s;
-  }
-  .contact-email:hover { opacity: 0.7; }
-
-  .contact-details {
+    transition: background 0.2s;
     display: flex;
     flex-direction: column;
-    gap: 24px;
   }
-  .cd-item {
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--border);
+  .r-card:hover { background: var(--bg-surface); }
+  .r-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
   }
-  .cd-label {
-    font-size: 10px;
+  .r-num {
     font-family: var(--font-mono);
-    letter-spacing: 3px;
-    color: var(--text-3);
-    text-transform: uppercase;
-    margin-bottom: 8px;
+    font-size: 10px;
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 1px;
   }
-  .cd-value {
-    font-size: 16px;
-    color: var(--text-2);
-    line-height: 1.5;
-    font-weight: 400;
+  .r-arrow {
+    width: 14px; height: 14px;
+    color: var(--text-3);
+    transition: transform 0.25s ease, color 0.2s;
+    flex-shrink: 0;
+  }
+  .r-card:hover .r-arrow { transform: translate(3px, -3px); color: var(--accent); }
+  .r-title {
+    font-size: 18px; font-weight: 700;
+    letter-spacing: -0.02em; margin-bottom: 3px; line-height: 1.2;
+  }
+  .r-en {
+    font-size: 9px; font-family: var(--font-mono);
+    color: var(--text-3); letter-spacing: 0.5px; margin-bottom: 12px;
+  }
+  .r-desc {
+    font-size: 12px; color: var(--text-2); line-height: 1.65; flex: 1; margin-bottom: 14px;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .r-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .r-tag {
+    font-size: 9px; font-family: var(--font-mono);
+    color: var(--text-3); background: var(--bg-elevated);
+    border-radius: var(--radius-pill); padding: 2px 7px;
   }
 
-  /* ═══════════════════════════════════════════════════════
-     RESPONSIVE
-     ═══════════════════════════════════════════════════════ */
-  @media (max-width: 1000px) {
-    .r-card { grid-template-columns: 36px 1fr; gap: 20px; }
+  @media (max-width: 1100px) { .research-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px)  { .research-grid { grid-template-columns: 1fr 1fr; } }
+
+  /* ═══════════════════════════════════════════════════
+     05 TEAM
+  ═══════════════════════════════════════════════════ */
+  .fp-team { background: var(--bg); border-bottom: 1px solid var(--border); }
+
+  .mentor-block {
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 40px;
+    align-items: start;
+    padding: 36px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg-surface);
+    margin-bottom: 28px;
   }
+  .mentor-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 2px solid var(--accent-mid);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; font-weight: 800; color: var(--accent);
+    flex-shrink: 0;
+  }
+  .mentor-role {
+    display: block; font-size: 10px; font-family: var(--font-mono);
+    letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; text-transform: uppercase;
+  }
+  .mentor-name { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 12px; }
+  .mentor-bio { font-size: 14px; color: var(--text-2); line-height: 1.8; margin-bottom: 16px; }
+  .mentor-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .mentor-tags span {
+    font-size: 10px; font-family: var(--font-mono);
+    padding: 3px 9px; border-radius: var(--radius-pill);
+    background: var(--bg-elevated); color: var(--text-2);
+  }
+  @media (max-width: 560px) {
+    .mentor-block { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     06 PAPERS
+  ═══════════════════════════════════════════════════ */
+  .fp-papers { background: var(--bg-surface); border-bottom: 1px solid var(--border); }
+
+  .paper-list { border-top: 1px solid var(--border); }
+  .paper-row {
+    display: flex; align-items: center; gap: 24px;
+    padding: 20px 0; border-bottom: 1px solid var(--border);
+    text-decoration: none; color: inherit;
+    transition: background 0.2s, padding 0.2s;
+    border-radius: var(--radius-sm);
+  }
+  .paper-row:hover { padding-left: 10px; padding-right: 10px; background: var(--bg-elevated); }
+  .paper-row:hover .pr-icon { opacity: 1; transform: translate(3px, -3px); color: var(--accent); }
+  .pr-year { font-family: var(--font-mono); font-size: 11px; color: var(--text-3); min-width: 38px; flex-shrink: 0; }
+  .pr-body { flex: 1; min-width: 0; }
+  .pr-title {
+    font-size: 14px; font-weight: 500; color: var(--text);
+    line-height: 1.5; margin-bottom: 3px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .pr-journal { font-size: 11px; font-family: var(--font-mono); color: var(--text-3); }
+  .pr-icon {
+    width: 14px; height: 14px; color: var(--text-3); flex-shrink: 0; opacity: 0;
+    transition: opacity 0.2s, transform 0.25s, color 0.2s;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     07 CONTACT
+  ═══════════════════════════════════════════════════ */
+  .fp-contact {
+    background: var(--bg);
+    justify-content: flex-start; /* footer pins to bottom */
+  }
+  .contact-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .contact-right { display: flex; flex-direction: column; padding-top: 8px; }
+  .cd-row {
+    display: flex; flex-direction: column; gap: 5px;
+    padding: 18px 0; border-bottom: 1px solid var(--border);
+  }
+  .cd-label {
+    font-size: 9px; font-family: var(--font-mono);
+    letter-spacing: 2.5px; color: var(--text-3); text-transform: uppercase;
+  }
+  .cd-value { font-size: 15px; color: var(--text); font-weight: 500; line-height: 1.5; }
   @media (max-width: 768px) {
-    section { padding: 80px 0; }
-    .hero-content { padding-bottom: 100px; }
-    .hero-links { gap: 28px; }
-    .hero-scroll { right: 6vw; bottom: 28px; }
-    .r-card { padding: 28px 0; }
-    .r-arrow { display: none; }
-    .mentor-card { grid-template-columns: 1fr; gap: 20px; }
-    .mentor-card .mentor-avatar { width: 64px; height: 64px; font-size: 22px; }
-    .ach-stats { gap: 32px; }
-    .stat-num { font-size: 36px; }
-    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-    .paper-preview:hover { padding-left: 0; }
-    .pp-arrow { display: none; }
-  }
-  @media (max-width: 480px) {
-    section { padding: 64px 0; }
-    .hero-title { font-size: clamp(40px, 12vw, 56px); }
-    .hero-content { padding-bottom: 120px; }
-    .hero-links { flex-direction: column; gap: 16px; align-items: flex-start; }
-    .ach-header { flex-direction: column; gap: 24px; }
-    .members-grid { grid-template-columns: 1fr 1fr; }
-    .r-card { grid-template-columns: 1fr; }
-    .r-num { display: none; }
+    .contact-inner { grid-template-columns: 1fr; gap: 32px; }
+    .split-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 28px; }
+    .split-header .btn { align-self: auto; }
+    .stats-grid { flex-wrap: wrap; }
+    .stat-divider { display: none; }
+    .stat-item { width: 50%; padding: 16px; border-bottom: 1px solid var(--border); }
+    .stat-item:nth-child(2n+1) { border-right: 1px solid var(--border); }
   }
 </style>

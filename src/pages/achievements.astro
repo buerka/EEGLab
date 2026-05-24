@@ -155,7 +155,7 @@ import { awards } from '../data/awards';
   /* ── PAGE HEADER ────────────────────────────────────── */
   .page-header {
     padding: 140px 0 72px;
-    background: #000;
+    background: var(--bg-surface);
     border-bottom: 1px solid var(--border);
   }
   .back-link {
@@ -257,7 +257,7 @@ import { awards } from '../data/awards';
   .sidebar-nav a svg { width: 14px; height: 14px; flex-shrink: 0; }
   .sidebar-nav a:hover,
   .sidebar-nav a.active {
-    background: rgba(255,255,255,0.04);
+    background: var(--bg-surface);
     color: var(--text);
   }
   .sidebar-nav a.active {
@@ -322,7 +322,7 @@ import { awards } from '../data/awards';
   .award-line {
     width: 1px;
     flex: 1;
-    background: linear-gradient(to bottom, rgba(91,141,238,0.15), transparent);
+    background: linear-gradient(to bottom, rgba(0,87,255,0.15), transparent);
     margin-top: 6px;
     min-height: 20px;
   }
@@ -371,20 +371,15 @@ import { awards } from '../data/awards';
     align-items: center;
     justify-content: center;
     gap: 10px;
-    color: rgba(255,255,255,0.12);
-    background: #080808;
+    color: rgba(0,0,0,0.15);
+    background: var(--bg-surface);
   }
   .gallery-placeholder span {
     font-size: 11px;
     font-family: var(--font-mono);
     letter-spacing: 1px;
   }
-  .gb-1 { background: #0a0a0a; }
-  .gb-2 { background: #0c0c0c; }
-  .gb-3 { background: #0b0b0b; }
-  .gb-4 { background: #0a0a0a; }
-  .gb-5 { background: #0c0c0c; }
-  .gb-6 { background: #0b0b0b; }
+  .gb-1, .gb-2, .gb-3, .gb-4, .gb-5, .gb-6 { background: var(--bg-surface); }
 
   /* ── RESPONSIVE ─────────────────────────────────────── */
   @media (max-width: 900px) {
@@ -392,7 +387,7 @@ import { awards } from '../data/awards';
     .ach-sidebar { position: static; }
     .sidebar-nav { flex-direction: row; flex-wrap: wrap; }
     .sidebar-nav a { border-left: none !important; padding-left: 14px !important; }
-    .sidebar-nav a.active { background: rgba(255,255,255,0.04); }
+    .sidebar-nav a.active { background: var(--bg-surface); }
     .nav-count { display: none; }
     .sidebar-label { display: none; }
     .gallery-grid { grid-template-columns: repeat(2, 1fr); }

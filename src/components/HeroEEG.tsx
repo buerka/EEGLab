@@ -3,7 +3,6 @@ import { useEffect, useRef } from 'react';
 const CHANNELS = 4;
 const CHANNEL_LABELS = ['Fp1', 'C3', 'Pz', 'O2'];
 
-// EEG-like signal composed of alpha + beta + theta components
 function eegSignal(t: number, ch: number): number {
   const alpha = 0.65 * Math.sin(2 * Math.PI * (9.5 + ch * 0.6) * t + ch * 0.9);
   const beta  = 0.22 * Math.sin(2 * Math.PI * (18 + ch * 1.4) * t + ch * 1.7);
@@ -22,8 +21,8 @@ export default function HeroEEG() {
 
     let animId: number;
     let t = 0;
-    const TIME_PER_PX = 0.0018; // time units per pixel (controls speed of scroll)
-    const AMPLITUDE = 36; // pixels
+    const TIME_PER_PX = 0.0018;
+    const AMPLITUDE = 34;
 
     function resize() {
       if (!canvas) return;
@@ -36,14 +35,14 @@ export default function HeroEEG() {
       const { width, height } = canvas;
       ctx.clearRect(0, 0, width, height);
 
-      const step = 2; // sample every 2px for performance
+      const step = 2;
 
       for (let ch = 0; ch < CHANNELS; ch++) {
         const centerY = height * ((ch + 1) / (CHANNELS + 1));
 
-        // Faint horizontal baseline
+        // Baseline
         ctx.beginPath();
-        ctx.strokeStyle = 'rgba(91, 141, 238, 0.06)';
+        ctx.strokeStyle = 'rgba(0, 87, 255, 0.08)';
         ctx.lineWidth = 1;
         ctx.moveTo(0, centerY);
         ctx.lineTo(width, centerY);
@@ -51,13 +50,13 @@ export default function HeroEEG() {
 
         // Channel label
         ctx.font = `10px 'SF Mono', monospace`;
-        ctx.fillStyle = 'rgba(91, 141, 238, 0.22)';
+        ctx.fillStyle = 'rgba(0, 87, 255, 0.3)';
         ctx.fillText(CHANNEL_LABELS[ch], 16, centerY - AMPLITUDE - 8);
 
-        // Waveform path
+        // Waveform
         ctx.beginPath();
-        ctx.strokeStyle = 'rgba(91, 141, 238, 0.28)';
-        ctx.lineWidth = 1.2;
+        ctx.strokeStyle = 'rgba(0, 87, 255, 0.22)';
+        ctx.lineWidth = 1.5;
         ctx.lineJoin = 'round';
 
         let first = true;
@@ -70,7 +69,7 @@ export default function HeroEEG() {
         ctx.stroke();
       }
 
-      t += 0.016; // ~60fps increment
+      t += 0.016;
       animId = requestAnimationFrame(draw);
     }
 

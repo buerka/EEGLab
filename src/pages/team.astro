@@ -1,0 +1,235 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="团队成员 · 金牛湖脑机实验室" description="汇聚多学科背景研究人员，共同推进脑机接口前沿探索">
+  <Nav active="home" />
+
+  <div class="page-header">
+    <div class="container">
+      <a href="/" class="back-link">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        返回主页
+      </a>
+      <div class="section-label">TEAM</div>
+      <h1 class="ph-title">团队成员</h1>
+      <p class="ph-desc">汇聚神经工程、信号处理、机器人控制等多学科背景的研究人员，共同推进脑机接口前沿探索。</p>
+    </div>
+  </div>
+
+  <div class="team-body">
+    <div class="container">
+
+      <!-- Mentor -->
+      <div class="section-block fade-up">
+        <h2 class="block-title">指导老师</h2>
+        <div class="mentor-full">
+          <div class="mentor-avatar">颖</div>
+          <div class="mentor-info">
+            <span class="mentor-role">副教授 · 硕士生导师</span>
+            <h3 class="mentor-name">严颖</h3>
+            <p class="mentor-bio">
+              南京信息工程大学自动化学院副教授、硕士生导师。博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。现兼任电气工程系副系主任、江苏省气象能源利用与控制工程技术研究中心副主任。
+            </p>
+            <div class="mentor-links">
+              <a href="https://faculty.nuist.edu.cn/yanying/zh_CN/index.htm" target="_blank" rel="noopener" class="arrow-link">
+                导师主页
+                <span class="arrow-icon">
+                  <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+                  <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+                </span>
+              </a>
+              <a href="mailto:ying.yan@nuist.edu.cn" class="arrow-link" style="color:var(--text-2)">
+                邮件联系
+                <span class="arrow-icon">
+                  <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+                  <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Members -->
+      <div class="section-block fade-up delay-1">
+        <h2 class="block-title">实验室成员</h2>
+
+        <div class="members-grid">
+          <div class="member-card">
+            <div class="member-avatar">杨</div>
+            <div class="member-name">许穆杨</div>
+            <div class="member-badge">24届本科生</div>
+            <div class="member-focus">脑电信号处理</div>
+            <div class="member-focus">运动意图解码</div>
+          </div>
+
+          <div class="member-card placeholder">
+            <div class="member-avatar ph">+</div>
+            <div class="member-name muted">待添加成员</div>
+            <div class="member-badge">—</div>
+            <div class="member-focus">研究方向待填写</div>
+          </div>
+          <div class="member-card placeholder">
+            <div class="member-avatar ph">+</div>
+            <div class="member-name muted">待添加成员</div>
+            <div class="member-badge">—</div>
+            <div class="member-focus">研究方向待填写</div>
+          </div>
+          <div class="member-card placeholder">
+            <div class="member-avatar ph">+</div>
+            <div class="member-name muted">待添加成员</div>
+            <div class="member-badge">—</div>
+            <div class="member-focus">研究方向待填写</div>
+          </div>
+          <div class="member-card placeholder">
+            <div class="member-avatar ph">+</div>
+            <div class="member-name muted">待添加成员</div>
+            <div class="member-badge">—</div>
+            <div class="member-focus">研究方向待填写</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Join -->
+      <div class="section-block join-block fade-up delay-2">
+        <h2 class="block-title">加入我们</h2>
+        <p class="join-text">
+          欢迎对脑机接口、EEG 信号分析、神经工程、嵌入式系统、机器人控制等方向感兴趣的研究生与本科生加入团队。课题组提供完善的实验设备、充足的科研经费与定期的国际学术交流机会。
+        </p>
+        <a href="/contact" class="arrow-link">
+          了解详情
+          <span class="arrow-icon">
+            <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+            <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+
+<style>
+  .page-header {
+    padding: 140px 0 72px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: var(--text-3); text-decoration: none;
+    margin-bottom: 32px; transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--text-2); }
+  .back-link svg { width: 16px; height: 16px; }
+
+  .ph-title {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 700; letter-spacing: -0.03em;
+    line-height: 1.05; margin-bottom: 16px; margin-top: 12px;
+  }
+  .ph-desc {
+    font-size: 17px; color: var(--text-2);
+    line-height: 1.7; max-width: 580px;
+  }
+
+  .team-body { padding: 80px 0 120px; }
+
+  .section-block { margin-bottom: 80px; }
+  .block-title {
+    font-size: 12px; font-family: var(--font-mono);
+    letter-spacing: 3px; color: var(--text-3);
+    text-transform: uppercase; margin-bottom: 32px;
+  }
+
+  /* Mentor */
+  .mentor-full {
+    display: grid; grid-template-columns: 120px 1fr;
+    gap: 48px; align-items: start;
+    padding: 48px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+  .mentor-avatar {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 2px solid var(--accent-mid);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 40px; font-weight: 700; color: var(--accent);
+  }
+  .mentor-role {
+    display: inline-block;
+    font-size: 11px; font-family: var(--font-mono); letter-spacing: 2px;
+    color: var(--accent); opacity: 0.8; margin-bottom: 10px;
+  }
+  .mentor-name { font-size: 32px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; }
+  .mentor-bio { font-size: 16px; color: var(--text-2); line-height: 1.85; margin-bottom: 28px; max-width: 640px; }
+  .mentor-links { display: flex; gap: 32px; flex-wrap: wrap; }
+  .mentor-links .arrow-link { font-size: 15px; }
+
+  /* Members */
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .member-card {
+    background: var(--bg);
+    padding: 40px 28px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .member-card:hover { background: var(--bg-surface); }
+  .member-card.placeholder { opacity: 0.35; }
+  .member-avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-mid);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 600; color: var(--accent);
+    margin: 0 auto 16px;
+  }
+  .member-avatar.ph { color: var(--text-3); font-size: 24px; }
+  .member-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .member-name.muted { color: var(--text-3); }
+  .member-badge {
+    font-size: 11px; color: var(--accent); opacity: 0.6;
+    font-family: var(--font-mono); margin-bottom: 12px;
+  }
+  .member-focus { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+
+  /* Join */
+  .join-block {
+    padding: 48px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+  .join-text {
+    font-size: 16px; color: var(--text-2);
+    line-height: 1.85; max-width: 680px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 768px) {
+    .mentor-full { grid-template-columns: 1fr; gap: 24px; padding: 32px; }
+    .mentor-avatar { width: 80px; height: 80px; font-size: 28px; }
+    .mentor-name { font-size: 28px; }
+    .members-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

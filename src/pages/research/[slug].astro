@@ -103,9 +103,12 @@ const next = allResearch[currentIdx + 1];
               </a>
             ))}
           </div>
-          <a href="/achievements" class="link-arrow" style="font-size:15px">
+          <a href="/achievements" class="arrow-link" style="font-size:15px">
             查看全部成果
-            <svg viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+            <span class="arrow-icon">
+              <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+              <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+            </span>
           </a>
         </section>
       )}
@@ -186,11 +189,11 @@ const next = allResearch[currentIdx + 1];
     border-left: 2px solid transparent;
     font-weight: 400;
   }
-  .dir-nav-item:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+  .dir-nav-item:hover { color: var(--text); background: rgba(0,0,0,0.04); }
   .dir-nav-item.active {
     color: var(--text);
     border-left-color: var(--accent);
-    background: rgba(91,141,238,0.04);
+    background: var(--accent-dim);
   }
   .dir-num {
     font-family: var(--font-mono);
@@ -285,7 +288,7 @@ const next = allResearch[currentIdx + 1];
     font-family: var(--font-mono);
     padding: 4px 12px;
     border-radius: 100px;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid var(--border);
     color: var(--text-3);
     letter-spacing: 0.5px;
   }
@@ -311,7 +314,7 @@ const next = allResearch[currentIdx + 1];
     transition: background 0.15s;
   }
   .paper-item:last-child { border-bottom: none; }
-  .paper-item:hover { background: rgba(255,255,255,0.02); }
+  .paper-item:hover { background: var(--bg-surface); }
   .paper-item:hover .pi-arrow { opacity: 1; transform: translate(4px, -4px); }
 
   .pi-year { font-family: var(--font-mono); font-size: 12px; color: var(--text-3); min-width: 40px; font-variant-numeric: tabular-nums; }
@@ -346,7 +349,7 @@ const next = allResearch[currentIdx + 1];
     color: inherit;
     transition: border-color 0.2s, background 0.2s;
   }
-  .pager-item:hover { border-color: var(--border-md); background: rgba(255,255,255,0.015); }
+  .pager-item:hover { border-color: var(--border-md); background: var(--bg-surface); }
   .pager-item.next { text-align: right; }
   .pager-label { font-size: 11px; font-family: var(--font-mono); color: var(--text-3); letter-spacing: 2px; }
   .pager-title {

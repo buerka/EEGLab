@@ -80,9 +80,9 @@ export default function PaperFilter() {
         .filter-chip {
           padding: 6px 16px;
           font-size: 12px;
-          font-weight: 400;
+          font-weight: 500;
           border-radius: 100px;
-          border: 1px solid rgba(255,255,255,0.14);
+          border: 1.5px solid rgba(0,0,0,0.1);
           background: transparent;
           color: #888;
           cursor: pointer;
@@ -92,13 +92,14 @@ export default function PaperFilter() {
           line-height: 1.5;
         }
         .filter-chip:hover {
-          border-color: rgba(255,255,255,0.3);
-          color: #bbb;
+          border-color: rgba(0,0,0,0.25);
+          color: #333;
+          background: #f5f5f5;
         }
         .filter-chip.active {
-          background: rgba(91,141,238,0.12);
-          border-color: rgba(91,141,238,0.3);
-          color: #8FB0F2;
+          background: rgba(0,87,255,0.07);
+          border-color: rgba(0,87,255,0.25);
+          color: #0057FF;
         }
         .paper-list {
           display: flex;
@@ -111,14 +112,14 @@ export default function PaperFilter() {
           padding: 24px 16px 10px;
           font-size: 11px;
           letter-spacing: 3px;
-          color: #555;
+          color: #aaa;
           font-family: 'SF Mono', monospace;
         }
         .year-divider::after {
           content: '';
           flex: 1;
           height: 1px;
-          background: rgba(255,255,255,0.08);
+          background: rgba(0,0,0,0.08);
         }
         .paper-row {
           display: grid;
@@ -130,11 +131,11 @@ export default function PaperFilter() {
           transition: background 0.15s;
         }
         .paper-row:hover {
-          background: rgba(255,255,255,0.02);
+          background: #f7f7f7;
         }
         .pr-num {
           font-size: 11px;
-          color: #555;
+          color: #bbb;
           font-family: 'SF Mono', monospace;
           padding-top: 3px;
           font-variant-numeric: tabular-nums;
@@ -144,7 +145,7 @@ export default function PaperFilter() {
           font-weight: 500;
           line-height: 1.55;
           margin-bottom: 6px;
-          color: #EBEBF0;
+          color: #0A0A0A;
           letter-spacing: -0.01em;
         }
         .pr-authors {
@@ -155,7 +156,7 @@ export default function PaperFilter() {
         }
         .pr-authors mark {
           background: none;
-          color: #8FB0F2;
+          color: #0057FF;
           font-weight: 600;
         }
         .pr-tags {
@@ -171,37 +172,37 @@ export default function PaperFilter() {
           font-family: 'SF Mono', monospace;
         }
         .pr-tag.venue {
-          background: rgba(91,141,238,0.08);
-          color: #A2BFF5;
-          border: 1px solid rgba(91,141,238,0.15);
+          background: rgba(0,87,255,0.06);
+          color: #0057FF;
+          border: 1px solid rgba(0,87,255,0.12);
         }
         .pr-tag.if {
-          background: rgba(255,255,255,0.06);
+          background: #f0f0f0;
           color: #888;
         }
         .pr-tag.rank {
-          background: rgba(255,255,255,0.06);
+          background: #f0f0f0;
           color: #888;
         }
         .pr-tag.rank.top {
-          background: rgba(80,200,120,0.08);
-          color: #6DD09B;
+          background: rgba(40,180,100,0.07);
+          color: #1a9a56;
         }
         .pr-tag.topic {
           background: transparent;
-          color: #666;
-          border: 1px solid rgba(255,255,255,0.1);
+          color: #aaa;
+          border: 1px solid rgba(0,0,0,0.08);
         }
         .pr-year {
           font-size: 11px;
-          color: #555;
+          color: #bbb;
           font-family: 'SF Mono', monospace;
           padding-top: 3px;
           white-space: nowrap;
           font-variant-numeric: tabular-nums;
         }
         .no-results {
-          color: #666;
+          color: #aaa;
           font-size: 14px;
           padding: 40px 16px;
           text-align: center;
