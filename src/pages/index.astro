@@ -163,7 +163,7 @@ const featuredPapers = papers.slice(0, 3);
           <div class="mentor-block">
             <img src="/images/team/yan-ying.png" alt="严颖" class="mentor-avatar" />
             <div class="mentor-right">
-              <span class="mentor-role">副教授 · 硕士生导师</span>
+              <span class="mentor-role">硕士生导师 · 副教授</span>
               <h3 class="mentor-name">严颖</h3>
               <p class="mentor-bio">博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。主持多项国家自然科学基金及省部级科研项目，在 IEEE 系列期刊发表论文 70 余篇。</p>
               <div class="mentor-tags">
@@ -194,37 +194,49 @@ const featuredPapers = papers.slice(0, 3);
         </div>
 
         <div class="member-pills fade-up delay-3">
-          <div class="pills-row">
-            {[
+          {(() => {
+            const undergrads = [
               { name: '许穆杨', badge: '24届本科生', char: '杨' },
               { name: '刘浩淼', badge: '25级本科生', char: '淼' },
               { name: '田帅',   badge: '25级本科生', char: '帅' },
               { name: '章子涵', badge: '25级本科生', char: '涵' },
               { name: '王昊',   badge: '23级本科生', char: '昊' },
               { name: '刘志',   badge: '23级本科生', char: '志' },
-            ].map(m => (
-              <div class="member-pill">
-                <span class="pill-avatar">{m.char}</span>
-                <span class="pill-name">{m.name}</span>
-                <span class="pill-badge">{m.badge}</span>
-              </div>
-            ))}
-          </div>
-          <div class="pills-row">
-            {[
-              { name: '朱家琦', badge: '24级硕士', char: '琦', img: '/images/team/朱家琦.jpg' },
-              { name: '宗禹胄', badge: '26级硕士', char: '胄', img: '/images/team/宗禹胄.jpg' },
-              { name: '陆思语', badge: '26级硕士', char: '语', img: '/images/team/陆思语.jpg' },
-              { name: '王宇森', badge: '26级硕士', char: '森', img: '/images/team/王宇森.jpg' },
-              { name: '沈培涵', badge: '26级硕士', char: '涵', img: '/images/team/沈培涵.jpg' },
-            ].map(m => (
-              <div class="member-pill">
-                <img src={m.img} alt={m.name} class="pill-avatar pill-img" />
-                <span class="pill-name">{m.name}</span>
-                <span class="pill-badge">{m.badge}</span>
-              </div>
-            ))}
-          </div>
+            ];
+            const grads = [
+              { name: '朱家琦', badge: '24级研究生', img: '/images/team/朱家琦.jpg' },
+              { name: '宗禹胄', badge: '26级研究生', img: '/images/team/宗禹胄.jpg' },
+              { name: '陆思语', badge: '26级研究生', img: '/images/team/陆思语.jpg' },
+              { name: '王宇森', badge: '26级研究生', img: '/images/team/王宇森.jpg' },
+              { name: '沈培涵', badge: '26级研究生', img: '/images/team/沈培涵.jpg' },
+            ];
+            return (
+              <>
+                <div class="pills-track-wrap">
+                  <div class="pills-track">
+                    {[...undergrads, ...undergrads].map((m, i) => (
+                      <div class="member-pill" key={i}>
+                        <span class="pill-avatar">{m.char}</span>
+                        <span class="pill-name">{m.name}</span>
+                        <span class="pill-badge">{m.badge}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div class="pills-track-wrap">
+                  <div class="pills-track pills-track-slow">
+                    {[...grads, ...grads].map((m, i) => (
+                      <div class="member-pill" key={i}>
+                        <img src={m.img} alt={m.name} class="pill-avatar pill-img" />
+                        <span class="pill-name">{m.name}</span>
+                        <span class="pill-badge">{m.badge}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </>
+            );
+          })()}
         </div>
 
         <div class="section-cta fade-up delay-4">
@@ -995,10 +1007,23 @@ const featuredPapers = papers.slice(0, 3);
     margin-top: 20px;
     margin-bottom: 4px;
   }
-  .pills-row {
+  .pills-track-wrap {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  }
+  .pills-track {
     display: flex;
-    flex-wrap: wrap;
     gap: 10px;
+    width: max-content;
+    animation: pills-rtl 18s linear infinite;
+  }
+  .pills-track-slow {
+    animation-duration: 14s;
+  }
+  @keyframes pills-rtl {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
   .member-pill {
     display: flex;
