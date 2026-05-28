@@ -26,7 +26,7 @@ import Footer from '../components/Footer.astro';
       <div class="section-block fade-up">
         <h2 class="block-title">指导老师</h2>
         <div class="mentor-full">
-          <div class="mentor-avatar">颖</div>
+          <img src="/images/team/yan-ying.png" alt="严颖" class="mentor-avatar" />
           <div class="mentor-info">
             <span class="mentor-role">副教授 · 硕士生导师</span>
             <h3 class="mentor-name">严颖</h3>
@@ -53,42 +53,105 @@ import Footer from '../components/Footer.astro';
         </div>
       </div>
 
-      <!-- Members -->
+      <!-- Advisors -->
       <div class="section-block fade-up delay-1">
+        <h2 class="block-title">学术顾问</h2>
+        <div class="advisors-grid">
+          <div class="advisor-full">
+            <img src="/images/team/吴奇.png" alt="吴奇" class="advisor-full-avatar" />
+            <div class="advisor-full-info">
+              <span class="mentor-role">学术顾问 · 教授</span>
+              <h3 class="advisor-full-name">吴奇</h3>
+              <p class="advisor-affil-full">上海交通大学</p>
+            </div>
+          </div>
+          <div class="advisor-full">
+            <img src="/images/team/Krishna Pattipati.jpg" alt="Krishna R. Pattipati" class="advisor-full-avatar" />
+            <div class="advisor-full-info">
+              <span class="mentor-role">学术顾问 · 教授</span>
+              <h3 class="advisor-full-name">Krishna R. Pattipati</h3>
+              <p class="advisor-affil-full">University of Connecticut</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Members -->
+      <div class="section-block fade-up delay-2">
         <h2 class="block-title">实验室成员</h2>
 
+        <div class="members-group-label">本科生</div>
         <div class="members-grid">
           <div class="member-card">
             <div class="member-avatar">杨</div>
             <div class="member-name">许穆杨</div>
-            <div class="member-badge">24届本科生</div>
+            <div class="member-badge">24届本科生 · 计算机科学与技术</div>
             <div class="member-focus">脑电信号处理</div>
             <div class="member-focus">运动意图解码</div>
           </div>
+          <div class="member-card">
+            <div class="member-avatar">淼</div>
+            <div class="member-name">刘浩淼</div>
+            <div class="member-badge">25级本科生 · 计算机科学与技术</div>
+            <div class="member-focus">深度学习</div>
+            <div class="member-focus">神经信号处理</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">帅</div>
+            <div class="member-name">田帅</div>
+            <div class="member-badge">25级本科生 · 计算机科学与技术</div>
+            <div class="member-focus">模式识别</div>
+            <div class="member-focus">系统集成</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">涵</div>
+            <div class="member-name">章子涵</div>
+            <div class="member-badge">25级本科生 · 通信工程</div>
+            <div class="member-focus">通信信号处理</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">昊</div>
+            <div class="member-name">王昊</div>
+            <div class="member-badge">23级本科生 · 计算机科学与技术</div>
+            <div class="member-focus">脑机接口系统</div>
+            <div class="member-focus">嵌入式开发</div>
+          </div>
+          <div class="member-card">
+            <div class="member-avatar">志</div>
+            <div class="member-name">刘志</div>
+            <div class="member-badge">23级本科生 · 电子信息</div>
+            <div class="member-focus">电子系统设计</div>
+          </div>
+        </div>
 
-          <div class="member-card placeholder">
-            <div class="member-avatar ph">+</div>
-            <div class="member-name muted">待添加成员</div>
-            <div class="member-badge">—</div>
-            <div class="member-focus">研究方向待填写</div>
+        <div class="members-group-label" style="margin-top: 40px;">硕士研究生</div>
+        <div class="members-grid">
+          <div class="member-card">
+            <img src="/images/team/朱家琦.jpg" alt="朱家琦" class="member-avatar member-photo" />
+            <div class="member-name">朱家琦</div>
+            <div class="member-badge">24级硕士研究生 · 自动化</div>
+            <div class="member-focus">脑电信号分析</div>
+            <div class="member-focus">机器学习</div>
           </div>
-          <div class="member-card placeholder">
-            <div class="member-avatar ph">+</div>
-            <div class="member-name muted">待添加成员</div>
-            <div class="member-badge">—</div>
-            <div class="member-focus">研究方向待填写</div>
+          <div class="member-card">
+            <img src="/images/team/宗禹胄.jpg" alt="宗禹胄" class="member-avatar member-photo" />
+            <div class="member-name">宗禹胄</div>
+            <div class="member-badge">26级硕士研究生 · 自动化</div>
           </div>
-          <div class="member-card placeholder">
-            <div class="member-avatar ph">+</div>
-            <div class="member-name muted">待添加成员</div>
-            <div class="member-badge">—</div>
-            <div class="member-focus">研究方向待填写</div>
+          <div class="member-card">
+            <img src="/images/team/陆思语.jpg" alt="陆思语" class="member-avatar member-photo" />
+            <div class="member-name">陆思语</div>
+            <div class="member-badge">26级硕士研究生 · 自动化</div>
           </div>
-          <div class="member-card placeholder">
-            <div class="member-avatar ph">+</div>
-            <div class="member-name muted">待添加成员</div>
-            <div class="member-badge">—</div>
-            <div class="member-focus">研究方向待填写</div>
+          <div class="member-card">
+            <img src="/images/team/王宇森.jpg" alt="王宇森" class="member-avatar member-photo" />
+            <div class="member-name">王宇森</div>
+            <div class="member-badge">26级硕士研究生 · 自动化</div>
+          </div>
+          <div class="member-card">
+            <img src="/images/team/沈培涵.jpg" alt="沈培涵" class="member-avatar member-photo" />
+            <div class="member-name">沈培涵</div>
+            <div class="member-badge">26级硕士研究生 · 自动化</div>
           </div>
         </div>
       </div>
@@ -165,10 +228,9 @@ import Footer from '../components/Footer.astro';
   .mentor-avatar {
     width: 120px; height: 120px;
     border-radius: 50%;
-    background: var(--accent-dim);
     border: 2px solid var(--accent-mid);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 40px; font-weight: 700; color: var(--accent);
+    object-fit: cover;
+    object-position: top;
   }
   .mentor-role {
     display: inline-block;
@@ -180,7 +242,38 @@ import Footer from '../components/Footer.astro';
   .mentor-links { display: flex; gap: 32px; flex-wrap: wrap; }
   .mentor-links .arrow-link { font-size: 15px; }
 
+  /* Advisors */
+  .advisors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .advisor-full {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 24px;
+    align-items: center;
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+  .advisor-full-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-md);
+    object-fit: cover;
+    object-position: top;
+  }
+  .advisor-full-info { display: flex; flex-direction: column; gap: 4px; }
+  .advisor-full-name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+  .advisor-affil-full { font-size: 14px; color: var(--text-2); }
+
   /* Members */
+  .members-group-label {
+    font-size: 11px; font-family: var(--font-mono); letter-spacing: 2px;
+    color: var(--text-3); text-transform: uppercase;
+    margin-bottom: 16px;
+  }
   .members-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -195,7 +288,6 @@ import Footer from '../components/Footer.astro';
     transition: background 0.2s;
   }
   .member-card:hover { background: var(--bg-surface); }
-  .member-card.placeholder { opacity: 0.35; }
   .member-avatar {
     width: 64px; height: 64px;
     border-radius: 50%;
@@ -205,9 +297,12 @@ import Footer from '../components/Footer.astro';
     font-size: 20px; font-weight: 600; color: var(--accent);
     margin: 0 auto 16px;
   }
-  .member-avatar.ph { color: var(--text-3); font-size: 24px; }
+  .member-photo {
+    object-fit: cover;
+    object-position: top;
+    background: none;
+  }
   .member-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-  .member-name.muted { color: var(--text-3); }
   .member-badge {
     font-size: 11px; color: var(--accent); opacity: 0.6;
     font-family: var(--font-mono); margin-bottom: 12px;
@@ -228,8 +323,10 @@ import Footer from '../components/Footer.astro';
 
   @media (max-width: 768px) {
     .mentor-full { grid-template-columns: 1fr; gap: 24px; padding: 32px; }
-    .mentor-avatar { width: 80px; height: 80px; font-size: 28px; }
+    .mentor-avatar { width: 80px; height: 80px; }
     .mentor-name { font-size: 28px; }
+    .advisor-full { grid-template-columns: 60px 1fr; gap: 16px; padding: 24px; }
+    .advisor-full-avatar { width: 60px; height: 60px; }
     .members-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>

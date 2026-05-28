@@ -159,34 +159,72 @@ const featuredPapers = papers.slice(0, 3);
           <p class="section-desc fade-up delay-2">汇聚神经工程、信号处理、机器人控制等多学科背景的研究人员，共同推进脑机接口前沿探索。</p>
         </div>
 
-        <div class="mentor-block fade-up delay-2">
-          <img src="/images/team/yan-ying.png" alt="严颖" class="mentor-avatar" />
-          <div class="mentor-right">
-            <span class="mentor-role">副教授 · 硕士生导师</span>
-            <h3 class="mentor-name">严颖</h3>
-            <p class="mentor-bio">博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。主持多项国家自然科学基金及省部级科研项目，在 IEEE 系列期刊发表论文 70 余篇。</p>
-            <div class="mentor-tags">
-              <span>EEG 信号分析</span>
-              <span>模式识别</span>
-              <span>深度学习</span>
+        <div class="team-pi-row fade-up delay-2">
+          <div class="mentor-block">
+            <img src="/images/team/yan-ying.png" alt="严颖" class="mentor-avatar" />
+            <div class="mentor-right">
+              <span class="mentor-role">副教授 · 硕士生导师</span>
+              <h3 class="mentor-name">严颖</h3>
+              <p class="mentor-bio">博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。主持多项国家自然科学基金及省部级科研项目，在 IEEE 系列期刊发表论文 70 余篇。</p>
+              <div class="mentor-tags">
+                <span>EEG 信号分析</span>
+                <span>模式识别</span>
+                <span>深度学习</span>
+              </div>
+            </div>
+          </div>
+          <div class="advisor-col">
+            <div class="advisor-card">
+              <img src="/images/team/吴奇.png" alt="吴奇" class="advisor-avatar" />
+              <div class="advisor-info">
+                <span class="advisor-role">学术顾问 · 教授</span>
+                <span class="advisor-name">吴奇</span>
+                <span class="advisor-affil">上海交通大学</span>
+              </div>
+            </div>
+            <div class="advisor-card">
+              <img src="/images/team/Krishna Pattipati.jpg" alt="Krishna R. Pattipati" class="advisor-avatar" />
+              <div class="advisor-info">
+                <span class="advisor-role">学术顾问 · 教授</span>
+                <span class="advisor-name">Krishna R. Pattipati</span>
+                <span class="advisor-affil">康涅狄格大学</span>
+              </div>
             </div>
           </div>
         </div>
 
         <div class="member-pills fade-up delay-3">
-          {[
-            { name: '许穆杨', badge: '24届本科生', char: '杨' },
-            { name: '刘浩淼', badge: '25级本科生', char: '淼' },
-            { name: '田帅',   badge: '25级本科生', char: '帅' },
-            { name: '王昊',   badge: '23级本科生', char: '昊' },
-            { name: '朱家琦', badge: '24级研究生', char: '琦' },
-          ].map(m => (
-            <div class="member-pill">
-              <span class="pill-avatar">{m.char}</span>
-              <span class="pill-name">{m.name}</span>
-              <span class="pill-badge">{m.badge}</span>
-            </div>
-          ))}
+          <div class="pills-row">
+            {[
+              { name: '许穆杨', badge: '24届本科生', char: '杨' },
+              { name: '刘浩淼', badge: '25级本科生', char: '淼' },
+              { name: '田帅',   badge: '25级本科生', char: '帅' },
+              { name: '章子涵', badge: '25级本科生', char: '涵' },
+              { name: '王昊',   badge: '23级本科生', char: '昊' },
+              { name: '刘志',   badge: '23级本科生', char: '志' },
+            ].map(m => (
+              <div class="member-pill">
+                <span class="pill-avatar">{m.char}</span>
+                <span class="pill-name">{m.name}</span>
+                <span class="pill-badge">{m.badge}</span>
+              </div>
+            ))}
+          </div>
+          <div class="pills-row">
+            {[
+              { name: '朱家琦', badge: '24级硕士', char: '琦', img: '/images/team/朱家琦.jpg' },
+              { name: '宗禹胄', badge: '26级硕士', char: '胄', img: '/images/team/宗禹胄.jpg' },
+              { name: '陆思语', badge: '26级硕士', char: '语', img: '/images/team/陆思语.jpg' },
+              { name: '王宇森', badge: '26级硕士', char: '森', img: '/images/team/王宇森.jpg' },
+              { name: '沈培涵', badge: '26级硕士', char: '涵', img: '/images/team/沈培涵.jpg' },
+            ].map(m => (
+              <div class="member-pill">
+                <img src={m.img} alt={m.name} class="pill-avatar pill-img" />
+                <span class="pill-name">{m.name}</span>
+                <span class="pill-badge">{m.badge}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div class="section-cta fade-up delay-4">
@@ -863,6 +901,13 @@ const featuredPapers = papers.slice(0, 3);
   ═══════════════════════════════════════════════════ */
   .fp-team { background: var(--bg-surface); border-bottom: 1px solid var(--border); }
 
+  .team-pi-row {
+    display: grid;
+    grid-template-columns: 1fr 220px;
+    gap: 16px;
+    margin-bottom: 28px;
+    align-items: stretch;
+  }
   .mentor-block {
     display: grid;
     grid-template-columns: 88px 1fr;
@@ -872,7 +917,6 @@ const featuredPapers = papers.slice(0, 3);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     background: var(--bg);
-    margin-bottom: 28px;
   }
   .mentor-avatar {
     width: 80px; height: 80px;
@@ -894,15 +938,67 @@ const featuredPapers = papers.slice(0, 3);
     padding: 3px 9px; border-radius: var(--radius-pill);
     background: var(--bg-elevated); color: var(--text-2);
   }
+  .advisor-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .advisor-card {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    background: var(--bg);
+  }
+  .advisor-avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-md);
+    object-fit: cover;
+    object-position: top;
+    flex-shrink: 0;
+  }
+  .advisor-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+  }
+  .advisor-role {
+    font-size: 9px; font-family: var(--font-mono);
+    letter-spacing: 1.5px; color: var(--text-3); text-transform: uppercase;
+  }
+  .advisor-name {
+    font-size: 14px; font-weight: 700;
+    color: var(--text); letter-spacing: -0.01em;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .advisor-affil {
+    font-size: 11px; color: var(--text-2);
+  }
+  @media (max-width: 768px) {
+    .team-pi-row { grid-template-columns: 1fr; }
+    .advisor-col { flex-direction: row; }
+    .advisor-card { flex: 1; }
+  }
   @media (max-width: 560px) {
     .mentor-block { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
+    .advisor-col { flex-direction: column; }
   }
   .member-pills {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    flex-direction: column;
+    gap: 8px;
     margin-top: 20px;
     margin-bottom: 4px;
+  }
+  .pills-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
   }
   .member-pill {
     display: flex;
@@ -921,6 +1017,10 @@ const featuredPapers = papers.slice(0, 3);
     display: flex; align-items: center; justify-content: center;
     font-size: 11px; font-weight: 700; color: var(--accent);
     flex-shrink: 0;
+  }
+  .pill-img {
+    object-fit: cover;
+    object-position: top;
   }
   .pill-name { font-size: 13px; font-weight: 600; color: var(--text); }
   .pill-badge { font-size: 10px; font-family: var(--font-mono); color: var(--text-3); }
