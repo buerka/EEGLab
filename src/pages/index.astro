@@ -21,10 +21,6 @@ const featuredPapers = papers.slice(0, 3);
       <span class="sn-label">理念</span>
       <span class="sn-line"></span>
     </button>
-    <button class="sn-dot" data-target="stats">
-      <span class="sn-label">数据</span>
-      <span class="sn-line"></span>
-    </button>
     <button class="sn-dot" data-target="research">
       <span class="sn-label">研究</span>
       <span class="sn-line"></span>
@@ -62,40 +58,79 @@ const featuredPapers = papers.slice(0, 3);
       </div>
     </section>
 
-    <!-- 02 · SLOGAN ──────────────────────────────────── -->
+    <!-- 02 · SLOGAN + STATS ─────────────────────────── -->
     <section id="statement" class="fp-section fp-statement">
-      <div class="container">
+      <div class="stmt-left">
         <p class="statement-text">
           从<strong>脑电信号</strong>到运动控制，<br/>
           让<strong>思想</strong>驱动<span id="tw-word">未来</span><span class="tw-cursor"></span>
         </p>
         <p class="statement-en fade-up delay-1">From EEG Signal to Motion Control — Let Thought Drive the Future</p>
-      </div>
-    </section>
-
-    <!-- 03 · STATS ───────────────────────────────────── -->
-    <section id="stats" class="fp-section fp-stats">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-item fade-up">
-            <span class="stat-num">60<sup>+</sup></span>
+        <div class="stmt-stats">
+          <div class="stat-item fade-up delay-2">
+            <span class="stat-num">78<sup>+</sup></span>
             <span class="stat-label">期刊论文</span>
           </div>
           <div class="stat-divider"></div>
-          <div class="stat-item fade-up delay-1">
-            <span class="stat-num">40<sup>+</sup></span>
+          <div class="stat-item fade-up delay-3">
+            <span class="stat-num">16<sup>+</sup></span>
             <span class="stat-label">授权专利</span>
           </div>
           <div class="stat-divider"></div>
-          <div class="stat-item fade-up delay-2">
+          <div class="stat-item fade-up delay-4">
             <span class="stat-num">5</span>
             <span class="stat-label">核心研究方向</span>
           </div>
           <div class="stat-divider"></div>
-          <div class="stat-item fade-up delay-3">
+          <div class="stat-item fade-up delay-5">
             <span class="stat-num">7</span>
             <span class="stat-label">代表性奖项</span>
           </div>
+        </div>
+      </div>
+
+      <div class="stmt-gallery" aria-hidden="true">
+        <div class="gallery-col gallery-col-a">
+          <img src="/images/achievements/demo-lab-setup.png" alt="" />
+          <img src="/images/achievements/patent-cert-1.png" alt="" />
+          <img src="/images/achievements/device-eeg-cap.png" alt="" />
+          <img src="/images/achievements/coop-brain-hospital.jpg" alt="" />
+          <img src="/images/achievements/award-robot-ai-1st.png" alt="" />
+          <img src="/images/achievements/patent-bci-1.png" alt="" />
+          <img src="/images/achievements/coop-signing.png" alt="" />
+          <img src="/images/achievements/demo-hospital-clinical.jpg" alt="" />
+          <img src="/images/achievements/award-embedded-chip-2nd.png" alt="" />
+          <img src="/images/achievements/product-spec-sheet.png" alt="" />
+          <!-- duplicate for seamless loop -->
+          <img src="/images/achievements/demo-lab-setup.png" alt="" />
+          <img src="/images/achievements/patent-cert-1.png" alt="" />
+          <img src="/images/achievements/device-eeg-cap.png" alt="" />
+          <img src="/images/achievements/coop-brain-hospital.jpg" alt="" />
+          <img src="/images/achievements/award-robot-ai-1st.png" alt="" />
+          <img src="/images/achievements/patent-bci-1.png" alt="" />
+          <img src="/images/achievements/coop-signing.png" alt="" />
+          <img src="/images/achievements/demo-hospital-clinical.jpg" alt="" />
+          <img src="/images/achievements/award-embedded-chip-2nd.png" alt="" />
+          <img src="/images/achievements/product-spec-sheet.png" alt="" />
+        </div>
+        <div class="gallery-col gallery-col-b">
+          <img src="/images/achievements/demo-bci-system-diagram.png" alt="" />
+          <img src="/images/achievements/patent-cert-2.png" alt="" />
+          <img src="/images/achievements/award-smart-car-1st.png" alt="" />
+          <img src="/images/achievements/coop-hospital.png" alt="" />
+          <img src="/images/achievements/paper-cert-mla2024.png" alt="" />
+          <img src="/images/achievements/patent-bci-2.png" alt="" />
+          <img src="/images/achievements/award-raicom-2nd.png" alt="" />
+          <img src="/images/achievements/coop-incubation.png" alt="" />
+          <!-- duplicate for seamless loop -->
+          <img src="/images/achievements/demo-bci-system-diagram.png" alt="" />
+          <img src="/images/achievements/patent-cert-2.png" alt="" />
+          <img src="/images/achievements/award-smart-car-1st.png" alt="" />
+          <img src="/images/achievements/coop-hospital.png" alt="" />
+          <img src="/images/achievements/paper-cert-mla2024.png" alt="" />
+          <img src="/images/achievements/patent-bci-2.png" alt="" />
+          <img src="/images/achievements/award-raicom-2nd.png" alt="" />
+          <img src="/images/achievements/coop-incubation.png" alt="" />
         </div>
       </div>
     </section>
@@ -154,11 +189,11 @@ const featuredPapers = papers.slice(0, 3);
         </div>
 
         <div class="mentor-block fade-up delay-2">
-          <div class="mentor-avatar">颖</div>
+          <img src="/images/team/yan-ying.png" alt="严颖" class="mentor-avatar" />
           <div class="mentor-right">
             <span class="mentor-role">副教授 · 硕士生导师</span>
             <h3 class="mentor-name">严颖</h3>
-            <p class="mentor-bio">博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。主持多项国家自然科学基金及省部级科研项目，在 IEEE 系列期刊发表论文 60 余篇。</p>
+            <p class="mentor-bio">博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。主持多项国家自然科学基金及省部级科研项目，在 IEEE 系列期刊发表论文 70 余篇。</p>
             <div class="mentor-tags">
               <span>EEG 信号分析</span>
               <span>模式识别</span>
@@ -167,7 +202,23 @@ const featuredPapers = papers.slice(0, 3);
           </div>
         </div>
 
-        <div class="section-cta fade-up delay-3">
+        <div class="member-pills fade-up delay-3">
+          {[
+            { name: '许穆杨', badge: '24届本科生', char: '杨' },
+            { name: '刘浩淼', badge: '25级本科生', char: '淼' },
+            { name: '田帅',   badge: '25级本科生', char: '帅' },
+            { name: '王昊',   badge: '23级本科生', char: '昊' },
+            { name: '朱家琦', badge: '24级研究生', char: '琦' },
+          ].map(m => (
+            <div class="member-pill">
+              <span class="pill-avatar">{m.char}</span>
+              <span class="pill-name">{m.name}</span>
+              <span class="pill-badge">{m.badge}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="section-cta fade-up delay-4">
           <a href="/team" class="arrow-link">
             查看完整团队
             <span class="arrow-icon">
@@ -268,7 +319,6 @@ const featuredPapers = papers.slice(0, 3);
   const sectionMeta: Record<string, { label: string; navHref: string | null }> = {
     hero:      { label: '首页',   navHref: null },
     statement: { label: '理念',   navHref: null },
-    stats:     { label: '数据',   navHref: null },
     research:  { label: '研究方向', navHref: '/research' },
     team:      { label: '团队成员', navHref: '/team' },
     papers:    { label: '科研成果', navHref: '/achievements' },
@@ -430,6 +480,53 @@ const featuredPapers = papers.slice(0, 3);
       });
     }, { root: container, threshold: 0.5 }).observe(stmtSection);
   }
+
+  /* ── 10. Gallery waterfall: measure heights after load ── */
+  {
+    const GAP = 10;
+    function measureCol(col: HTMLElement) {
+      const imgs = [...col.querySelectorAll<HTMLImageElement>('img')];
+      const half = imgs.length / 2;
+      let h = 0;
+      for (let i = 0; i < half; i++) {
+        const oh = imgs[i].offsetHeight;
+        if (oh > 0) h += oh + GAP;
+      }
+      if (h > GAP) {
+        col.style.setProperty('--scroll-dist', `-${h}px`);
+        (col as HTMLElement).style.animationPlayState = 'running';
+      }
+    }
+
+    document.querySelectorAll<HTMLElement>('.gallery-col').forEach(col => {
+      const imgs = [...col.querySelectorAll<HTMLImageElement>('img')];
+      const half = imgs.length / 2;
+      const firstHalf = imgs.slice(0, half);
+      let settled = 0;
+
+      function onSettled() {
+        settled++;
+        if (settled === firstHalf.length) requestAnimationFrame(() => measureCol(col));
+      }
+
+      firstHalf.forEach((img, i) => {
+        if (img.complete) {
+          if (!img.naturalWidth) {
+            img.style.display = 'none';
+            imgs[i + half].style.display = 'none';
+          }
+          onSettled();
+        } else {
+          img.addEventListener('load', onSettled, { once: true });
+          img.addEventListener('error', () => {
+            img.style.display = 'none';
+            imgs[i + half].style.display = 'none';
+            onSettled();
+          }, { once: true });
+        }
+      });
+    });
+  }
 </script>
 
 <style>
@@ -577,8 +674,18 @@ const featuredPapers = papers.slice(0, 3);
     background: var(--bg-surface);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0;
+    overflow: hidden;
+  }
+  .stmt-left {
+    flex: 0 0 54%;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
-    text-align: center;
+    padding: 80px 5vw 80px 6vw;
   }
   .statement-text {
     font-size: clamp(26px, 4vw, 52px);
@@ -586,8 +693,7 @@ const featuredPapers = papers.slice(0, 3);
     letter-spacing: -0.03em;
     line-height: 1.3;
     color: var(--text);
-    max-width: 720px;
-    margin: 0 auto 20px;
+    margin: 0 0 20px;
   }
   .statement-text strong {
     color: var(--text);
@@ -623,34 +729,33 @@ const featuredPapers = papers.slice(0, 3);
     50%       { opacity: 0; }
   }
 
-  /* ═══════════════════════════════════════════════════
-     03 STATS
-  ═══════════════════════════════════════════════════ */
-  .fp-stats {
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
-  }
-  .stats-grid {
+  /* ── STATS BAR (inside statement section) ───────── */
+  .stmt-stats {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: nowrap;
+    margin-top: 52px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-md);
+    width: 100%;
   }
   .stat-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    padding: 0 clamp(28px, 5vw, 72px);
+    padding: 0 clamp(16px, 3vw, 44px);
   }
+  .stat-item:first-child { padding-left: 0; }
   .stat-divider {
     width: 1px;
-    height: 64px;
+    height: 44px;
     background: var(--border-md);
     flex-shrink: 0;
   }
   .stat-num {
-    font-size: clamp(48px, 7vw, 80px);
+    font-size: clamp(32px, 4.5vw, 56px);
     font-weight: 800;
     letter-spacing: -0.04em;
     color: var(--text);
@@ -670,11 +775,44 @@ const featuredPapers = papers.slice(0, 3);
     text-transform: uppercase;
   }
 
+  /* ── GALLERY WATERFALL ───────────────────────────── */
+  .stmt-gallery {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    gap: 10px;
+    padding: 0 24px 0 0;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  }
+  .gallery-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    will-change: transform;
+  }
+  .gallery-col img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+  }
+  .gallery-col-a { animation: gal-up 24s linear infinite; animation-play-state: paused; }
+  .gallery-col-b { animation: gal-up 18s linear infinite; animation-play-state: paused; margin-top: -80px; }
+  @keyframes gal-up {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(var(--scroll-dist, -50%)); }
+  }
+
   /* ═══════════════════════════════════════════════════
      04 RESEARCH
   ═══════════════════════════════════════════════════ */
   .fp-research {
-    background: var(--bg-surface);
+    background: var(--bg);
     border-bottom: 1px solid var(--border);
   }
   .split-header {
@@ -698,7 +836,7 @@ const featuredPapers = papers.slice(0, 3);
     overflow: hidden;
   }
   .r-card {
-    background: var(--bg);
+    background: var(--bg-surface);
     padding: 28px 22px 24px;
     text-decoration: none;
     color: inherit;
@@ -706,7 +844,7 @@ const featuredPapers = papers.slice(0, 3);
     display: flex;
     flex-direction: column;
   }
-  .r-card:hover { background: var(--bg-surface); }
+  .r-card:hover { background: var(--bg-elevated); }
   .r-card-header {
     display: flex;
     align-items: center;
@@ -752,7 +890,7 @@ const featuredPapers = papers.slice(0, 3);
   /* ═══════════════════════════════════════════════════
      05 TEAM
   ═══════════════════════════════════════════════════ */
-  .fp-team { background: var(--bg); border-bottom: 1px solid var(--border); }
+  .fp-team { background: var(--bg-surface); border-bottom: 1px solid var(--border); }
 
   .mentor-block {
     display: grid;
@@ -762,16 +900,15 @@ const featuredPapers = papers.slice(0, 3);
     padding: 36px;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    background: var(--bg-surface);
+    background: var(--bg);
     margin-bottom: 28px;
   }
   .mentor-avatar {
     width: 80px; height: 80px;
     border-radius: 50%;
-    background: var(--accent-dim);
     border: 2px solid var(--accent-mid);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 26px; font-weight: 800; color: var(--accent);
+    object-fit: cover;
+    object-position: top;
     flex-shrink: 0;
   }
   .mentor-role {
@@ -789,11 +926,38 @@ const featuredPapers = papers.slice(0, 3);
   @media (max-width: 560px) {
     .mentor-block { grid-template-columns: 1fr; gap: 16px; padding: 24px; }
   }
+  .member-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 4px;
+  }
+  .member-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px 8px 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--bg-surface);
+  }
+  .pill-avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-mid);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    flex-shrink: 0;
+  }
+  .pill-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .pill-badge { font-size: 10px; font-family: var(--font-mono); color: var(--text-3); }
 
   /* ═══════════════════════════════════════════════════
      06 PAPERS
   ═══════════════════════════════════════════════════ */
-  .fp-papers { background: var(--bg-surface); border-bottom: 1px solid var(--border); }
+  .fp-papers { background: var(--bg); border-bottom: 1px solid var(--border); }
 
   .paper-list { border-top: 1px solid var(--border); }
   .paper-row {
@@ -803,9 +967,9 @@ const featuredPapers = papers.slice(0, 3);
     transition: background 0.2s, padding 0.2s;
     border-radius: var(--radius-sm);
   }
-  .paper-row:hover { padding-left: 10px; padding-right: 10px; background: var(--bg-elevated); }
+  .paper-row:hover { padding-left: 10px; padding-right: 10px; background: var(--bg-surface); }
   .paper-row:hover .pr-icon { opacity: 1; transform: translate(3px, -3px); color: var(--accent); }
-  .pr-year { font-family: var(--font-mono); font-size: 11px; color: var(--text-3); min-width: 38px; flex-shrink: 0; }
+  .pr-year { font-family: var(--font-mono); font-size: 11px; color: var(--accent); min-width: 38px; flex-shrink: 0; }
   .pr-body { flex: 1; min-width: 0; }
   .pr-title {
     font-size: 14px; font-weight: 500; color: var(--text);
@@ -822,7 +986,7 @@ const featuredPapers = papers.slice(0, 3);
      07 CONTACT
   ═══════════════════════════════════════════════════ */
   .fp-contact {
-    background: var(--bg);
+    background: var(--bg-surface);
     justify-content: flex-start; /* footer pins to bottom */
   }
   .contact-wrap {
@@ -855,5 +1019,8 @@ const featuredPapers = papers.slice(0, 3);
     .stat-divider { display: none; }
     .stat-item { width: 50%; padding: 16px; border-bottom: 1px solid var(--border); }
     .stat-item:nth-child(2n+1) { border-right: 1px solid var(--border); }
+    .fp-statement { flex-direction: column; }
+    .stmt-left { flex: none; padding: 60px 6vw 40px; }
+    .stmt-gallery { display: none; }
   }
 </style>
