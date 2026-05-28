@@ -10,6 +10,22 @@ import { research } from '../data/research';
 const papers = (papersData as any).papers as Paper[];
 const waterfallA = (galleryData as any).waterfall_a as { src: string }[];
 const waterfallB = (galleryData as any).waterfall_b as { src: string }[];
+
+const undergrads = [
+  { name: '许穆杨', badge: '24届本科生', char: '杨' },
+  { name: '刘浩淼', badge: '25级本科生', char: '淼' },
+  { name: '田帅',   badge: '25级本科生', char: '帅' },
+  { name: '章子涵', badge: '25级本科生', char: '涵' },
+  { name: '王昊',   badge: '23级本科生', char: '昊' },
+  { name: '刘志',   badge: '23级本科生', char: '志' },
+];
+const grads = [
+  { name: '朱家琦', badge: '24级研究生', img: '/images/team/朱家琦.jpg' },
+  { name: '宗禹胄', badge: '26级研究生', img: '/images/team/宗禹胄.jpg' },
+  { name: '陆思语', badge: '26级研究生', img: '/images/team/陆思语.jpg' },
+  { name: '王宇森', badge: '26级研究生', img: '/images/team/王宇森.jpg' },
+  { name: '沈培涵', badge: '26级研究生', img: '/images/team/沈培涵.jpg' },
+];
 const featuredPapers = papers.slice(0, 3);
 ---
 
@@ -194,49 +210,28 @@ const featuredPapers = papers.slice(0, 3);
         </div>
 
         <div class="member-pills fade-up delay-3">
-          {(() => {
-            const undergrads = [
-              { name: '许穆杨', badge: '24届本科生', char: '杨' },
-              { name: '刘浩淼', badge: '25级本科生', char: '淼' },
-              { name: '田帅',   badge: '25级本科生', char: '帅' },
-              { name: '章子涵', badge: '25级本科生', char: '涵' },
-              { name: '王昊',   badge: '23级本科生', char: '昊' },
-              { name: '刘志',   badge: '23级本科生', char: '志' },
-            ];
-            const grads = [
-              { name: '朱家琦', badge: '24级研究生', img: '/images/team/朱家琦.jpg' },
-              { name: '宗禹胄', badge: '26级研究生', img: '/images/team/宗禹胄.jpg' },
-              { name: '陆思语', badge: '26级研究生', img: '/images/team/陆思语.jpg' },
-              { name: '王宇森', badge: '26级研究生', img: '/images/team/王宇森.jpg' },
-              { name: '沈培涵', badge: '26级研究生', img: '/images/team/沈培涵.jpg' },
-            ];
-            return (
-              <>
-                <div class="pills-track-wrap">
-                  <div class="pills-track">
-                    {[...undergrads, ...undergrads].map((m, i) => (
-                      <div class="member-pill" key={i}>
-                        <span class="pill-avatar">{m.char}</span>
-                        <span class="pill-name">{m.name}</span>
-                        <span class="pill-badge">{m.badge}</span>
-                      </div>
-                    ))}
-                  </div>
+          <div class="pills-track-wrap">
+            <div class="pills-track">
+              {[...undergrads, ...undergrads].map((m) => (
+                <div class="member-pill">
+                  <span class="pill-avatar">{m.char}</span>
+                  <span class="pill-name">{m.name}</span>
+                  <span class="pill-badge">{m.badge}</span>
                 </div>
-                <div class="pills-track-wrap">
-                  <div class="pills-track pills-track-slow">
-                    {[...grads, ...grads].map((m, i) => (
-                      <div class="member-pill" key={i}>
-                        <img src={m.img} alt={m.name} class="pill-avatar pill-img" />
-                        <span class="pill-name">{m.name}</span>
-                        <span class="pill-badge">{m.badge}</span>
-                      </div>
-                    ))}
-                  </div>
+              ))}
+            </div>
+          </div>
+          <div class="pills-track-wrap">
+            <div class="pills-track pills-track-slow">
+              {[...grads, ...grads].map((m) => (
+                <div class="member-pill">
+                  <img src={m.img} alt={m.name} class="pill-avatar pill-img" />
+                  <span class="pill-name">{m.name}</span>
+                  <span class="pill-badge">{m.badge}</span>
                 </div>
-              </>
-            );
-          })()}
+              ))}
+            </div>
+          </div>
         </div>
 
         <div class="section-cta fade-up delay-4">
@@ -1015,8 +1010,14 @@ const featuredPapers = papers.slice(0, 3);
   .pills-track {
     display: flex;
     gap: 10px;
+    padding-right: 10px; /* match gap so loop seam is seamless */
     width: max-content;
+    will-change: transform;
     animation: pills-rtl 18s linear infinite;
+    animation-play-state: paused;
+  }
+  .member-pills.visible .pills-track {
+    animation-play-state: running;
   }
   .pills-track-slow {
     animation-duration: 14s;
