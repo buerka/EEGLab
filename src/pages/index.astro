@@ -543,6 +543,42 @@ const featuredPapers = papers.slice(0, 3);
       });
     });
   }
+
+  /* ── 11. Pills RTL marquee: measure exact width then start ── */
+  {
+    function startPillsTrack(track: HTMLElement) {
+      const pills = [...track.querySelectorAll<HTMLElement>('.member-pill')];
+      const half = pills.length / 2;
+      if (half === 0) return;
+      const first = pills[0];
+      const last  = pills[half - 1];
+      const dist  = last.offsetLeft + last.offsetWidth - first.offsetLeft + 10; // +gap
+      if (dist > 0) {
+        track.style.setProperty('--scroll-dist', `-${dist}px`);
+        track.style.animationPlayState = 'running';
+      }
+    }
+
+    document.querySelectorAll<HTMLElement>('.pills-track').forEach(track => {
+      const imgs = [...track.querySelectorAll<HTMLImageElement>('img')];
+      if (imgs.length === 0) {
+        requestAnimationFrame(() => startPillsTrack(track));
+        return;
+      }
+      let settled = 0;
+      function onSettled() {
+        settled++;
+        if (settled === imgs.length) requestAnimationFrame(() => startPillsTrack(track));
+      }
+      imgs.forEach(img => {
+        if (img.complete) onSettled();
+        else {
+          img.addEventListener('load',  onSettled, { once: true });
+          img.addEventListener('error', onSettled, { once: true });
+        }
+      });
+    });
+  }
 </script>
 
 <style>
@@ -1010,21 +1046,17 @@ const featuredPapers = papers.slice(0, 3);
   .pills-track {
     display: flex;
     gap: 10px;
-    padding-right: 10px; /* match gap so loop seam is seamless */
     width: max-content;
     will-change: transform;
     animation: pills-rtl 18s linear infinite;
     animation-play-state: paused;
-  }
-  .member-pills.visible .pills-track {
-    animation-play-state: running;
   }
   .pills-track-slow {
     animation-duration: 14s;
   }
   @keyframes pills-rtl {
     0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    100% { transform: translateX(var(--scroll-dist, -50%)); }
   }
   .member-pill {
     display: flex;
