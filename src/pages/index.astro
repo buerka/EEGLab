@@ -544,28 +544,31 @@ const featuredPapers = papers.slice(0, 3);
     });
   }
 
-  /* ── 11. Pills RTL marquee: set exact --scroll-dist after images load ── */
+  /* ── 11. Pills RTL marquee: measure exact width then start ── */
   {
-    function measurePillsTrack(track: HTMLElement) {
+    function startPillsTrack(track: HTMLElement) {
       const pills = [...track.querySelectorAll<HTMLElement>('.member-pill')];
       const half = pills.length / 2;
       if (half === 0) return;
       const first = pills[0];
       const last  = pills[half - 1];
-      const dist  = last.offsetLeft + last.offsetWidth - first.offsetLeft + 10;
-      if (dist > 0) track.style.setProperty('--scroll-dist', `-${dist}px`);
+      const dist  = last.offsetLeft + last.offsetWidth - first.offsetLeft + 10; // +gap
+      if (dist > 0) {
+        track.style.setProperty('--scroll-dist', `-${dist}px`);
+        track.style.animationPlayState = 'running';
+      }
     }
 
     document.querySelectorAll<HTMLElement>('.pills-track').forEach(track => {
       const imgs = [...track.querySelectorAll<HTMLImageElement>('img')];
       if (imgs.length === 0) {
-        requestAnimationFrame(() => measurePillsTrack(track));
+        requestAnimationFrame(() => startPillsTrack(track));
         return;
       }
       let settled = 0;
       function onSettled() {
         settled++;
-        if (settled === imgs.length) requestAnimationFrame(() => measurePillsTrack(track));
+        if (settled === imgs.length) requestAnimationFrame(() => startPillsTrack(track));
       }
       imgs.forEach(img => {
         if (img.complete) onSettled();
@@ -1037,15 +1040,17 @@ const featuredPapers = papers.slice(0, 3);
   }
   .pills-track-wrap {
     overflow: hidden;
-    mask-image: linear-gradient(to right, black 80%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
   }
   .pills-track {
     display: flex;
     gap: 10px;
     width: max-content;
     will-change: transform;
-    animation: pills-rtl 18s linear infinite -6s;
+    animation: pills-rtl 18s linear infinite;
+    animation-delay: -6s;   /* start mid-scroll, away from left mask edge */
+    animation-play-state: paused;
   }
   .pills-track-slow {
     animation-duration: 14s;
