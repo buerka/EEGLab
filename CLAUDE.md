@@ -48,7 +48,7 @@ src/
 |------|------|
 | `/` | 首页（各板块预览模式） |
 | `/research` | 研究方向总览 |
-| `/research/bci`, `/research/arm`, `/research/drone`, `/research/hand`, `/research/glove` | 研究方向详情 |
+| `/research/diagnosis`, `/research/arm`, `/research/drone`, `/research/hand`, `/research/glove` | 研究方向详情 |
 | `/team` | 团队成员 |
 | `/achievements` | 科研成果 |
 | `/contact` | 联系我们 |
