@@ -212,7 +212,16 @@ const featuredPapers = papers.slice(0, 3);
         <div class="member-pills fade-up delay-3">
           <div class="pills-track-wrap">
             <div class="pills-track">
-              {[...undergrads, ...undergrads].map((m) => (
+              {undergrads.map((m) => (
+                <div class="member-pill">
+                  <span class="pill-avatar">{m.char}</span>
+                  <span class="pill-name">{m.name}</span>
+                  <span class="pill-badge">{m.badge}</span>
+                </div>
+              ))}
+            </div>
+            <div class="pills-track" aria-hidden="true">
+              {undergrads.map((m) => (
                 <div class="member-pill">
                   <span class="pill-avatar">{m.char}</span>
                   <span class="pill-name">{m.name}</span>
@@ -223,7 +232,16 @@ const featuredPapers = papers.slice(0, 3);
           </div>
           <div class="pills-track-wrap">
             <div class="pills-track pills-track-slow">
-              {[...grads, ...grads].map((m) => (
+              {grads.map((m) => (
+                <div class="member-pill">
+                  <img src={m.img} alt={m.name} class="pill-avatar pill-img" />
+                  <span class="pill-name">{m.name}</span>
+                  <span class="pill-badge">{m.badge}</span>
+                </div>
+              ))}
+            </div>
+            <div class="pills-track pills-track-slow" aria-hidden="true">
+              {grads.map((m) => (
                 <div class="member-pill">
                   <img src={m.img} alt={m.name} class="pill-avatar pill-img" />
                   <span class="pill-name">{m.name}</span>
@@ -544,41 +562,6 @@ const featuredPapers = papers.slice(0, 3);
     });
   }
 
-  /* ── 11. Pills RTL marquee: measure exact width then start ── */
-  {
-    function startPillsTrack(track: HTMLElement) {
-      const pills = [...track.querySelectorAll<HTMLElement>('.member-pill')];
-      const half = pills.length / 2;
-      if (half === 0) return;
-      const first = pills[0];
-      const last  = pills[half - 1];
-      const dist  = last.offsetLeft + last.offsetWidth - first.offsetLeft + 10; // +gap
-      if (dist > 0) {
-        track.style.setProperty('--scroll-dist', `-${dist}px`);
-        track.style.animationPlayState = 'running';
-      }
-    }
-
-    document.querySelectorAll<HTMLElement>('.pills-track').forEach(track => {
-      const imgs = [...track.querySelectorAll<HTMLImageElement>('img')];
-      if (imgs.length === 0) {
-        requestAnimationFrame(() => startPillsTrack(track));
-        return;
-      }
-      let settled = 0;
-      function onSettled() {
-        settled++;
-        if (settled === imgs.length) requestAnimationFrame(() => startPillsTrack(track));
-      }
-      imgs.forEach(img => {
-        if (img.complete) onSettled();
-        else {
-          img.addEventListener('load',  onSettled, { once: true });
-          img.addEventListener('error', onSettled, { once: true });
-        }
-      });
-    });
-  }
 </script>
 
 <style>
@@ -1039,24 +1022,26 @@ const featuredPapers = papers.slice(0, 3);
     margin-bottom: 4px;
   }
   .pills-track-wrap {
+    display: flex;
+    gap: 10px;
     overflow: hidden;
     mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
   }
   .pills-track {
     display: flex;
+    flex-shrink: 0;
+    min-width: 100%;
     gap: 10px;
-    width: max-content;
     will-change: transform;
     animation: pills-rtl 18s linear infinite;
-    animation-play-state: paused;
   }
   .pills-track-slow {
     animation-duration: 14s;
   }
   @keyframes pills-rtl {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(var(--scroll-dist, -50%)); }
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-100% - 10px)); }
   }
   .member-pill {
     display: flex;
