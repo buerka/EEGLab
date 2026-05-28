@@ -1,0 +1,180 @@
+# 首页瀑布流 · 左列（A 列）
+[[waterfall_a]]
+src = "/images/achievements/demo-lab-setup.png"
+[[waterfall_a]]
+src = "/images/achievements/patent-cert-1.png"
+[[waterfall_a]]
+src = "/images/achievements/device-eeg-cap.png"
+[[waterfall_a]]
+src = "/images/achievements/coop-brain-hospital.jpg"
+[[waterfall_a]]
+src = "/images/achievements/award-robot-ai-1st.png"
+[[waterfall_a]]
+src = "/images/achievements/patent-bci-1.png"
+[[waterfall_a]]
+src = "/images/achievements/coop-signing.png"
+[[waterfall_a]]
+src = "/images/achievements/demo-hospital-clinical.jpg"
+[[waterfall_a]]
+src = "/images/achievements/award-embedded-chip-2nd.png"
+[[waterfall_a]]
+src = "/images/achievements/product-spec-sheet.png"
+
+# 首页瀑布流 · 右列（B 列）
+[[waterfall_b]]
+src = "/images/achievements/demo-bci-system-diagram.png"
+[[waterfall_b]]
+src = "/images/achievements/patent-cert-2.png"
+[[waterfall_b]]
+src = "/images/achievements/award-smart-car-1st.png"
+[[waterfall_b]]
+src = "/images/achievements/coop-hospital.png"
+[[waterfall_b]]
+src = "/images/achievements/paper-cert-mla2024.png"
+[[waterfall_b]]
+src = "/images/achievements/coop-tianchang.jpg"
+[[waterfall_b]]
+src = "/images/achievements/award-raicom-2nd.png"
+[[waterfall_b]]
+src = "/images/achievements/coop-incubation.png"
+
+# 成果页展示网格
+[[grid]]
+src = "/images/achievements/product-spec-sheet.png"
+label = "柔性干电极脑电帽系统规格"
+tag = "产品"
+
+[[grid]]
+src = "/images/achievements/device-eeg-cap.png"
+label = "柔性干电极脑电帽实物"
+tag = "产品"
+
+[[grid]]
+src = "/images/achievements/demo-bci-system-diagram.png"
+label = "BCI 闭环系统流程图"
+tag = "演示"
+
+[[grid]]
+src = "/images/achievements/demo-lab-setup.png"
+label = "实验室 BCI 闭环演示现场"
+tag = "演示"
+
+[[grid]]
+src = "/images/achievements/demo-hospital-clinical.jpg"
+label = "医院临床脑电信号采集测试"
+tag = "临床"
+
+[[grid]]
+src = "/images/achievements/coop-brain-hospital.jpg"
+label = "南京脑科医院产学研战略合作框架协议"
+tag = "合作"
+
+[[grid]]
+src = "/images/achievements/coop-signing.png"
+label = "合作协议签署现场"
+tag = "合作"
+
+[[grid]]
+src = "/images/achievements/coop-hospital.png"
+label = "安徽医科大学附一院战略合作协议"
+tag = "合作"
+
+[[grid]]
+src = "/images/achievements/coop-incubation.png"
+label = "金牛湖产教融合孵化入园协议"
+tag = "合作"
+
+[[grid]]
+src = "/images/achievements/coop-incubation-2.jpg"
+label = "金牛湖产教融合孵化入园意向协议"
+tag = "合作"
+
+[[grid]]
+src = "/images/achievements/coop-tianchang.jpg"
+label = "天长研究院产学研合作框架协议"
+tag = "合作"
+
+[[grid]]
+src = "/images/achievements/coop-chest-hospital.png"
+label = "南京市胸科医院科研合作协议"
+tag = "合作"
+
+[[grid]]
+src = "/images/achievements/patent-cert-1.png"
+label = "发明专利证书（卷积神经网络脑电）"
+tag = "专利"
+
+[[grid]]
+src = "/images/achievements/patent-cert-2.png"
+label = "发明专利证书（TKL梯度特征提取）"
+tag = "专利"
+
+[[grid]]
+src = "/images/achievements/patent-bci-1.png"
+label = "国家知识产权局专利申请受理"
+tag = "专利"
+
+[[grid]]
+src = "/images/achievements/patent-bci-3.png"
+label = "国家知识产权局专利申请受理"
+tag = "专利"
+
+[[grid]]
+src = "/images/achievements/patent-app-1.png"
+label = "发明专利申请公开（模糊逻辑动态网络）"
+tag = "专利"
+
+[[grid]]
+src = "/images/achievements/patent-app-2.png"
+label = "发明专利申请公开（多维泰勒框架）"
+tag = "专利"
+
+[[grid]]
+src = "/images/achievements/paper-sentiment.png"
+label = "论文：中文情感分类统计矩网络"
+tag = "论文"
+
+[[grid]]
+src = "/images/achievements/paper-laplace.png"
+label = "论文：AHU故障诊断Laplace网络"
+tag = "论文"
+
+[[grid]]
+src = "/images/achievements/paper-radar.png"
+label = "论文：雷达信号调制识别多维泰勒网络"
+tag = "论文"
+
+[[grid]]
+src = "/images/achievements/paper-fatigue.png"
+label = "论文：驾驶员疲劳评估IDSRN"
+tag = "论文"
+
+[[grid]]
+src = "/images/achievements/paper-cert-mla2024.png"
+label = "CONF-MLA 2024 论文录用证书"
+tag = "论文"
+
+[[grid]]
+src = "/images/achievements/research-novelty-report.png"
+label = "科技查新报告（教育部查新工作站）"
+tag = "论文"
+
+[[grid]]
+src = "/images/achievements/award-robot-ai-1st.png"
+label = "第27届机器人及AI大赛 一等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-smart-car-1st.png"
+label = "第20届全国智能汽车竞赛 一等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-raicom-2nd.png"
+label = "RAICOM机器人大赛 二等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-embedded-chip-2nd.png"
+label = "全国嵌入式芯片设计竞赛 二等奖"
+tag = "获奖"

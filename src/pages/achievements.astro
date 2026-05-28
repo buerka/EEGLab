@@ -3,7 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import PaperFilter from '../components/PaperFilter';
-import { awards } from '../data/awards';
+import type { Paper } from '../components/PaperFilter';
+import awardsData from '../data/awards.toml';
+import papersData from '../data/papers.toml';
+import galleryData from '../data/gallery.toml';
+
+const awards = (awardsData as any).awards as { year: number; name: string; description: string }[];
+const papers = (papersData as any).papers as Paper[];
+const filterTags = (papersData as any).filter_tags as string[];
+const galleryGrid = (galleryData as any).grid as { src: string; label: string; tag: string }[];
 ---
 
 <Layout
@@ -27,11 +35,11 @@ import { awards } from '../data/awards';
         </div>
         <div class="stats-row">
           <div class="stat-item">
-            <div class="stat-num">60+</div>
+            <div class="stat-num">78+</div>
             <div class="stat-label">期刊论文</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">40+</div>
+            <div class="stat-num">16+</div>
             <div class="stat-label">授权专利</div>
           </div>
           <div class="stat-item">
@@ -68,7 +76,7 @@ import { awards } from '../data/awards';
           <a href="#gallery">
             <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="5.5" cy="5.5" r="1" fill="currentColor" opacity="0.6"/><path d="M2 11l4-4 3 3 2-2 3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             成果展示
-            <span class="nav-count">6</span>
+            <span class="nav-count">29</span>
           </a>
         </li>
       </ul>
@@ -83,7 +91,7 @@ import { awards } from '../data/awards';
           <h2 class="section-heading">期刊与会议论文</h2>
           <span class="section-note">代表作，按年份降序</span>
         </div>
-        <PaperFilter client:load />
+        <PaperFilter papers={papers} filterTags={filterTags} client:load />
       </section>
 
       <!-- Awards -->
@@ -112,18 +120,14 @@ import { awards } from '../data/awards';
       <section id="gallery" class="ach-section">
         <div class="section-header">
           <h2 class="section-heading">成果展示</h2>
-          <span class="section-note">实物演示图（占位，待更新）</span>
         </div>
         <div class="gallery-grid">
-          {[1,2,3,4,5,6].map(n => (
-            <div class={`gallery-item gb-${n}`}>
-              <div class="gallery-placeholder">
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="18" rx="2"/>
-                  <circle cx="8.5" cy="8.5" r="1.5"/>
-                  <polyline points="21 15 16 10 5 21"/>
-                </svg>
-                <span>实物演示图</span>
+          {galleryGrid.map(item => (
+            <div class="gallery-item">
+              <img src={item.src} alt={item.label} class="gallery-img" loading="lazy" />
+              <div class="gallery-caption">
+                <span class="gallery-tag">{item.tag}</span>
+                <span class="gallery-label">{item.label}</span>
               </div>
             </div>
           ))}
@@ -352,34 +356,51 @@ import { awards } from '../data/awards';
   .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 10px;
   }
   .gallery-item {
-    aspect-ratio: 4/3;
     border-radius: var(--radius-md);
     overflow: hidden;
     position: relative;
     border: 1px solid var(--border);
-    transition: border-color 0.3s;
-  }
-  .gallery-item:hover { border-color: var(--border-md); }
-  .gallery-placeholder {
-    position: absolute;
-    inset: 0;
+    background: var(--bg-surface);
+    transition: border-color 0.25s, box-shadow 0.25s;
     display: flex;
     flex-direction: column;
+  }
+  .gallery-item:hover {
+    border-color: var(--border-md);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+  }
+  .gallery-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+  .gallery-caption {
+    padding: 12px 14px;
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    color: rgba(0,0,0,0.15);
-    background: var(--bg-surface);
+    gap: 8px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
   }
-  .gallery-placeholder span {
-    font-size: 11px;
+  .gallery-tag {
+    font-size: 10px;
     font-family: var(--font-mono);
-    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: var(--radius-pill);
+    background: var(--accent-dim);
+    color: var(--accent);
+    flex-shrink: 0;
   }
-  .gb-1, .gb-2, .gb-3, .gb-4, .gb-5, .gb-6 { background: var(--bg-surface); }
+  .gallery-label {
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.4;
+  }
 
   /* ── RESPONSIVE ─────────────────────────────────────── */
   @media (max-width: 900px) {

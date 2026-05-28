@@ -2,9 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import { papers } from '../data/papers';
+import type { Paper } from '../components/PaperFilter';
+import papersData from '../data/papers.toml';
+import galleryData from '../data/gallery.toml';
 import { research } from '../data/research';
 
+const papers = (papersData as any).papers as Paper[];
+const waterfallA = (galleryData as any).waterfall_a as { src: string }[];
+const waterfallB = (galleryData as any).waterfall_b as { src: string }[];
 const featuredPapers = papers.slice(0, 3);
 ---
 
@@ -91,46 +96,12 @@ const featuredPapers = papers.slice(0, 3);
 
       <div class="stmt-gallery" aria-hidden="true">
         <div class="gallery-col gallery-col-a">
-          <img src="/images/achievements/demo-lab-setup.png" alt="" />
-          <img src="/images/achievements/patent-cert-1.png" alt="" />
-          <img src="/images/achievements/device-eeg-cap.png" alt="" />
-          <img src="/images/achievements/coop-brain-hospital.jpg" alt="" />
-          <img src="/images/achievements/award-robot-ai-1st.png" alt="" />
-          <img src="/images/achievements/patent-bci-1.png" alt="" />
-          <img src="/images/achievements/coop-signing.png" alt="" />
-          <img src="/images/achievements/demo-hospital-clinical.jpg" alt="" />
-          <img src="/images/achievements/award-embedded-chip-2nd.png" alt="" />
-          <img src="/images/achievements/product-spec-sheet.png" alt="" />
-          <!-- duplicate for seamless loop -->
-          <img src="/images/achievements/demo-lab-setup.png" alt="" />
-          <img src="/images/achievements/patent-cert-1.png" alt="" />
-          <img src="/images/achievements/device-eeg-cap.png" alt="" />
-          <img src="/images/achievements/coop-brain-hospital.jpg" alt="" />
-          <img src="/images/achievements/award-robot-ai-1st.png" alt="" />
-          <img src="/images/achievements/patent-bci-1.png" alt="" />
-          <img src="/images/achievements/coop-signing.png" alt="" />
-          <img src="/images/achievements/demo-hospital-clinical.jpg" alt="" />
-          <img src="/images/achievements/award-embedded-chip-2nd.png" alt="" />
-          <img src="/images/achievements/product-spec-sheet.png" alt="" />
+          {waterfallA.map(img => <img src={img.src} alt="" />)}
+          {waterfallA.map(img => <img src={img.src} alt="" />)}
         </div>
         <div class="gallery-col gallery-col-b">
-          <img src="/images/achievements/demo-bci-system-diagram.png" alt="" />
-          <img src="/images/achievements/patent-cert-2.png" alt="" />
-          <img src="/images/achievements/award-smart-car-1st.png" alt="" />
-          <img src="/images/achievements/coop-hospital.png" alt="" />
-          <img src="/images/achievements/paper-cert-mla2024.png" alt="" />
-          <img src="/images/achievements/patent-bci-2.png" alt="" />
-          <img src="/images/achievements/award-raicom-2nd.png" alt="" />
-          <img src="/images/achievements/coop-incubation.png" alt="" />
-          <!-- duplicate for seamless loop -->
-          <img src="/images/achievements/demo-bci-system-diagram.png" alt="" />
-          <img src="/images/achievements/patent-cert-2.png" alt="" />
-          <img src="/images/achievements/award-smart-car-1st.png" alt="" />
-          <img src="/images/achievements/coop-hospital.png" alt="" />
-          <img src="/images/achievements/paper-cert-mla2024.png" alt="" />
-          <img src="/images/achievements/patent-bci-2.png" alt="" />
-          <img src="/images/achievements/award-raicom-2nd.png" alt="" />
-          <img src="/images/achievements/coop-incubation.png" alt="" />
+          {waterfallB.map(img => <img src={img.src} alt="" />)}
+          {waterfallB.map(img => <img src={img.src} alt="" />)}
         </div>
       </div>
     </section>

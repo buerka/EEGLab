@@ -3,7 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import { research } from '../../data/research';
-import { papers } from '../../data/papers';
+import type { Paper } from '../../components/PaperFilter';
+import papersData from '../../data/papers.toml';
+const papers = (papersData as any).papers as Paper[];
 ---
 
 <Layout title="研究方向 · 金牛湖脑机实验室" description="脑机接口核心技术研究方向总览">

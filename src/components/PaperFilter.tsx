@@ -1,12 +1,29 @@
 import { useState } from 'react';
-import { papers, filterTags, type FilterTag } from '../data/papers';
+
+export interface Paper {
+  num: string;
+  year: number;
+  title: string;
+  authors: string;
+  journal: string;
+  quartile?: string;
+  impactFactor?: number;
+  isTop?: boolean;
+  tags: string[];
+  type: 'journal' | 'conference';
+}
+
+interface Props {
+  papers: Paper[];
+  filterTags: string[];
+}
 
 function highlightAuthor(authors: string) {
   return authors.replace(/(Y\. Yan)/g, '<mark>$1</mark>');
 }
 
-export default function PaperFilter() {
-  const [active, setActive] = useState<FilterTag>('全部');
+export default function PaperFilter({ papers, filterTags }: Props) {
+  const [active, setActive] = useState('全部');
 
   const visible = active === '全部'
     ? papers
@@ -195,7 +212,7 @@ export default function PaperFilter() {
         }
         .pr-year {
           font-size: 11px;
-          color: #bbb;
+          color: #5B8DEE;
           font-family: 'SF Mono', monospace;
           padding-top: 3px;
           white-space: nowrap;
