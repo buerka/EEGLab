@@ -1049,10 +1049,12 @@ const featuredPapers = papers.slice(0, 3);
     width: max-content;
     will-change: transform;
     animation: pills-rtl 18s linear infinite;
+    animation-delay: -6s;   /* start mid-scroll, away from left mask edge */
     animation-play-state: paused;
   }
   .pills-track-slow {
     animation-duration: 14s;
+    animation-delay: -3s;
   }
   @keyframes pills-rtl {
     0%   { transform: translateX(0); }
