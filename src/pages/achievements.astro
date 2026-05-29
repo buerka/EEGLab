@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import PaperFilter from '../components/PaperFilter';
+import PaperFilter from '../components/PaperFilter.astro';
 import type { Paper } from '../components/PaperFilter';
 import awardsData from '../data/awards.toml';
 import papersData from '../data/papers.toml';
@@ -91,7 +91,7 @@ const galleryGrid = (galleryData as any).grid as { src: string; label: string; t
           <h2 class="section-heading">期刊与会议论文</h2>
           <span class="section-note">代表作，按年份降序</span>
         </div>
-        <PaperFilter papers={papers} filterTags={filterTags} client:load />
+        <PaperFilter papers={papers} filterTags={filterTags} />
       </section>
 
       <!-- Awards -->
