@@ -3,6 +3,7 @@ export interface ResearchDir {
   num: string;
   title: string;
   titleEn: string;
+  subtitle: string;
   desc: string;
   overview: string;
   methods: { title: string; body: string }[];
@@ -15,6 +16,7 @@ export const research: ResearchDir[] = [
     num: '01',
     title: '脑疾病诊断',
     titleEn: 'Brain Disease Diagnosis',
+    subtitle: '基于EEG信号的脑疾病诊断',
     desc: '基于脑电信号与可解释机器学习方法，研究癫痫、疲劳等脑科疾病的自动检测与智能诊断系统。',
     overview:
       '脑疾病诊断研究依托多维泰勒网络与可解释深度学习方法，将 EEG 信号的时域、频域特征转化为可信赖的临床诊断依据。实验室面向癫痫发作检测、驾驶员疲劳评估、VR 眩晕量化等实际医疗场景，与南京脑科医院、安徽医科大学附属第一医院等开展深度临床合作，持续推进脑科疾病的精准智能诊断。',
@@ -30,6 +32,7 @@ export const research: ResearchDir[] = [
     num: '02',
     title: '脑控机械臂',
     titleEn: 'Brain-Controlled Robotic Arm',
+    subtitle: '脑电信号实时解码，控制机械臂运动',
     desc: '将脑电信号实时解码为机械臂控制指令，实现高自由度、低延迟的多关节协调运动。',
     overview:
       '脑控机械臂系统将 BCI 解码输出与工业级协作臂深度集成，实现从脑意图到末端执行器运动的闭环实时控制。实验室重点研究低延迟解码、多自由度协调及自适应卡尔曼滤波在连续运动预测中的应用。',
@@ -45,6 +48,7 @@ export const research: ResearchDir[] = [
     num: '03',
     title: '脑控无人机',
     titleEn: 'Brain-Controlled UAV',
+    subtitle: '利用脑机接口实现无人机姿态与轨迹控制',
     desc: '基于运动想象范式，利用脑机接口技术实现对无人机姿态与轨迹的实时意念操控。',
     overview:
       '脑控无人机研究将 BCI 技术与自主飞行系统结合，探索基于运动想象的离散指令集与连续轨迹预测两种控制范式。实验室面向室内外不同飞行场景，研究鲁棒性强、用户适应快的意念飞行控制方案。',
@@ -60,6 +64,7 @@ export const research: ResearchDir[] = [
     num: '04',
     title: '脑控灵巧手',
     titleEn: 'Brain-Controlled Dexterous Hand',
+    subtitle: '基于脑电信号的仿生多指灵巧手控制',
     desc: '开发仿生多指灵巧手系统，通过脑电信号驱动手指的精细协调运动，恢复上肢运动功能。',
     overview:
       '脑控灵巧手面向运动功能康复场景，研究多自由度仿生手指的精细操控。实验室将高精度 EEG 解码与欠驱动仿生手机构设计结合，探索在低信道带宽约束下实现复杂抓握姿态的控制策略。',
@@ -75,6 +80,7 @@ export const research: ResearchDir[] = [
     num: '05',
     title: '脑控气动手套',
     titleEn: 'Brain-Controlled Pneumatic Glove',
+    subtitle: '软体气动驱动的康复手套控制',
     desc: '研制基于软体气动驱动的康复手套，结合脑机接口实现主动意图触发的手部辅助康复训练。',
     overview:
       '气动软体手套以柔顺驱动取代刚性机构，在提供抓握助力的同时保持穿戴舒适性。实验室将 BCI 主动意图检测与气动闭合训练模式结合，研究运动想象触发的神经肌肉协同激活机制对脑卒中手功能重建的促进作用。',
