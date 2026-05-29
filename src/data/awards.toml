@@ -29,6 +29,31 @@ name = "IEEE PHM 最佳会议论文奖（Best Paper Award）"
 description = "第14届 IEEE Global Reliability & Prognostics and Health Management Conference，杭州，2023年10月"
 
 [[awards]]
+year = 2025
+name = "第十一届挑战杯·华安证券安徽省大学生课外学术科技作品竞赛二等奖"
+description = "脑电图灵——智能临床脑科疾病辅助诊断决策系统，指导老师：严颖、咸鹏、Adrian David Cheok，2025年6月"
+
+[[awards]]
+year = 2025
+name = "第五届江苏省大学生节能减排社会实践与科技竞赛三等奖"
+description = "NeuroSync Home：智能热舒适优化脑电驱动节能系统设计，指导老师：严颖、蔡骏，2025年5月"
+
+[[awards]]
+year = 2025
+name = "第十届汇创青春上海大学生文创活动一等奖"
+description = "互联网+文化创意类，南京信息工程大学，指导老师：严颖"
+
+[[awards]]
+year = 2024
+name = "江苏省大学生机器人大赛空中流量教授项目一等奖（冠军）"
+description = "第十二届江苏省大学生机器人大赛，南京信息工程大学腾蛟队，指导老师：严颖、杨磊"
+
+[[awards]]
+year = 2024
+name = "科创江北高价值专利培育大赛一等奖、二等奖、三等奖"
+description = '江北新区第四届"科创江北、博动未来"高价值专利培育大赛，3项专利获奖（冷却盘管/空调机组故障诊断），严颖、蔡骏、张苑、李涛，2024年4月'
+
+[[awards]]
 year = 2023
 name = "江苏省自动化学会科学技术奖三等奖"
 description = "智能建筑暖通空调系统的故障诊断与预测研究，第一完成人，南京，2024年2月"

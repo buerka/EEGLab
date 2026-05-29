@@ -19,6 +19,18 @@ src = "/images/achievements/demo-hospital-clinical.jpg"
 src = "/images/achievements/award-embedded-chip-2nd.png"
 [[waterfall_a]]
 src = "/images/achievements/product-spec-sheet.png"
+[[waterfall_a]]
+src = "/images/achievements/award-jiangsu-automation-ceremony.jpg"
+[[waterfall_a]]
+src = "/images/achievements/award-zhijiao-2nd-cert.jpg"
+[[waterfall_a]]
+src = "/images/achievements/award-phm-hangzhou-bestpaper-cert.jpg"
+[[waterfall_a]]
+src = "/images/achievements/award-kehuang-jb-1st.jpg"
+[[waterfall_a]]
+src = "/images/achievements/award-tiaozhanbei-anhui-2nd.png"
+[[waterfall_a]]
+src = "/images/achievements/award-jiangsu-energy-3rd.jpg"
 
 # 首页瀑布流 · 右列（B 列）
 [[waterfall_b]]
@@ -37,6 +49,18 @@ src = "/images/achievements/coop-tianchang.jpg"
 src = "/images/achievements/award-raicom-2nd.png"
 [[waterfall_b]]
 src = "/images/achievements/coop-incubation.png"
+[[waterfall_b]]
+src = "/images/achievements/award-phm-hangzhou-bestpaper-ceremony.jpg"
+[[waterfall_b]]
+src = "/images/achievements/award-zhijiao-2nd-plaque.jpg"
+[[waterfall_b]]
+src = "/images/achievements/award-innovation-intl-bronze.png"
+[[waterfall_b]]
+src = "/images/achievements/award-huichuang-youth-1st.png"
+[[waterfall_b]]
+src = "/images/achievements/award-jiangsu-robot-1st.png"
+[[waterfall_b]]
+src = "/images/achievements/award-jiangsu-automation-cert.jpg"
 
 # 成果页展示网格
 [[grid]]
@@ -177,4 +201,74 @@ tag = "获奖"
 [[grid]]
 src = "/images/achievements/award-embedded-chip-2nd.png"
 label = "全国嵌入式芯片设计竞赛 二等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-jiangsu-automation-ceremony.jpg"
+label = "江苏省自动化学会科学技术奖颁奖现场"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-jiangsu-automation-cert.jpg"
+label = "江苏省自动化学会科技奖三等奖证书"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-huichuang-youth-1st.png"
+label = "第十届汇创青春 一等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-kehuang-jb-1st.jpg"
+label = "科创江北高价值专利大赛 一等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-kehuang-jb-2nd.jpg"
+label = "科创江北高价值专利大赛 二等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-kehuang-jb-3rd.jpg"
+label = "科创江北高价值专利大赛 三等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-zhijiao-2nd-cert.jpg"
+label = "中国职工技术协会职工技术创新成果二等奖证书"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-zhijiao-2nd-plaque.jpg"
+label = "职工技术创新成果二等奖奖牌"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-phm-hangzhou-bestpaper-cert.jpg"
+label = "IEEE PHM-Hangzhou 2023 最佳论文奖证书"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-phm-hangzhou-bestpaper-ceremony.jpg"
+label = "IEEE PHM-Hangzhou 2023 颁奖现场"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-innovation-intl-bronze.png"
+label = "大学生创新大赛国际赛道国家铜奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-jiangsu-robot-1st.png"
+label = "江苏省大学生机器人大赛 一等奖（冠军）"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-jiangsu-energy-3rd.jpg"
+label = "江苏省大学生节能减排竞赛 三等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-tiaozhanbei-anhui-2nd.png"
+label = "挑战杯安徽省大学生科技作品竞赛 二等奖"
 tag = "获奖"
