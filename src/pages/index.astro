@@ -136,21 +136,20 @@ const featuredPapers = papers.slice(0, 3);
         <div class="research-grid fade-up delay-3">
           {research.map(r => (
             <a href={`/research/${r.slug}`} class="r-card">
-              <div class="r-card-img">
-                <img src={`/images/research/${r.slug}.png`} alt={r.title} />
+              <div class="r-card-head">
+                <span class="r-num">{r.num}</span>
+                <svg class="r-arrow" viewBox="0 0 18 18" fill="none">
+                  <path d="M2 16L16 2M16 2H6M16 2V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </div>
-              <div class="r-card-body">
-                <div class="r-card-header">
-                  <span class="r-num">{r.num}</span>
-                  <svg class="r-arrow" viewBox="0 0 20 20" fill="none">
-                    <path d="M4 16L16 4M16 4H7M16 4V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  </svg>
-                </div>
-                <h3 class="r-title">{r.title}</h3>
-                <p class="r-subtitle">{r.subtitle}</p>
-                <div class="r-tags">
-                  {r.tags.slice(0, 3).map(tag => <span class="r-tag">{tag}</span>)}
-                </div>
+              <h3 class="r-title">{r.title}</h3>
+              <p class="r-subtitle">{r.subtitle}</p>
+              <div class="r-img-wrap">
+                <img src={`/images/research/${r.slug}.jpg`} alt={r.title} class="r-img" />
+              </div>
+              <p class="r-desc">{r.desc}</p>
+              <div class="r-tags">
+                {r.tags.slice(0, 3).map(tag => <span class="r-tag">{tag}</span>)}
               </div>
             </a>
           ))}
@@ -874,72 +873,105 @@ const featuredPapers = papers.slice(0, 3);
     border-radius: var(--radius-lg);
     overflow: hidden;
   }
+
   .r-card {
     background: var(--bg-surface);
+    padding: 28px 24px 24px;
     text-decoration: none;
     color: inherit;
-    transition: background 0.2s;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    gap: 0;
+    transition: background 0.2s;
   }
   .r-card:hover { background: var(--bg-elevated); }
-  .r-card-img {
-    width: 100%;
-    aspect-ratio: 4/3;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .r-card-img img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-  .r-card:hover .r-card-img img { transform: scale(1.04); }
-  .r-card-body {
-    padding: 20px 18px 18px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  .r-card-header {
+
+  .r-card-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   .r-num {
     font-family: var(--font-mono);
-    font-size: 10px;
+    font-size: 12px;
     color: var(--accent);
-    font-weight: 500;
-    letter-spacing: 1px;
+    opacity: 0.7;
+    font-variant-numeric: tabular-nums;
   }
   .r-arrow {
     width: 14px; height: 14px;
     color: var(--text-3);
-    transition: transform 0.25s ease, color 0.2s;
+    opacity: 0;
+    transform: translate(-3px, 3px);
+    transition: opacity 0.2s, transform 0.2s, color 0.2s;
     flex-shrink: 0;
   }
-  .r-card:hover .r-arrow { transform: translate(3px, -3px); color: var(--accent); }
-  .r-title {
-    font-size: 17px; font-weight: 700;
-    letter-spacing: -0.02em; margin-bottom: 6px; line-height: 1.2;
-  }
-  .r-subtitle {
-    font-size: 11px; color: var(--text-3); line-height: 1.6;
-    flex: 1; margin-bottom: 12px;
-  }
-  .r-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-  .r-tag {
-    font-size: 9px; font-family: var(--font-mono);
-    color: var(--text-3); background: var(--bg-elevated);
-    border-radius: var(--radius-pill); padding: 2px 7px;
+  .r-card:hover .r-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+    color: var(--accent);
   }
 
-  @media (max-width: 1100px) { .research-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 700px)  { .research-grid { grid-template-columns: 1fr 1fr; } }
+  .r-title {
+    font-size: 20px; font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.2;
+    margin-bottom: 8px;
+  }
+  .r-subtitle {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--text-3);
+    line-height: 1.55;
+    margin-bottom: 20px;
+  }
+
+  .r-img-wrap {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: var(--bg-elevated);
+    margin-bottom: 20px;
+    flex-shrink: 0;
+  }
+  .r-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .r-card:hover .r-img { transform: scale(1.04); }
+
+  .r-desc {
+    font-size: 12px; color: var(--text-2); line-height: 1.75;
+    flex: 1;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .r-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: auto; }
+  .r-tag {
+    font-size: 10px; font-family: var(--font-mono);
+    color: var(--text-3);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill); padding: 2px 9px;
+  }
+
+  @media (max-width: 1100px) {
+    .research-grid {
+      grid-template-columns: repeat(3, 1fr);
+      border-radius: var(--radius-md);
+    }
+  }
+  @media (max-width: 680px) {
+    .research-grid { grid-template-columns: repeat(2, 1fr); }
+    .r-title { font-size: 18px; }
+  }
+  @media (max-width: 440px) {
+    .research-grid { grid-template-columns: 1fr; }
+  }
 
   /* ═══════════════════════════════════════════════════
      05 TEAM
