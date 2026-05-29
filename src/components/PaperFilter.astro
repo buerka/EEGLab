@@ -15,7 +15,7 @@ function ifClass(imp: number) {
 }
 
 function highlightAuthor(authors: string) {
-  return authors.replace(/(Y\. Yan)/g, '<mark>$1</mark>');
+  return authors.replace(/(Y\. Yan)/g, '<strong>$1</strong>');
 }
 
 const years = [...new Set(papers.map(p => p.year))].sort((a, b) => b - a);
@@ -179,9 +179,7 @@ const years = [...new Set(papers.map(p => p.year))].sort((a, b) => b - a);
     margin-bottom: 10px;
     line-height: 1.6;
   }
-  #paper-filter-root .pr-authors mark {
-    background: none;
-    color: inherit;
+  #paper-filter-root .pr-authors strong {
     font-weight: 600;
   }
   #paper-filter-root .pr-tags {
