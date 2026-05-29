@@ -52,7 +52,7 @@ const paperTags = filterTags.filter(t => t !== '全部');
                   </span>
                 )}
                 {paper.tags
-                  .filter(t => !['一区', '二区', '会议'].includes(t))
+                  .filter(t => !['一区', '二区', '会议', '其他'].includes(t))
                   .map(t => <span class="pr-tag topic">{t}</span>)}
               </div>
             </div>
