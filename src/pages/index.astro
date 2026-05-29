@@ -852,29 +852,31 @@ const featuredPapers = papers.slice(0, 3);
   .fp-research {
     background: var(--bg);
     border-bottom: 1px solid var(--border);
+    justify-content: center;
+    gap: 0;
   }
   .split-header {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 32px;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
   }
   .split-header .section-desc { margin-bottom: 0; max-width: 380px; }
-  .section-cta { margin-top: 28px; }
+  .section-cta { margin-top: 20px; }
 
   .research-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
+    gap: 12px;
   }
 
   .r-card {
-    background: var(--bg-surface);
+    background: #FAFAFC;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    padding: 24px 22px 22px;
+    padding: 20px 18px 18px;
     text-decoration: none;
     color: inherit;
     display: flex;
@@ -910,9 +912,48 @@ const featuredPapers = papers.slice(0, 3);
   }
 
   .r-title {
-    font-size: 26px; font-weight: 700;
+    font-size: 24px; font-weight: 700;
     letter-spacing: -0.02em; line-height: 1.15;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
+  }
+  .r-subtitle {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--text-3);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .r-img-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 0.8;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: #FAFAFC;
+    margin-bottom: 14px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .r-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .r-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .r-desc {
+    font-size: 13px; color: var(--text-2); line-height: 1.7;
+    flex: 1;
+    margin-bottom: 14px;
   }
   .r-subtitle {
     font-size: 11px;
@@ -924,11 +965,11 @@ const featuredPapers = papers.slice(0, 3);
 
   .r-img-wrap {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 0.8;
     overflow: hidden;
     border-radius: var(--radius-md);
-    background: var(--bg);
-    margin-bottom: 20px;
+    background: #FAFAFC;
+    margin-bottom: 14px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
