@@ -113,9 +113,6 @@ const isContact     = path === '/contact';
   }
 
   .nav-section-badge {
-    display: inline-flex;
-    align-items: center;
-    height: 28px;
     font-size: 11px;
     font-family: var(--font-mono);
     color: var(--text-3);
@@ -152,8 +149,13 @@ const isContact     = path === '/contact';
     align-items: center;
     gap: 10px;
     margin-left: 10px;
-    padding-left: 10px;
-    border-left: 1px solid var(--border-md);
+  }
+  .nav-unis::before {
+    content: '';
+    width: 1px;
+    height: 14px;
+    background: var(--border-md);
+    flex-shrink: 0;
   }
   .nav-uni-logo {
     width: auto;
@@ -162,8 +164,8 @@ const isContact     = path === '/contact';
     transition: opacity 0.2s;
   }
   .nav-uni-logo:hover { opacity: 1; }
-  .nav-uni-logo.nuist { height: 28px; }
-  .nav-uni-logo.ahjzu { height: 22px; }
+  .nav-uni-logo.nuist { height: 31px; }
+  .nav-uni-logo.ahjzu { height: 24px; }
   .nav-links a {
     display: block;
     padding: 7px 14px;
