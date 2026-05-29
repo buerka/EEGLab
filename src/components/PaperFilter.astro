@@ -24,11 +24,11 @@ const paperTags = filterTags.filter(t => t !== '全部');
 
 <div id="paper-filter-root">
   <div class="filter-bar">
-    <button class="filter-chip" data-tag="代表作">代表作</button>
+    <button class="filter-chip active" data-tag="代表作">代表作</button>
     {paperTags.map(tag => (
       <button class="filter-chip" data-tag={tag}>{tag}</button>
     ))}
-    <button class="filter-chip active" data-tag="全部">全部</button>
+    <button class="filter-chip" data-tag="全部">全部</button>
   </div>
 
   <div class="paper-list">
