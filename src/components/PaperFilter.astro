@@ -8,6 +8,12 @@ interface Props {
 
 const { papers, filterTags } = Astro.props;
 
+function ifClass(imp: number) {
+  if (imp >= 7) return 'if-gold';
+  if (imp >= 5) return 'if-blue';
+  return '';
+}
+
 function highlightAuthor(authors: string) {
   return authors.replace(/(Y\. Yan)/g, '<mark>$1</mark>');
 }
@@ -35,7 +41,7 @@ const years = [...new Set(papers.map(p => p.year))].sort((a, b) => b - a);
               <div class="pr-tags">
                 <span class="pr-tag venue">{paper.journal}</span>
                 {paper.impactFactor && (
-                  <span class="pr-tag if">IF {paper.impactFactor}</span>
+                  <span class={`pr-tag if ${ifClass(paper.impactFactor)}`}>IF {paper.impactFactor}</span>
                 )}
                 {paper.quartile && (
                   <span class={`pr-tag rank${paper.isTop ? ' top' : ''}`}>
@@ -198,6 +204,14 @@ const years = [...new Set(papers.map(p => p.year))].sort((a, b) => b - a);
   #paper-filter-root .pr-tag.if {
     background: #f0f0f0;
     color: #888;
+  }
+  #paper-filter-root .pr-tag.if.if-gold {
+    background: rgba(240,185,11,0.1);
+    color: #b8860b;
+  }
+  #paper-filter-root .pr-tag.if.if-blue {
+    background: rgba(0,87,255,0.08);
+    color: #0057FF;
   }
   #paper-filter-root .pr-tag.rank {
     background: #f0f0f0;
