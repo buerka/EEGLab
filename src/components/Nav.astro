@@ -20,14 +20,13 @@ const isContact     = path === '/contact';
       <span class="nav-brand-text">金牛湖脑机</span>
     </a>
     <span id="nav-section-badge" class="nav-section-badge" aria-live="polite"></span>
-  </div>
-
-  <div class="nav-right">
     <div class="nav-unis">
       <img src="/images/nuist-logo.png" alt="南京信息工程大学" class="nav-uni-logo nuist" />
       <img src="/images/ahjzu-logo.png" alt="安徽建筑大学" class="nav-uni-logo ahjzu" />
     </div>
+  </div>
 
+  <div class="nav-right">
     <ul class="nav-links" id="nav-links">
       <li><a href="/research" data-section="research" class:list={[{ active: isResearch }]}>研究方向</a></li>
       <li><a href="/team" data-section="team" class:list={[{ active: isTeam }]}>团队成员</a></li>
@@ -149,9 +148,9 @@ const isContact     = path === '/contact';
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-right: 6px;
-    padding-right: 10px;
-    border-right: 1px solid var(--border-md);
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid var(--border-md);
   }
   .nav-uni-logo {
     width: auto;
