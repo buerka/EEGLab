@@ -1,4 +1,4 @@
-filter_tags = ["全部", "EEG", "EEG分类", "HVAC", "VR眩晕", "云检测", "优化", "信号处理", "其他", "分类", "可再生能源", "可解释AI", "图像分割", "图神经网络", "建筑节能", "控制理论", "故障诊断", "无传感器控制", "机器学习", "泰勒网络", "深度学习", "特征提取", "电机", "疲劳检测", "癫痫检测", "神经网络", "综述", "能源电力", "运动解码", "遥感", "预测"]
+filter_tags = ["一区", "二区", "全部", "EEG", "EEG分类", "HVAC", "VR眩晕", "云检测", "优化", "信号处理", "其他", "分类", "可再生能源", "可解释AI", "图像分割", "图神经网络", "建筑节能", "控制理论", "故障诊断", "无传感器控制", "机器学习", "泰勒网络", "深度学习", "特征提取", "电机", "疲劳检测", "癫痫检测", "神经网络", "综述", "能源电力", "运动解码", "遥感", "预测"]
 
 [[papers]]
 num = "01"
@@ -64,6 +64,8 @@ authors = "Chenmeng Huangfu, Ying Yan, Na Liu, Jun Cai, Shencun Fang, Edmond Q. 
 journal = "Measurement"
 doi = "10.1016/j.measurement.2025.118973"
 type = "journal"
+quartile = "二区"
+impactFactor = 5.6
 field = "脑机接口"
 lead = true
 tags = ["EEG", "疲劳检测", "可解释AI", "EEG分类", "泰勒网络", "深度学习", "机器学习"]
@@ -252,6 +254,9 @@ authors = "Guanting Liu, Ying Yan, Jun Cai, Edmond Q. Wu, Shencun Fang, Adrian D
 journal = "Expert Systems with Applications"
 doi = "10.1016/j.eswa.2024.126013"
 type = "journal"
+quartile = "一区"
+impactFactor = 7.5
+isTop = true
 field = "脑机接口"
 tags = ["EEG", "图神经网络", "EEG分类"]
 
@@ -408,6 +413,8 @@ authors = "Ying Yan, Guanting Liu, Haoyang Cai, Edmond Q. Wu, Jun Cai, Adrian Da
 journal = "Neurocomputing"
 doi = "10.1016/j.neucom.2024.128098"
 type = "journal"
+quartile = "二区"
+impactFactor = 5.5
 field = "脑机接口"
 lead = true
 tags = ["EEG", "综述", "EEG分类"]
@@ -1507,3 +1514,27 @@ type = "journal"
 field = "其他"
 lead = true
 tags = ["其他"]
+
+[[papers]]
+num = "01"
+year = 2026
+title = "Interpretable Gradient-Scored Sparse Polynomial Network for Seizure Detection"
+authors = "Y. Yan, J. Zhu, Y. Cao, J. Cai, S. Fang, S. Rong, A. D. Cheok"
+journal = "Information Sciences"
+quartile = "一区"
+impactFactor = 6.8
+isTop = true
+tags = ["癫痫检测", "EEG分类", "一区"]
+type = "journal"
+
+[[papers]]
+num = "02"
+year = 2026
+title = "Residual Multi-Dimensional Taylor Network for Epileptic Electroencephalography Detection"
+authors = "Y. Yan, G. Liu, H. Cai, E. Q. Wu, J. Cai, A. D. Cheok, N. Liu, A. Song"
+journal = "Engineering Applications of Artificial Intelligence"
+quartile = "一区"
+impactFactor = 8.0
+isTop = true
+tags = ["癫痫检测", "EEG分类", "一区"]
+type = "journal"
