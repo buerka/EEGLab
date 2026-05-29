@@ -30,7 +30,12 @@ const isContact     = path === '/contact';
       <li><a href="/contact" data-section="contact" class="nav-cta" class:list={[{ active: isContact }]}>联系我们</a></li>
     </ul>
 
-    <button class="nav-toggle" id="nav-toggle" aria-label="菜单">
+      <div class="nav-unis">
+        <img src="/images/nuist-logo.jpg" alt="南京信息工程大学" class="nav-uni-logo" />
+        <img src="/images/ahjzu-logo.png" alt="安徽建筑大学" class="nav-uni-logo" />
+      </div>
+
+      <button class="nav-toggle" id="nav-toggle" aria-label="菜单">
       <span></span><span></span>
     </button>
   </div>
@@ -203,7 +208,25 @@ const isContact     = path === '/contact';
     width: 20px;
   }
 
+  .nav-unis {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 6px;
+    padding-left: 10px;
+    border-left: 1px solid var(--border-md);
+  }
+  .nav-uni-logo {
+    height: 26px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .nav-uni-logo:hover { opacity: 1; }
+
   @media (max-width: 680px) {
+    .nav-unis { display: none; }
     nav { height: 60px; }
     .nav-section-badge { display: none; }
     .nav-links {
