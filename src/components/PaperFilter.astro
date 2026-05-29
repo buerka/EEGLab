@@ -19,13 +19,16 @@ function highlightAuthor(authors: string) {
 }
 
 const years = [...new Set(papers.map(p => p.year))].sort((a, b) => b - a);
+const paperTags = filterTags.filter(t => t !== '全部');
 ---
 
 <div id="paper-filter-root">
   <div class="filter-bar">
-    {filterTags.map(tag => (
+    <button class="filter-chip" data-tag="代表作">代表作</button>
+    {paperTags.map(tag => (
       <button class="filter-chip" data-tag={tag}>{tag}</button>
     ))}
+    <button class="filter-chip active" data-tag="全部">全部</button>
   </div>
 
   <div class="paper-list">
@@ -33,7 +36,7 @@ const years = [...new Set(papers.map(p => p.year))].sort((a, b) => b - a);
       <div data-year={year}>
         <div class="year-divider"><span>{year}</span></div>
         {papers.filter(p => p.year === year).map(paper => (
-          <div class="paper-row" data-num={paper.num} data-tags={paper.tags.join(',')}>
+          <div class="paper-row" data-num={paper.num} data-tags={paper.tags.join(',')} data-lead={(paper as any).lead ? 'true' : ''}>
             <div class="pr-num">{paper.num}</div>
             <div class="pr-body">
               <div class="pr-title">{paper.title}</div>
@@ -66,14 +69,10 @@ const years = [...new Set(papers.map(p => p.year))].sort((a, b) => b - a);
   const chips = document.querySelectorAll('#paper-filter-root .filter-chip');
   const groups = document.querySelectorAll('#paper-filter-root [data-year]');
   const noResults = document.querySelector('#paper-filter-root .no-results')!;
-  let active = '全部';
-
-  chips[0]?.classList.add('active');
 
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
       const tag = chip.getAttribute('data-tag')!;
-      active = tag;
       chips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
 
@@ -82,8 +81,13 @@ const years = [...new Set(papers.map(p => p.year))].sort((a, b) => b - a);
         const rows = group.querySelectorAll<HTMLElement>('.paper-row');
         let groupHas = false;
         rows.forEach(row => {
-          const tags = row.getAttribute('data-tags')!.split(',');
-          const show = tag === '全部' || tags.includes(tag);
+          let show = true;
+          if (tag === '代表作') {
+            show = row.getAttribute('data-lead') === 'true';
+          } else if (tag !== '全部') {
+            const tags = row.getAttribute('data-tags')!.split(',');
+            show = tags.includes(tag);
+          }
           row.style.display = show ? '' : 'none';
           if (show) groupHas = true;
         });

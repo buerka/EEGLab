@@ -11,14 +11,15 @@ interface Props {
 
 const { items } = Astro.props;
 
-const allTags = ['全部', ...Array.from(new Set(items.map(i => i.tag)))];
+const galleryTags = Array.from(new Set(items.map(i => i.tag)));
 ---
 
 <div id="gallery-filter-root">
   <div class="gf-filter-bar">
-    {allTags.map(tag => (
+    {galleryTags.map(tag => (
       <button class="gf-chip" data-tag={tag}>{tag}</button>
     ))}
+    <button class="gf-chip active" data-tag="全部">全部</button>
   </div>
 
   <div class="gf-grid">
@@ -41,8 +42,6 @@ const allTags = ['全部', ...Array.from(new Set(items.map(i => i.tag)))];
   const chips = root.querySelectorAll<HTMLButtonElement>('.gf-chip');
   const items = root.querySelectorAll<HTMLElement>('.gf-item');
   const noResults = root.querySelector<HTMLElement>('.gf-no-results')!;
-
-  chips[0]?.classList.add('active');
 
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
