@@ -36,7 +36,7 @@ const paperTags = filterTags.filter(t => t !== '全部');
       <div data-year={year}>
         <div class="year-divider"><span>{year}</span></div>
         {papers.filter(p => p.year === year).map(paper => (
-          <div class="paper-row" data-num={paper.num} data-tags={paper.tags.join(',')} data-lead={(paper as any).lead ? 'true' : ''}>
+          <div class="paper-row" data-num={paper.num} data-tags={paper.tags.join(',')} data-featured={((paper as any).lead && (paper as any).field === '脑机接口') ? 'true' : ''}>
             <div class="pr-num">{paper.num}</div>
             <div class="pr-body">
               <div class="pr-title">{paper.title}</div>
@@ -83,7 +83,7 @@ const paperTags = filterTags.filter(t => t !== '全部');
         rows.forEach(row => {
           let show = true;
           if (tag === '代表作') {
-            show = row.getAttribute('data-lead') === 'true';
+            show = row.getAttribute('data-featured') === 'true';
           } else if (tag !== '全部') {
             const tags = row.getAttribute('data-tags')!.split(',');
             show = tags.includes(tag);
