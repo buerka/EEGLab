@@ -24,8 +24,8 @@ const isContact     = path === '/contact';
 
   <div class="nav-right">
     <div class="nav-unis">
-      <img src="/images/nuist-logo.jpg" alt="南京信息工程大学" class="nav-uni-logo" />
-      <img src="/images/ahjzu-logo.png" alt="安徽建筑大学" class="nav-uni-logo" />
+      <img src="/images/nuist-logo.jpg" alt="南京信息工程大学" class="nav-uni-logo nuist" />
+      <img src="/images/ahjzu-logo.png" alt="安徽建筑大学" class="nav-uni-logo ahjzu" />
     </div>
 
     <ul class="nav-links" id="nav-links">
@@ -154,13 +154,14 @@ const isContact     = path === '/contact';
     border-right: 1px solid var(--border-md);
   }
   .nav-uni-logo {
-    height: 26px;
     width: auto;
     object-fit: contain;
     opacity: 0.7;
     transition: opacity 0.2s;
   }
   .nav-uni-logo:hover { opacity: 1; }
+  .nav-uni-logo.nuist { height: 28px; }
+  .nav-uni-logo.ahjzu { height: 22px; }
   .nav-links a {
     display: block;
     padding: 7px 14px;
