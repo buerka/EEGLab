@@ -42,7 +42,9 @@ const paperTags = filterTags.filter(t => t !== '全部');
               <div class="pr-title">{paper.title}</div>
               <div class="pr-authors" set:html={highlightAuthor(paper.authors)} />
               <div class="pr-tags">
-                <span class="pr-tag venue">{paper.journal}</span>
+                {paper.journal && (
+                  <span class="pr-tag venue">{paper.journal}</span>
+                )}
                 {paper.impactFactor && (
                   <span class={`pr-tag if ${ifClass(paper.impactFactor)}`}>IF {paper.impactFactor}</span>
                 )}
