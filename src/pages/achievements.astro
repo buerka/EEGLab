@@ -9,7 +9,7 @@ import awardsData from '../data/awards.toml';
 import papersData from '../data/papers.toml';
 import galleryData from '../data/gallery.toml';
 
-const awards = (awardsData as any).awards as { year: number; name: string; description: string }[];
+const awards = (awardsData as any).awards as { year: number; name: string; description: string; image?: string }[];
 const papers = (papersData as any).papers as Paper[];
 const filterTags = (papersData as any).filter_tags as string[];
 const galleryGrid = (galleryData as any).grid as { src: string; label: string; tag: string }[];
@@ -44,7 +44,7 @@ const galleryGrid = (galleryData as any).grid as { src: string; label: string; t
             <div class="stat-label">授权专利</div>
           </div>
           <div class="stat-item">
-            <div class="stat-num">7</div>
+            <div class="stat-num">{awards.length}</div>
             <div class="stat-label">代表奖项</div>
           </div>
         </div>
@@ -63,21 +63,21 @@ const galleryGrid = (galleryData as any).grid as { src: string; label: string; t
           <a href="#papers" class="active">
             <svg viewBox="0 0 16 16" fill="none"><path d="M9 2H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6L9 2zm0 0v4h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             期刊与会议论文
-            <span class="nav-count">9</span>
+            <span class="nav-count">{papers.length}</span>
           </a>
         </li>
         <li>
           <a href="#awards">
             <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="4" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 9.5L4.5 14l3.5-2 3.5 2-1-4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             荣誉奖项
-            <span class="nav-count">7</span>
+            <span class="nav-count">{awards.length}</span>
           </a>
         </li>
         <li>
           <a href="#gallery">
             <svg viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.3"/><circle cx="5.5" cy="5.5" r="1" fill="currentColor" opacity="0.6"/><path d="M2 11l4-4 3 3 2-2 3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
             成果展示
-            <span class="nav-count">42</span>
+            <span class="nav-count">{galleryGrid.length}</span>
           </a>
         </li>
       </ul>
@@ -111,6 +111,11 @@ const galleryGrid = (galleryData as any).grid as { src: string; label: string; t
               <div class="award-body">
                 <div class="award-name">{award.name}</div>
                 <div class="award-desc">{award.description}</div>
+                {award.image && (
+                  <div class="award-img">
+                    <img src={award.image} alt={award.name} loading="lazy" />
+                  </div>
+                )}
               </div>
             </div>
           ))}
@@ -299,6 +304,7 @@ const galleryGrid = (galleryData as any).grid as { src: string; label: string; t
     gap: 20px;
     position: relative;
     padding-bottom: 32px;
+    align-items: start;
   }
   .award-row:last-child { padding-bottom: 0; }
   .award-left {
@@ -331,6 +337,20 @@ const galleryGrid = (galleryData as any).grid as { src: string; label: string; t
     font-variant-numeric: tabular-nums;
   }
   .award-body { padding-top: 2px; }
+  .award-img {
+    margin-top: 16px;
+    width: 200px;
+  }
+  .award-img img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .award-img img:hover {
+    transform: scale(1.04);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  }
   .award-name {
     font-size: 17px;
     font-weight: 600;

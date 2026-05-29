@@ -2,11 +2,13 @@
 year = 2025
 name = "中国技协职工技术创新成果二等奖"
 description = "基于脑电信号与新型可解释机器学习方法的脑科疾病诊断研究，第一完成人，2025年2月"
+image = "/images/achievements/award-zhijiao-2nd-cert.jpg"
 
 [[awards]]
 year = 2024
 name = "大学生创新大赛国际赛道国家铜奖"
 description = 'NeuroLynx — Portable Monitoring and Diagnosis Device for Neurological Disorders，指导老师：严颖'
+image = "/images/achievements/award-innovation-intl-bronze.png"
 
 [[awards]]
 year = 2024
@@ -17,6 +19,7 @@ description = "第一完成人，2024年9月"
 year = 2024
 name = '江北新区"科创江北"高价值专利培育大赛一等奖'
 description = '第四届"科创江北、搏动未来"高价值专利培育大赛，南京，2024年4月'
+image = "/images/achievements/award-kehuang-jb-1st.jpg"
 
 [[awards]]
 year = 2024
@@ -27,33 +30,70 @@ description = '2024年度"双创之星"评定，金牛湖产教融合园区'
 year = 2023
 name = "IEEE PHM 最佳会议论文奖（Best Paper Award）"
 description = "第14届 IEEE Global Reliability & Prognostics and Health Management Conference，杭州，2023年10月"
+image = "/images/achievements/award-phm-hangzhou-bestpaper-ceremony.jpg"
 
 [[awards]]
 year = 2025
 name = "第十一届挑战杯·华安证券安徽省大学生课外学术科技作品竞赛二等奖"
 description = "脑电图灵——智能临床脑科疾病辅助诊断决策系统，指导老师：严颖、咸鹏、Adrian David Cheok，2025年6月"
+image = "/images/achievements/award-tiaozhanbei-anhui-2nd.png"
 
 [[awards]]
 year = 2025
 name = "第五届江苏省大学生节能减排社会实践与科技竞赛三等奖"
 description = "NeuroSync Home：智能热舒适优化脑电驱动节能系统设计，指导老师：严颖、蔡骏，2025年5月"
+image = "/images/achievements/award-jiangsu-energy-3rd.jpg"
 
 [[awards]]
 year = 2025
 name = "第十届汇创青春上海大学生文创活动一等奖"
 description = "互联网+文化创意类，南京信息工程大学，指导老师：严颖"
+image = "/images/achievements/award-huichuang-youth-1st.png"
 
 [[awards]]
 year = 2024
 name = "江苏省大学生机器人大赛空中流量教授项目一等奖（冠军）"
 description = "第十二届江苏省大学生机器人大赛，南京信息工程大学腾蛟队，指导老师：严颖、杨磊"
+image = "/images/achievements/award-jiangsu-robot-1st.png"
 
 [[awards]]
 year = 2024
-name = "科创江北高价值专利培育大赛一等奖、二等奖、三等奖"
-description = '江北新区第四届"科创江北、博动未来"高价值专利培育大赛，3项专利获奖（冷却盘管/空调机组故障诊断），严颖、蔡骏、张苑、李涛，2024年4月'
+name = "第27届中国机器人及人工智能大赛全国总决赛一等奖"
+description = "第27届中国机器人及人工智能大赛，南京信息工程大学，指导老师：严颖"
+image = "/images/achievements/award-robot-ai-1st.png"
+
+[[awards]]
+year = 2024
+name = "第20届全国大学生智能汽车竞赛一等奖"
+description = "第20届全国大学生智能汽车竞赛，南京信息工程大学，指导老师：严颖"
+image = "/images/achievements/award-smart-car-1st.png"
+
+[[awards]]
+year = 2024
+name = "RAICOM机器人开发者大赛全国总决赛二等奖"
+description = "RAICOM睿抗机器人开发者大赛，南京信息工程大学，指导老师：严颖"
+image = "/images/achievements/award-raicom-2nd.png"
+
+[[awards]]
+year = 2024
+name = "全国大学生嵌入式芯片与系统设计竞赛二等奖"
+description = "全国大学生嵌入式芯片与系统设计竞赛，南京信息工程大学，指导老师：严颖"
+image = "/images/achievements/award-embedded-chip-2nd.png"
+
+[[awards]]
+year = 2024
+name = "科创江北高价值专利培育大赛二等奖"
+description = '江北新区第四届"科创江北、博动未来"高价值专利培育大赛，严颖、蔡骏、张苑、李涛，2024年4月'
+image = "/images/achievements/award-kehuang-jb-2nd.jpg"
+
+[[awards]]
+year = 2024
+name = "科创江北高价值专利培育大赛三等奖"
+description = '江北新区第四届"科创江北、博动未来"高价值专利培育大赛，严颖、蔡骏、张苑、李涛，2024年4月'
+image = "/images/achievements/award-kehuang-jb-3rd.jpg"
 
 [[awards]]
 year = 2023
 name = "江苏省自动化学会科学技术奖三等奖"
 description = "智能建筑暖通空调系统的故障诊断与预测研究，第一完成人，南京，2024年2月"
+image = "/images/achievements/award-jiangsu-automation-ceremony.jpg"
