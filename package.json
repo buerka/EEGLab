@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "clean": "node -e \"const fs=require('node:fs'); for (const p of ['dist','.astro']) fs.rmSync(p,{recursive:true,force:true});\"",
     "preview": "astro preview"
   },
   "dependencies": {
