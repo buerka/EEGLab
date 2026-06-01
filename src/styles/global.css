@@ -66,20 +66,20 @@ body {
   font-weight: 500;
   text-transform: uppercase;
   font-family: var(--font-mono);
-  margin-bottom: 24px;
+  margin-bottom: 12px;
 }
 
 .section-title {
-  font-size: clamp(36px, 5.5vw, 68px);
+  font-size: clamp(30px, 4vw, 52px);
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.03em;
   color: var(--text);
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .section-desc {
-  font-size: clamp(16px, 1.8vw, 19px);
+  font-size: clamp(14px, 1.4vw, 16px);
   color: var(--text-3);
   line-height: 1.7;
   max-width: 520px;

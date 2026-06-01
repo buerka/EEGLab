@@ -2,163 +2,188 @@
 import Layout from '../layouts/Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+
+const coreTeam = [
+  {
+    role: '学术核心',
+    title: '副教授 · 硕士生导师',
+    name: '严颖',
+    affil: '南京信息工程大学',
+    img: '/images/team/yan-ying.png',
+    bio: '南京信息工程大学自动化学院副教授、硕士生导师。博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。现兼任电气工程系副主任、江苏省气象能源利用与控制工程技术研究中心副主任。主持多项国家自然科学基金及省部级科研项目，在 IEEE 系列期刊发表论文 70 余篇。',
+    tags: ['EEG 信号分析', '模式识别', '深度学习', '脑机接口'],
+    links: [
+      { label: '导师主页', href: 'https://faculty.nuist.edu.cn/yanying/zh_CN/index.htm' },
+      { label: '邮件联系', href: 'mailto:ying.yan@nuist.edu.cn' },
+    ],
+  },
+  {
+    role: '临床核心',
+    title: '主治医生',
+    name: '刘娜',
+    affil: '南京脑科医院（南京市胸科医院）',
+    img: '/images/team/liu-na.jpg',
+    bio: '依托南京脑科医院（南京市胸科医院）临床场景，参与脑电数据采集、病例协作与脑科疾病辅助诊疗验证，推动实验室研究与真实医疗场景衔接。',
+    tags: ['临床数据采集', '病例协作', '诊疗验证'],
+    links: [],
+  },
+];
+
+const advisors = [
+  { role: '学术顾问', title: '主任医师',     name: '方申存',            img: '/images/team/fang-shencun.jpg',      affil: '南京脑科医院（南京市胸科医院）', desc: '呼吸二科主任 · 南京医科大学硕士研究生导师' },
+  { role: '学术顾问', title: '教授',          name: '蔡骏',              img: '/images/team/cai-jun.jpg',           affil: '南京信息工程大学',              desc: 'IEEE Senior Member · 智能控制与脑机接口数据分析' },
+  { role: '学术顾问', title: '教授',          name: 'Adrian David Cheok',img: '/images/team/adrian-david-cheok.png',affil: '南京信息工程大学',              desc: '全职引进教授 · 曾任新加坡国立大学教授' },
+  { role: '学术顾问', title: '教授',          name: '吴奇',              img: '/images/team/吴奇.png',              affil: '上海交通大学',                  desc: '国家杰出青年基金获得者 · 具身智能与机器人' },
+  { role: '学术顾问', title: 'IEEE Life Fellow', name: 'Peter B. Luh',  img: '/images/team/Peter B. Luh.jpg',      affil: 'University of Connecticut',    desc: 'Board of Trustees Distinguished Professor' },
+  { role: '学术顾问', title: 'IEEE Life Fellow', name: 'Krishna R. Pattipati', img: '/images/team/Krishna Pattipati.jpg', affil: 'University of Connecticut', desc: 'Board of Trustees Distinguished Professor Emeritus' },
+];
+
+const grads = [
+  { name: '朱家琦', badge: '24级研究生 · 自动化', img: '/images/team/朱家琦.jpg', focuses: ['脑电信号分析', '机器学习'] },
+  { name: '宗禹胄', badge: '26级研究生 · 自动化', img: '/images/team/宗禹胄.jpg', focuses: [] },
+  { name: '陆思语', badge: '26级研究生 · 自动化', img: '/images/team/陆思语.jpg', focuses: [] },
+  { name: '王宇森', badge: '26级研究生 · 自动化', img: '/images/team/王宇森.jpg', focuses: [] },
+  { name: '沈培涵', badge: '26级研究生 · 自动化', img: '/images/team/沈培涵.jpg', focuses: [] },
+];
+
+const undergrads = [
+  { char: '杨', name: '许穆杨', badge: '24届本科生 · 计算机科学与技术', img: '/images/team/许穆杨.png', focuses: ['脑电信号处理', '运动意图解码'] },
+  { char: '淼', name: '刘浩淼', badge: '25级本科生 · 计算机科学与技术', img: '/images/team/刘浩淼.png', focuses: ['深度学习', '神经信号处理'] },
+  { char: '帅', name: '田帅',   badge: '25级本科生 · 通信工程',         img: '/images/team/田帅.png',   focuses: ['模式识别', '系统集成'] },
+  { char: '涵', name: '章子涵', badge: '25级本科生 · 通信工程',         img: '/images/team/章子涵.png', focuses: ['通信信号处理'] },
+  { char: '昊', name: '王昊',   badge: '23级本科生 · 计算机科学与技术', img: '/images/team/王昊.png',   focuses: ['脑机接口系统', '嵌入式开发'] },
+  { char: '志', name: '刘志',   badge: '23级本科生 · 电子信息',         img: '/images/team/刘志.jpg',   focuses: ['电子系统设计'] },
+];
 ---
 
-<Layout title="团队成员 · 金牛湖脑机实验室" description="汇聚多学科背景研究人员，共同推进脑机接口前沿探索">
+<Layout title="团队成员 · 金牛湖脑机实验室" description="汇聚神经工程、信号处理、机器人控制等多学科背景的研究人员，共同推进脑机接口前沿探索">
   <Nav active="home" />
 
-  <div class="page-header">
+  <header class="page-header">
     <div class="container">
       <a href="/" class="back-link">
         <svg viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
         返回主页
       </a>
-      <div class="section-label">TEAM</div>
-      <h1 class="ph-title">团队成员</h1>
+      <div class="section-label">Team</div>
+      <h1 class="ph-title">核心团队</h1>
       <p class="ph-desc">汇聚神经工程、信号处理、机器人控制等多学科背景的研究人员，共同推进脑机接口前沿探索。</p>
     </div>
-  </div>
+  </header>
 
-  <div class="team-body">
+  <main class="team-body">
     <div class="container">
 
-      <!-- Mentor -->
-      <div class="section-block fade-up">
-        <h2 class="block-title">指导老师</h2>
-        <div class="mentor-full">
-          <img src="/images/team/yan-ying.png" alt="严颖" class="mentor-avatar" />
-          <div class="mentor-info">
-            <span class="mentor-role">硕士生导师 · 副教授</span>
-            <h3 class="mentor-name">严颖</h3>
-            <p class="mentor-bio">
-              南京信息工程大学自动化学院副教授、硕士生导师。博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。现兼任电气工程系副系主任、江苏省气象能源利用与控制工程技术研究中心副主任。
-            </p>
-            <div class="mentor-links">
-              <a href="https://faculty.nuist.edu.cn/yanying/zh_CN/index.htm" target="_blank" rel="noopener" class="arrow-link">
-                导师主页
-                <span class="arrow-icon">
-                  <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
-                  <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
-                </span>
-              </a>
-              <a href="mailto:ying.yan@nuist.edu.cn" class="arrow-link" style="color:var(--text-2)">
-                邮件联系
-                <span class="arrow-icon">
-                  <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
-                  <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
-                </span>
-              </a>
-            </div>
-          </div>
+      <!-- Core Members -->
+      <div class="t-section fade-up">
+        <div class="t-section-head">
+          <span>Core Members</span>
+          <strong>{coreTeam.length}</strong>
+        </div>
+        <div class="core-grid">
+          {coreTeam.map((m) => (
+            <article class="core-card">
+              <div class="core-card-head">
+                <span class="ck-kicker">{m.role}</span>
+                <span class="ck-title">{m.title}</span>
+              </div>
+              <div class="core-profile">
+                <img src={m.img} alt={m.name} class="core-avatar" />
+                <div class="core-body">
+                  <h3 class="core-name">{m.name}</h3>
+                  <span class="core-affil">{m.affil}</span>
+                  <p class="core-bio">{m.bio}</p>
+                </div>
+              </div>
+              <div class="core-tags">
+                {m.tags.map(tag => <span>{tag}</span>)}
+              </div>
+              <div class="core-links">
+                {m.links.map(link => (
+                  <a
+                    href={link.href}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel="noopener"
+                    class="arrow-link"
+                  >
+                    {link.label}
+                    <span class="arrow-icon">
+                      <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+                      <svg class="arrow-in"  viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </article>
+          ))}
         </div>
       </div>
 
-      <!-- Advisors -->
-      <div class="section-block fade-up delay-1">
-        <h2 class="block-title">学术顾问</h2>
-        <div class="advisors-grid">
-          <div class="advisor-full">
-            <img src="/images/team/吴奇.png" alt="吴奇" class="advisor-full-avatar" />
-            <div class="advisor-full-info">
-              <span class="mentor-role">学术顾问 · 教授</span>
-              <h3 class="advisor-full-name">吴奇</h3>
-              <p class="advisor-affil-full">上海交通大学</p>
-            </div>
-          </div>
-          <div class="advisor-full">
-            <img src="/images/team/Krishna Pattipati.jpg" alt="Krishna R. Pattipati" class="advisor-full-avatar" />
-            <div class="advisor-full-info">
-              <span class="mentor-role">学术顾问 · 教授</span>
-              <h3 class="advisor-full-name">Krishna R. Pattipati</h3>
-              <p class="advisor-affil-full">University of Connecticut</p>
-            </div>
-          </div>
+      <!-- Academic Advisors -->
+      <div class="t-section fade-up delay-1">
+        <div class="t-section-head">
+          <span>Academic Advisors</span>
+          <strong>{advisors.length}</strong>
+        </div>
+        <div class="advisor-grid">
+          {advisors.map((a) => (
+            <article class="advisor-card">
+              <img src={a.img} alt={a.name} class="advisor-avatar" />
+              <div class="advisor-info">
+                <span class="advisor-role">{a.role} · {a.title}</span>
+                <span class="advisor-name">{a.name}</span>
+                <span class="advisor-affil">{a.affil}</span>
+                <span class="advisor-desc">{a.desc}</span>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
 
-      <!-- Members -->
-      <div class="section-block fade-up delay-2">
-        <h2 class="block-title">实验室成员</h2>
-
-        <div class="members-group-label">本科生</div>
-        <div class="members-grid">
-          <div class="member-card">
-            <div class="member-avatar">杨</div>
-            <div class="member-name">许穆杨</div>
-            <div class="member-badge">24届本科生 · 计算机科学与技术</div>
-            <div class="member-focus">脑电信号处理</div>
-            <div class="member-focus">运动意图解码</div>
-          </div>
-          <div class="member-card">
-            <div class="member-avatar">淼</div>
-            <div class="member-name">刘浩淼</div>
-            <div class="member-badge">25级本科生 · 计算机科学与技术</div>
-            <div class="member-focus">深度学习</div>
-            <div class="member-focus">神经信号处理</div>
-          </div>
-          <div class="member-card">
-            <div class="member-avatar">帅</div>
-            <div class="member-name">田帅</div>
-            <div class="member-badge">25级本科生 · 计算机科学与技术</div>
-            <div class="member-focus">模式识别</div>
-            <div class="member-focus">系统集成</div>
-          </div>
-          <div class="member-card">
-            <div class="member-avatar">涵</div>
-            <div class="member-name">章子涵</div>
-            <div class="member-badge">25级本科生 · 通信工程</div>
-            <div class="member-focus">通信信号处理</div>
-          </div>
-          <div class="member-card">
-            <div class="member-avatar">昊</div>
-            <div class="member-name">王昊</div>
-            <div class="member-badge">23级本科生 · 计算机科学与技术</div>
-            <div class="member-focus">脑机接口系统</div>
-            <div class="member-focus">嵌入式开发</div>
-          </div>
-          <div class="member-card">
-            <div class="member-avatar">志</div>
-            <div class="member-name">刘志</div>
-            <div class="member-badge">23级本科生 · 电子信息</div>
-            <div class="member-focus">电子系统设计</div>
-          </div>
+      <!-- Undergraduate Students -->
+      <div class="t-section fade-up delay-2">
+        <div class="t-section-head">
+          <span>Undergraduate Students</span>
+          <strong>{undergrads.length}</strong>
         </div>
-
-        <div class="members-group-label" style="margin-top: 40px;">硕士研究生</div>
-        <div class="members-grid">
-          <div class="member-card">
-            <img src="/images/team/朱家琦.jpg" alt="朱家琦" class="member-avatar member-photo" />
-            <div class="member-name">朱家琦</div>
-            <div class="member-badge">24级硕士研究生 · 自动化</div>
-            <div class="member-focus">脑电信号分析</div>
-            <div class="member-focus">机器学习</div>
-          </div>
-          <div class="member-card">
-            <img src="/images/team/宗禹胄.jpg" alt="宗禹胄" class="member-avatar member-photo" />
-            <div class="member-name">宗禹胄</div>
-            <div class="member-badge">26级硕士研究生 · 自动化</div>
-          </div>
-          <div class="member-card">
-            <img src="/images/team/陆思语.jpg" alt="陆思语" class="member-avatar member-photo" />
-            <div class="member-name">陆思语</div>
-            <div class="member-badge">26级硕士研究生 · 自动化</div>
-          </div>
-          <div class="member-card">
-            <img src="/images/team/王宇森.jpg" alt="王宇森" class="member-avatar member-photo" />
-            <div class="member-name">王宇森</div>
-            <div class="member-badge">26级硕士研究生 · 自动化</div>
-          </div>
-          <div class="member-card">
-            <img src="/images/team/沈培涵.jpg" alt="沈培涵" class="member-avatar member-photo" />
-            <div class="member-name">沈培涵</div>
-            <div class="member-badge">26级硕士研究生 · 自动化</div>
-          </div>
+        <div class="member-grid member-grid-wide">
+          {undergrads.map((m) => (
+            <article class="member-card">
+              {m.img ? (
+                <img src={m.img} alt={m.name} class="member-avatar member-photo" />
+              ) : (
+                <div class="member-avatar">{m.char}</div>
+              )}
+              <div class="member-name">{m.name}</div>
+              <div class="member-badge">{m.badge}</div>
+              {m.focuses.map(f => <div class="member-focus">{f}</div>)}
+            </article>
+          ))}
         </div>
       </div>
 
-      <!-- Join -->
-      <div class="section-block join-block fade-up delay-2">
-        <h2 class="block-title">加入我们</h2>
+      <!-- Graduate Students -->
+      <div class="t-section fade-up delay-3">
+        <div class="t-section-head">
+          <span>Graduate Students</span>
+          <strong>{grads.length}</strong>
+        </div>
+        <div class="member-grid">
+          {grads.map((m) => (
+            <article class="member-card">
+              <img src={m.img} alt={m.name} class="member-avatar member-photo" />
+              <div class="member-name">{m.name}</div>
+              <div class="member-badge">{m.badge}</div>
+              {m.focuses.map(f => <div class="member-focus">{f}</div>)}
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <!-- Join CTA -->
+      <div class="join-block fade-up delay-4">
+        <div class="join-kicker">Join Us</div>
+        <h2 class="join-title">加入我们</h2>
         <p class="join-text">
           欢迎对脑机接口、EEG 信号分析、神经工程、嵌入式系统、机器人控制等方向感兴趣的研究生与本科生加入团队。课题组提供完善的实验设备、充足的科研经费与定期的国际学术交流机会。
         </p>
@@ -166,25 +191,27 @@ import Footer from '../components/Footer.astro';
           了解详情
           <span class="arrow-icon">
             <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
-            <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+            <svg class="arrow-in"  viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
           </span>
         </a>
       </div>
 
     </div>
-  </div>
+  </main>
 
   <Footer />
 </Layout>
 
 <script>
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.08 });
+  const io = new IntersectionObserver(
+    (entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }); },
+    { threshold: 0.06 }
+  );
   document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
 </script>
 
 <style>
+  /* ── Page Header ─────────────────────────────────── */
   .page-header {
     padding: 140px 0 72px;
     background: var(--bg-surface);
@@ -197,136 +224,201 @@ import Footer from '../components/Footer.astro';
   }
   .back-link:hover { color: var(--text-2); }
   .back-link svg { width: 16px; height: 16px; }
-
   .ph-title {
     font-size: clamp(40px, 6vw, 72px);
     font-weight: 700; letter-spacing: -0.03em;
-    line-height: 1.05; margin-bottom: 16px; margin-top: 12px;
+    line-height: 1.05; margin: 12px 0 16px;
   }
   .ph-desc {
     font-size: 17px; color: var(--text-2);
-    line-height: 1.7; max-width: 580px;
+    line-height: 1.7; max-width: 560px;
   }
 
+  /* ── Body ────────────────────────────────────────── */
   .team-body { padding: 80px 0 120px; }
 
-  .section-block { margin-bottom: 80px; }
-  .block-title {
-    font-size: 12px; font-family: var(--font-mono);
-    letter-spacing: 3px; color: var(--text-3);
-    text-transform: uppercase; margin-bottom: 32px;
+  /* ── Section Wrapper ─────────────────────────────── */
+  .t-section { margin-bottom: 72px; }
+
+  .t-section-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-bottom: 14px; margin-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .t-section-head span {
+    font-size: 10px; font-family: var(--font-mono);
+    letter-spacing: 1.6px; text-transform: uppercase; color: var(--text-3);
+  }
+  .t-section-head strong {
+    display: flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 50%;
+    background: var(--bg-elevated); color: var(--accent);
+    font-size: 12px; font-weight: 700;
   }
 
-  /* Mentor */
-  .mentor-full {
-    display: grid; grid-template-columns: 120px 1fr;
-    gap: 48px; align-items: start;
-    padding: 48px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-  }
-  .mentor-avatar {
-    width: 120px; height: 120px;
-    border-radius: 50%;
-    border: 2px solid var(--accent-mid);
-    object-fit: cover;
-    object-position: top;
-  }
-  .mentor-role {
-    display: inline-block;
-    font-size: 11px; font-family: var(--font-mono); letter-spacing: 2px;
-    color: var(--accent); opacity: 0.8; margin-bottom: 10px;
-  }
-  .mentor-name { font-size: 32px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; }
-  .mentor-bio { font-size: 16px; color: var(--text-2); line-height: 1.85; margin-bottom: 28px; max-width: 640px; }
-  .mentor-links { display: flex; gap: 32px; flex-wrap: wrap; }
-  .mentor-links .arrow-link { font-size: 15px; }
-
-  /* Advisors */
-  .advisors-grid {
+  /* ── Core Cards ──────────────────────────────────── */
+  .core-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 16px;
   }
-  .advisor-full {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 24px;
-    align-items: center;
-    padding: 32px;
+  .core-card {
+    display: flex; flex-direction: column;
+    padding: 24px 28px;
     border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-md);
+    background: var(--bg);
   }
-  .advisor-full-avatar {
-    width: 80px; height: 80px;
-    border-radius: 50%;
-    border: 1.5px solid var(--border-md);
-    object-fit: cover;
-    object-position: top;
+  .core-card-head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-bottom: 16px;
   }
-  .advisor-full-info { display: flex; flex-direction: column; gap: 4px; }
-  .advisor-full-name { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
-  .advisor-affil-full { font-size: 14px; color: var(--text-2); }
+  .ck-kicker {
+    font-size: 10px; font-family: var(--font-mono);
+    letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .ck-title {
+    font-size: 10px; font-family: var(--font-mono);
+    letter-spacing: 1.6px; color: var(--text-3);
+  }
+  .core-profile {
+    display: grid; grid-template-columns: 96px 1fr;
+    gap: 24px; align-items: start; margin-bottom: 16px;
+  }
+  .core-avatar {
+    width: 96px; height: 96px; border-radius: 50%;
+    border: 2px solid var(--accent-mid);
+    object-fit: cover; object-position: top; flex-shrink: 0;
+  }
+  .core-name {
+    font-size: 28px; font-weight: 800;
+    letter-spacing: -0.02em; margin-bottom: 6px;
+  }
+  .core-affil {
+    display: block; font-size: 11px; font-family: var(--font-mono);
+    letter-spacing: 0.5px; color: var(--text-3); margin-bottom: 10px;
+  }
+  .core-bio {
+    font-size: 14px; color: var(--text-2); line-height: 1.75;
+  }
+  .core-tags {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    margin-top: auto; padding-top: 16px;
+  }
+  .core-tags span {
+    font-size: 10px; font-family: var(--font-mono);
+    padding: 4px 10px; border-radius: var(--radius-sm);
+    background: var(--bg-elevated); color: var(--text-2);
+  }
+  .core-links {
+    display: flex; gap: 24px; flex-wrap: wrap; align-items: center;
+    padding-top: 16px; min-height: 40px;
+  }
+  .core-links .arrow-link { font-size: 14px; color: var(--text-2); }
 
-  /* Members */
-  .members-group-label {
-    font-size: 11px; font-family: var(--font-mono); letter-spacing: 2px;
-    color: var(--text-3); text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-  .members-grid {
+  /* ── Advisor Cards ───────────────────────────────── */
+  .advisor-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .advisor-card {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 18px 20px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg);
+    transition: background 0.2s;
+  }
+  .advisor-card:hover { background: var(--bg-surface); }
+  .advisor-avatar {
+    width: 56px; height: 56px; border-radius: 50%;
+    border: 1.5px solid var(--border-md);
+    object-fit: cover; object-position: top; flex-shrink: 0;
+  }
+  .advisor-info { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .advisor-role {
+    font-size: 9px; font-family: var(--font-mono);
+    letter-spacing: 1.3px; color: var(--text-3); text-transform: uppercase;
+  }
+  .advisor-name { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.2; }
+  .advisor-affil { font-size: 12px; color: var(--text-2); line-height: 1.35; }
+  .advisor-desc { font-size: 11px; color: var(--text-3); line-height: 1.4; }
+
+  /* ── Member Grid ─────────────────────────────────── */
+  .member-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
   }
+  .member-grid-wide {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
   .member-card {
     background: var(--bg);
-    padding: 40px 28px;
+    padding: 36px 20px;
     text-align: center;
     transition: background 0.2s;
   }
   .member-card:hover { background: var(--bg-surface); }
   .member-avatar {
-    width: 64px; height: 64px;
-    border-radius: 50%;
-    background: var(--accent-dim);
-    border: 1px solid var(--accent-mid);
+    width: 72px; height: 72px; border-radius: 50%;
+    background: var(--accent-dim); border: 1px solid var(--accent-mid);
     display: flex; align-items: center; justify-content: center;
-    font-size: 20px; font-weight: 600; color: var(--accent);
+    font-size: 22px; font-weight: 600; color: var(--accent);
     margin: 0 auto 16px;
   }
   .member-photo {
-    object-fit: cover;
-    object-position: top;
-    background: none;
+    object-fit: cover; object-position: top; background: none;
   }
   .member-name { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
   .member-badge {
-    font-size: 11px; color: var(--accent); opacity: 0.6;
-    font-family: var(--font-mono); margin-bottom: 12px;
+    font-size: 11px; font-family: var(--font-mono);
+    color: var(--accent); opacity: 0.6; margin-bottom: 10px;
   }
-  .member-focus { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+  .member-focus { font-size: 12px; color: var(--text-2); line-height: 1.6; }
 
-  /* Join */
+  /* ── Join CTA ────────────────────────────────────── */
   .join-block {
     padding: 48px;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
+    background: var(--bg-surface);
+  }
+  .join-kicker {
+    font-size: 10px; font-family: var(--font-mono);
+    letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--text-3); margin-bottom: 12px;
+  }
+  .join-title {
+    font-size: 28px; font-weight: 700;
+    letter-spacing: -0.02em; margin-bottom: 16px;
   }
   .join-text {
     font-size: 16px; color: var(--text-2);
-    line-height: 1.85; max-width: 680px;
-    margin-bottom: 24px;
+    line-height: 1.85; max-width: 640px; margin-bottom: 24px;
   }
 
+  /* ── Responsive ──────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .advisor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
   @media (max-width: 768px) {
-    .mentor-full { grid-template-columns: 1fr; gap: 24px; padding: 32px; }
-    .mentor-avatar { width: 80px; height: 80px; }
-    .mentor-name { font-size: 28px; }
-    .advisor-full { grid-template-columns: 60px 1fr; gap: 16px; padding: 24px; }
-    .advisor-full-avatar { width: 60px; height: 60px; }
-    .members-grid { grid-template-columns: repeat(2, 1fr); }
+    .core-grid { grid-template-columns: 1fr; }
+    .core-profile { grid-template-columns: 80px 1fr; gap: 16px; }
+    .core-avatar { width: 80px; height: 80px; }
+    .core-name { font-size: 24px; }
+    .member-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .member-grid-wide { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .page-header { padding: 100px 0 48px; }
+    .advisor-grid { grid-template-columns: 1fr; }
+    .member-grid,
+    .member-grid-wide { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .join-block { padding: 32px 24px; }
   }
 </style>

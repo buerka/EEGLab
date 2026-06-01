@@ -9,7 +9,11 @@ import awardsData from '../data/awards.toml';
 import papersData from '../data/papers.toml';
 import galleryData from '../data/gallery.toml';
 
-const awards = (awardsData as any).awards as { year: number; name: string; description: string; image?: string }[];
+type Award = { year: number; name: string; description: string; image?: string; images?: string[] };
+const awards = ((awardsData as any).awards as Award[]).map((award) => ({
+  ...award,
+  images: award.images ?? (award.image ? [award.image] : []),
+}));
 const papers = (papersData as any).papers as Paper[];
 const filterTags = (papersData as any).filter_tags as string[];
 const galleryGrid = (galleryData as any).grid as { src: string; label: string; tag: string }[];
@@ -110,9 +114,13 @@ const galleryGrid = (galleryData as any).grid as { src: string; label: string; t
               <div class="award-body">
                 <div class="award-name">{award.name}</div>
                 <div class="award-desc">{award.description}</div>
-                {award.image && (
-                  <div class="award-img">
-                    <img src={award.image} alt={award.name} loading="lazy" />
+                {award.images.length > 0 && (
+                  <div class="award-images">
+                    {award.images.map((image) => (
+                      <div class="award-img">
+                        <img src={image} alt={award.name} loading="lazy" />
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>
@@ -336,9 +344,17 @@ const galleryGrid = (galleryData as any).grid as { src: string; label: string; t
     font-variant-numeric: tabular-nums;
   }
   .award-body { padding-top: 2px; }
-  .award-img {
+  .award-images {
     margin-top: 16px;
-    width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .award-img {
+    width: 220px;
+    max-width: 100%;
+    flex: 0 1 220px;
   }
   .award-img img {
     width: 100%;

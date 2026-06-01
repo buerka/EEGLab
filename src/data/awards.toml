@@ -1,7 +1,7 @@
 [[awards]]
 year = 2025
 name = "中国技协职工技术创新成果二等奖"
-description = "基于脑电信号与新型可解释机器学习方法的脑科疾病诊断研究，第一完成人，2025年2月"
+description = "基于脑电信号与新型可解释机器学习方法的脑科疾病诊断研究，严颖（第一完成人），2025年2月"
 image = "/images/achievements/award-zhijiao-2nd-cert.jpg"
 
 [[awards]]
@@ -13,7 +13,7 @@ image = "/images/achievements/award-innovation-intl-bronze.png"
 [[awards]]
 year = 2024
 name = '全省职工"五小"活动省级入库项目'
-description = "第一完成人，2024年9月"
+description = "严颖（第一完成人），2024年9月"
 
 [[awards]]
 year = 2024
@@ -30,7 +30,10 @@ description = '2024年度"双创之星"评定，金牛湖产教融合园区'
 year = 2023
 name = "IEEE PHM 最佳会议论文奖（Best Paper Award）"
 description = "第14届 IEEE Global Reliability & Prognostics and Health Management Conference，杭州，2023年10月"
-image = "/images/achievements/award-phm-hangzhou-bestpaper-ceremony.jpg"
+images = [
+  "/images/achievements/award-phm-hangzhou-bestpaper-cert.jpg",
+  "/images/achievements/award-phm-hangzhou-bestpaper-ceremony.jpg",
+]
 
 [[awards]]
 year = 2025
@@ -95,5 +98,8 @@ image = "/images/achievements/award-kehuang-jb-3rd.jpg"
 [[awards]]
 year = 2023
 name = "江苏省自动化学会科学技术奖三等奖"
-description = "智能建筑暖通空调系统的故障诊断与预测研究，第一完成人，南京，2024年2月"
-image = "/images/achievements/award-jiangsu-automation-ceremony.jpg"
+description = "智能建筑暖通空调系统的故障诊断与预测研究，严颖（第一完成人），南京，2024年2月"
+images = [
+  "/images/achievements/award-jiangsu-automation-cert.jpg",
+  "/images/achievements/award-jiangsu-automation-ceremony.jpg",
+]
