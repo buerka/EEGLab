@@ -96,7 +96,10 @@ const advisors = [
     desc: 'Board of Trustees Distinguished Professor Emeritus',
   },
 ];
-const featuredPapers = papers.slice(0, 3);
+const featuredPapers = papers
+  .filter((p: any) => p.representative === true)
+  .sort((a, b) => (b.impactFactor ?? 0) - (a.impactFactor ?? 0))
+  .slice(0, 3);
 ---
 
 <Layout title="金牛湖脑机实验室 · 南京信息工程大学">

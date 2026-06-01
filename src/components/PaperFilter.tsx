@@ -9,6 +9,9 @@ export interface Paper {
   quartile?: string;
   impactFactor?: number;
   isTop?: boolean;
+  lead?: boolean;
+  field?: string;
+  representative?: boolean;
   tags: string[];
   type: 'journal' | 'conference';
 }
@@ -23,18 +26,27 @@ function highlightAuthor(authors: string) {
 }
 
 export default function PaperFilter({ papers, filterTags }: Props) {
-  const [active, setActive] = useState('全部');
+  const [active, setActive] = useState('代表作');
+  const paperTags = filterTags.filter(tag => tag !== '全部');
 
-  const visible = active === '全部'
-    ? papers
-    : papers.filter(p => p.tags.includes(active));
+  const visible = active === '代表作'
+    ? papers.filter(p => p.representative === true)
+    : active === '全部'
+      ? papers
+      : papers.filter(p => p.tags.includes(active));
 
   const years = [...new Set(visible.map(p => p.year))].sort((a, b) => b - a);
 
   return (
     <div>
       <div className="filter-bar">
-        {filterTags.map(tag => (
+        <button
+          className={`filter-chip ${active === '代表作' ? 'active' : ''}`}
+          onClick={() => setActive('代表作')}
+        >
+          代表作
+        </button>
+        {paperTags.map(tag => (
           <button
             key={tag}
             className={`filter-chip ${active === tag ? 'active' : ''}`}
@@ -43,6 +55,12 @@ export default function PaperFilter({ papers, filterTags }: Props) {
             {tag}
           </button>
         ))}
+        <button
+          className={`filter-chip ${active === '全部' ? 'active' : ''}`}
+          onClick={() => setActive('全部')}
+        >
+          全部
+        </button>
       </div>
 
       <div className="paper-list">

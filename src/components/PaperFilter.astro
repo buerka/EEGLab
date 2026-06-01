@@ -15,11 +15,15 @@ function ifClass(imp: number) {
 }
 
 function highlightAuthor(authors: string) {
-  return authors.replace(/(Y\. Yan)/g, '<strong>$1</strong>');
+  return authors.replace(/(Ying Yan|Y\. Yan)/g, '<strong>$1</strong>');
 }
 
 const years = [...new Set(papers.map(p => p.year))].sort((a, b) => b - a);
 const paperTags = filterTags.filter(t => t !== '全部');
+
+function isRepresentativePaper(paper: Paper) {
+  return (paper as any).representative === true;
+}
 ---
 
 <div id="paper-filter-root">
@@ -32,11 +36,21 @@ const paperTags = filterTags.filter(t => t !== '全部');
   </div>
 
   <div class="paper-list">
-    {years.map(year => (
-      <div data-year={year}>
+    {years.map(year => {
+      const yearPapers = papers.filter(p => p.year === year);
+      const yearHasRepresentative = yearPapers.some(isRepresentativePaper);
+
+      return (
+      <div data-year={year} style={yearHasRepresentative ? '' : 'display:none'}>
         <div class="year-divider"><span>{year}</span></div>
-        {papers.filter(p => p.year === year).map(paper => (
-          <div class="paper-row" data-num={paper.num} data-tags={paper.tags.join(',')} data-featured={((paper as any).lead && (paper as any).field === '脑机接口') ? 'true' : ''}>
+        {yearPapers.map(paper => (
+          <div
+            class="paper-row"
+            data-num={paper.num}
+            data-tags={paper.tags.join(',')}
+            data-featured={isRepresentativePaper(paper) ? 'true' : 'false'}
+            style={isRepresentativePaper(paper) ? '' : 'display:none'}
+          >
             <div class="pr-num">{paper.num}</div>
             <div class="pr-body">
               <div class="pr-title">{paper.title}</div>
@@ -62,7 +76,8 @@ const paperTags = filterTags.filter(t => t !== '全部');
           </div>
         ))}
       </div>
-    ))}
+      );
+    })}
     <div class="no-results" style="display:none">该分类下暂无论文</div>
   </div>
 </div>
@@ -72,33 +87,37 @@ const paperTags = filterTags.filter(t => t !== '全部');
   const groups = document.querySelectorAll('#paper-filter-root [data-year]');
   const noResults = document.querySelector('#paper-filter-root .no-results')!;
 
+  function applyFilter(tag: string) {
+    let any = false;
+    groups.forEach(group => {
+      const rows = group.querySelectorAll<HTMLElement>('.paper-row');
+      let groupHas = false;
+      rows.forEach(row => {
+        let show = true;
+        if (tag === '代表作') {
+          show = row.getAttribute('data-featured') === 'true';
+        } else if (tag !== '全部') {
+          const tags = row.getAttribute('data-tags')!.split(',');
+          show = tags.includes(tag);
+        }
+        row.style.display = show ? '' : 'none';
+        if (show) groupHas = true;
+      });
+      (group as HTMLElement).style.display = groupHas ? '' : 'none';
+      if (groupHas) any = true;
+    });
+    (noResults as HTMLElement).style.display = any ? 'none' : '';
+  }
+
   chips.forEach(chip => {
     chip.addEventListener('click', () => {
       const tag = chip.getAttribute('data-tag')!;
       chips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
-
-      let any = false;
-      groups.forEach(group => {
-        const rows = group.querySelectorAll<HTMLElement>('.paper-row');
-        let groupHas = false;
-        rows.forEach(row => {
-          let show = true;
-          if (tag === '代表作') {
-            show = row.getAttribute('data-featured') === 'true';
-          } else if (tag !== '全部') {
-            const tags = row.getAttribute('data-tags')!.split(',');
-            show = tags.includes(tag);
-          }
-          row.style.display = show ? '' : 'none';
-          if (show) groupHas = true;
-        });
-        (group as HTMLElement).style.display = groupHas ? '' : 'none';
-        if (groupHas) any = true;
-      });
-      (noResults as HTMLElement).style.display = any ? 'none' : '';
+      applyFilter(tag);
     });
   });
+  applyFilter('代表作');
 </script>
 
 <style>
