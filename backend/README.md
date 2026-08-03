@@ -59,7 +59,7 @@ Content-Type: application/json
   "orcid": "0000-0000-0000-0000",
   "googleScholarId": "...",
   "affiliation": "南京信息工程大学",
-  "avatarUrl": "/images/team/member.jpg"
+  "avatarUrl": "/images/team/member.webp"
 }
 ```
 

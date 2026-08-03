@@ -85,11 +85,11 @@ description = "描述"
 frontend/public/images/
 ├── achievements/   # 42张（产品/演示/临床/合作/专利/论文/获奖）
 │   └── award-*    # 18张获奖证书/现场图，命名规范 award-{描述}.{ext}
-├── research/       # 每方向各 .jpg + .png（arm/diagnosis/drone/glove/hand）
-├── team/           # 已有照片：yan-ying.png, 吴奇.png, Krishna Pattipati.jpg,
-│                   #           朱家琦.jpg, 宗禹胄.jpg, 陆思语.jpg, 王宇森.jpg, 沈培涵.jpg
-├── nuist-logo.png / nuist-logo.jpg
-└── ahjzu-logo.png
+├── research/       # 每方向各 .webp + -diagram.webp（arm/diagnosis/drone/glove/hand）
+├── team/           # 已有照片：yan-ying.webp, 吴奇.webp, Krishna Pattipati.webp,
+│                   #           朱家琦.webp, 宗禹胄.webp, 陆思语.webp, 王宇森.webp, 沈培涵.webp
+├── nuist-logo.webp / nuist-logo-photo.webp
+└── ahjzu-logo.webp
 
 frontend/public/videos/
 ├── demo-eeg-cap.mp4   # 脑电帽演示录屏

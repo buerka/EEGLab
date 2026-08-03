@@ -1,274 +1,274 @@
 # 首页瀑布流 · 左列（A 列）
 [[waterfall_a]]
-src = "/images/achievements/demo-lab-setup.png"
+src = "/images/achievements/demo-lab-setup.webp"
 [[waterfall_a]]
-src = "/images/achievements/patent-cert-1.png"
+src = "/images/achievements/patent-cert-1.webp"
 [[waterfall_a]]
-src = "/images/achievements/device-eeg-cap.png"
+src = "/images/achievements/device-eeg-cap.webp"
 [[waterfall_a]]
-src = "/images/achievements/coop-brain-hospital.jpg"
+src = "/images/achievements/coop-brain-hospital.webp"
 [[waterfall_a]]
-src = "/images/achievements/award-robot-ai-1st.png"
+src = "/images/achievements/award-robot-ai-1st.webp"
 [[waterfall_a]]
-src = "/images/achievements/patent-bci-1.png"
+src = "/images/achievements/patent-bci-1.webp"
 [[waterfall_a]]
-src = "/images/achievements/coop-signing.png"
+src = "/images/achievements/coop-signing.webp"
 [[waterfall_a]]
-src = "/images/achievements/demo-hospital-clinical.jpg"
+src = "/images/achievements/demo-hospital-clinical.webp"
 [[waterfall_a]]
-src = "/images/achievements/award-embedded-chip-2nd.png"
+src = "/images/achievements/award-embedded-chip-2nd.webp"
 [[waterfall_a]]
-src = "/images/achievements/product-spec-sheet.png"
+src = "/images/achievements/product-spec-sheet.webp"
 [[waterfall_a]]
-src = "/images/achievements/award-jiangsu-automation-ceremony.jpg"
+src = "/images/achievements/award-jiangsu-automation-ceremony.webp"
 [[waterfall_a]]
-src = "/images/achievements/award-zhijiao-2nd-cert.jpg"
+src = "/images/achievements/award-zhijiao-2nd-cert.webp"
 [[waterfall_a]]
-src = "/images/achievements/award-phm-hangzhou-bestpaper-cert.jpg"
+src = "/images/achievements/award-phm-hangzhou-bestpaper-cert.webp"
 [[waterfall_a]]
-src = "/images/achievements/award-kehuang-jb-1st.jpg"
+src = "/images/achievements/award-kehuang-jb-1st.webp"
 [[waterfall_a]]
-src = "/images/achievements/award-tiaozhanbei-anhui-2nd.png"
+src = "/images/achievements/award-tiaozhanbei-anhui-2nd.webp"
 [[waterfall_a]]
-src = "/images/achievements/award-jiangsu-energy-3rd.jpg"
+src = "/images/achievements/award-jiangsu-energy-3rd.webp"
 
 # 首页瀑布流 · 右列（B 列）
 [[waterfall_b]]
-src = "/images/achievements/demo-bci-system-diagram.png"
+src = "/images/achievements/demo-bci-system-diagram.webp"
 [[waterfall_b]]
-src = "/images/achievements/patent-cert-2.png"
+src = "/images/achievements/patent-cert-2.webp"
 [[waterfall_b]]
-src = "/images/achievements/award-smart-car-1st.png"
+src = "/images/achievements/award-smart-car-1st.webp"
 [[waterfall_b]]
-src = "/images/achievements/coop-hospital.png"
+src = "/images/achievements/coop-hospital.webp"
 [[waterfall_b]]
-src = "/images/achievements/paper-cert-mla2024.png"
+src = "/images/achievements/paper-cert-mla2024.webp"
 [[waterfall_b]]
-src = "/images/achievements/coop-tianchang.jpg"
+src = "/images/achievements/coop-tianchang.webp"
 [[waterfall_b]]
-src = "/images/achievements/award-raicom-2nd.png"
+src = "/images/achievements/award-raicom-2nd.webp"
 [[waterfall_b]]
-src = "/images/achievements/coop-incubation.png"
+src = "/images/achievements/coop-incubation.webp"
 [[waterfall_b]]
-src = "/images/achievements/award-phm-hangzhou-bestpaper-ceremony.jpg"
+src = "/images/achievements/award-phm-hangzhou-bestpaper-ceremony.webp"
 [[waterfall_b]]
-src = "/images/achievements/award-zhijiao-2nd-plaque.jpg"
+src = "/images/achievements/award-zhijiao-2nd-plaque.webp"
 [[waterfall_b]]
-src = "/images/achievements/award-innovation-intl-bronze.png"
+src = "/images/achievements/award-innovation-intl-bronze.webp"
 [[waterfall_b]]
-src = "/images/achievements/award-huichuang-youth-1st.png"
+src = "/images/achievements/award-huichuang-youth-1st.webp"
 [[waterfall_b]]
-src = "/images/achievements/award-jiangsu-robot-1st.png"
+src = "/images/achievements/award-jiangsu-robot-1st.webp"
 [[waterfall_b]]
-src = "/images/achievements/award-jiangsu-automation-cert.jpg"
+src = "/images/achievements/award-jiangsu-automation-cert.webp"
 
 # 成果页展示网格
 [[grid]]
-src = "/images/achievements/product-spec-sheet.png"
+src = "/images/achievements/product-spec-sheet.webp"
 label = "柔性干电极脑电帽系统规格"
 tag = "产品"
 
 [[grid]]
-src = "/images/achievements/device-eeg-cap.png"
+src = "/images/achievements/device-eeg-cap.webp"
 label = "柔性干电极脑电帽实物"
 tag = "产品"
 
 [[grid]]
-src = "/images/achievements/demo-bci-system-diagram.png"
+src = "/images/achievements/demo-bci-system-diagram.webp"
 label = "BCI 闭环系统流程图"
 tag = "演示"
 
 [[grid]]
-src = "/images/achievements/demo-lab-setup.png"
+src = "/images/achievements/demo-lab-setup.webp"
 label = "实验室 BCI 闭环演示现场"
 tag = "演示"
 
 [[grid]]
-src = "/images/achievements/demo-hospital-clinical.jpg"
+src = "/images/achievements/demo-hospital-clinical.webp"
 label = "医院临床脑电信号采集测试"
 tag = "临床"
 
 [[grid]]
-src = "/images/achievements/coop-brain-hospital.jpg"
+src = "/images/achievements/coop-brain-hospital.webp"
 label = "南京脑科医院产学研战略合作框架协议"
 tag = "合作"
 
 [[grid]]
-src = "/images/achievements/coop-signing.png"
+src = "/images/achievements/coop-signing.webp"
 label = "合作协议签署现场"
 tag = "合作"
 
 [[grid]]
-src = "/images/achievements/coop-hospital.png"
+src = "/images/achievements/coop-hospital.webp"
 label = "安徽医科大学附一院战略合作协议"
 tag = "合作"
 
 [[grid]]
-src = "/images/achievements/coop-incubation.png"
+src = "/images/achievements/coop-incubation.webp"
 label = "金牛湖产教融合孵化入园协议"
 tag = "合作"
 
 [[grid]]
-src = "/images/achievements/coop-incubation-2.jpg"
+src = "/images/achievements/coop-incubation-2.webp"
 label = "金牛湖产教融合孵化入园意向协议"
 tag = "合作"
 
 [[grid]]
-src = "/images/achievements/coop-tianchang.jpg"
+src = "/images/achievements/coop-tianchang.webp"
 label = "天长研究院产学研合作框架协议"
 tag = "合作"
 
 [[grid]]
-src = "/images/achievements/coop-chest-hospital.png"
+src = "/images/achievements/coop-chest-hospital.webp"
 label = "南京市胸科医院科研合作协议"
 tag = "合作"
 
 [[grid]]
-src = "/images/achievements/patent-cert-1.png"
+src = "/images/achievements/patent-cert-1.webp"
 label = "发明专利证书（卷积神经网络脑电）"
 tag = "专利"
 
 [[grid]]
-src = "/images/achievements/patent-cert-2.png"
+src = "/images/achievements/patent-cert-2.webp"
 label = "发明专利证书（TKL梯度特征提取）"
 tag = "专利"
 
 [[grid]]
-src = "/images/achievements/patent-bci-1.png"
+src = "/images/achievements/patent-bci-1.webp"
 label = "国家知识产权局专利申请受理"
 tag = "专利"
 
 [[grid]]
-src = "/images/achievements/patent-bci-3.png"
+src = "/images/achievements/patent-bci-3.webp"
 label = "国家知识产权局专利申请受理"
 tag = "专利"
 
 [[grid]]
-src = "/images/achievements/patent-app-1.png"
+src = "/images/achievements/patent-app-1.webp"
 label = "发明专利申请公开（模糊逻辑动态网络）"
 tag = "专利"
 
 [[grid]]
-src = "/images/achievements/patent-app-2.png"
+src = "/images/achievements/patent-app-2.webp"
 label = "发明专利申请公开（多维泰勒框架）"
 tag = "专利"
 
 [[grid]]
-src = "/images/achievements/paper-sentiment.png"
+src = "/images/achievements/paper-sentiment.webp"
 label = "论文：中文情感分类统计矩网络"
 tag = "论文"
 
 [[grid]]
-src = "/images/achievements/paper-laplace.png"
+src = "/images/achievements/paper-laplace.webp"
 label = "论文：AHU故障诊断Laplace网络"
 tag = "论文"
 
 [[grid]]
-src = "/images/achievements/paper-radar.png"
+src = "/images/achievements/paper-radar.webp"
 label = "论文：雷达信号调制识别多维泰勒网络"
 tag = "论文"
 
 [[grid]]
-src = "/images/achievements/paper-fatigue.png"
+src = "/images/achievements/paper-fatigue.webp"
 label = "论文：驾驶员疲劳评估IDSRN"
 tag = "论文"
 
 [[grid]]
-src = "/images/achievements/paper-cert-mla2024.png"
+src = "/images/achievements/paper-cert-mla2024.webp"
 label = "CONF-MLA 2024 论文录用证书"
 tag = "论文"
 
 [[grid]]
-src = "/images/achievements/research-novelty-report.png"
+src = "/images/achievements/research-novelty-report.webp"
 label = "科技查新报告（教育部查新工作站）"
 tag = "论文"
 
 [[grid]]
-src = "/images/achievements/award-robot-ai-1st.png"
+src = "/images/achievements/award-robot-ai-1st.webp"
 label = "第27届机器人及AI大赛 一等奖"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-smart-car-1st.png"
+src = "/images/achievements/award-smart-car-1st.webp"
 label = "第20届全国智能汽车竞赛 一等奖"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-raicom-2nd.png"
+src = "/images/achievements/award-raicom-2nd.webp"
 label = "RAICOM机器人大赛 二等奖"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-embedded-chip-2nd.png"
+src = "/images/achievements/award-embedded-chip-2nd.webp"
 label = "全国嵌入式芯片设计竞赛 二等奖"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-jiangsu-automation-ceremony.jpg"
+src = "/images/achievements/award-jiangsu-automation-ceremony.webp"
 label = "江苏省自动化学会科学技术奖颁奖现场"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-jiangsu-automation-cert.jpg"
+src = "/images/achievements/award-jiangsu-automation-cert.webp"
 label = "江苏省自动化学会科技奖三等奖证书"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-huichuang-youth-1st.png"
+src = "/images/achievements/award-huichuang-youth-1st.webp"
 label = "第十届汇创青春 一等奖"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-kehuang-jb-1st.jpg"
+src = "/images/achievements/award-kehuang-jb-1st.webp"
 label = "科创江北高价值专利大赛 一等奖"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-kehuang-jb-2nd.jpg"
+src = "/images/achievements/award-kehuang-jb-2nd.webp"
 label = "科创江北高价值专利大赛 二等奖"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-kehuang-jb-3rd.jpg"
+src = "/images/achievements/award-kehuang-jb-3rd.webp"
 label = "科创江北高价值专利大赛 三等奖"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-zhijiao-2nd-cert.jpg"
+src = "/images/achievements/award-zhijiao-2nd-cert.webp"
 label = "中国职工技术协会职工技术创新成果二等奖证书"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-zhijiao-2nd-plaque.jpg"
+src = "/images/achievements/award-zhijiao-2nd-plaque.webp"
 label = "职工技术创新成果二等奖奖牌"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-phm-hangzhou-bestpaper-cert.jpg"
+src = "/images/achievements/award-phm-hangzhou-bestpaper-cert.webp"
 label = "IEEE PHM-Hangzhou 2023 最佳论文奖证书"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-phm-hangzhou-bestpaper-ceremony.jpg"
+src = "/images/achievements/award-phm-hangzhou-bestpaper-ceremony.webp"
 label = "IEEE PHM-Hangzhou 2023 颁奖现场"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-innovation-intl-bronze.png"
+src = "/images/achievements/award-innovation-intl-bronze.webp"
 label = "大学生创新大赛国际赛道国家铜奖"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-jiangsu-robot-1st.png"
+src = "/images/achievements/award-jiangsu-robot-1st.webp"
 label = "江苏省大学生机器人大赛 一等奖（冠军）"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-jiangsu-energy-3rd.jpg"
+src = "/images/achievements/award-jiangsu-energy-3rd.webp"
 label = "江苏省大学生节能减排竞赛 三等奖"
 tag = "获奖"
 
 [[grid]]
-src = "/images/achievements/award-tiaozhanbei-anhui-2nd.png"
+src = "/images/achievements/award-tiaozhanbei-anhui-2nd.webp"
 label = "挑战杯安徽省大学生科技作品竞赛 二等奖"
 tag = "获奖"

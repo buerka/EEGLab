@@ -6,14 +6,14 @@ year = 2025
 name = "中国技协职工技术创新成果二等奖"
 description = "基于脑电信号与新型可解释机器学习方法的脑科疾病诊断研究，2025年3月"
 teamAwardees = ["严颖", "蔡骏", "Adrian David Cheok"]
-image = "/images/achievements/award-zhijiao-2nd-cert.jpg"
+image = "/images/achievements/award-zhijiao-2nd-cert.webp"
 
 [[awards]]
 year = 2024
 name = "大学生创新大赛国际赛道国家铜奖"
 description = 'NeuroLynx — Portable Monitoring and Diagnosis Device for Neurological Disorders'
 teamMentors = ["严颖", "蔡骏", "Adrian David Cheok"]
-image = "/images/achievements/award-innovation-intl-bronze.png"
+image = "/images/achievements/award-innovation-intl-bronze.webp"
 
 [[awards]]
 year = 2024
@@ -26,7 +26,7 @@ year = 2024
 name = '江北新区"科创江北"高价值专利培育大赛一等奖'
 description = '第四届“科创江北、博动未来”高价值专利培育大赛，南京，2024年4月'
 teamAwardees = ["严颖", "蔡骏"]
-image = "/images/achievements/award-kehuang-jb-1st.jpg"
+image = "/images/achievements/award-kehuang-jb-1st.webp"
 
 [[awards]]
 year = 2024
@@ -39,8 +39,8 @@ name = "IEEE PHM 最佳会议论文奖（Best Paper Award）"
 description = "第14届 IEEE Global Reliability & Prognostics and Health Management Conference，杭州，2023年10月"
 teamAwardees = ["严颖", "蔡骏", "Adrian David Cheok"]
 images = [
-  "/images/achievements/award-phm-hangzhou-bestpaper-cert.jpg",
-  "/images/achievements/award-phm-hangzhou-bestpaper-ceremony.jpg",
+  "/images/achievements/award-phm-hangzhou-bestpaper-cert.webp",
+  "/images/achievements/award-phm-hangzhou-bestpaper-ceremony.webp",
 ]
 
 [[awards]]
@@ -49,49 +49,49 @@ name = "第十一届挑战杯·华安证券安徽省大学生课外学术科技�
 description = "脑电图灵——智能临床脑科疾病辅助诊断决策系统，2025年6月"
 teamMentors = ["严颖", "Adrian David Cheok"]
 teamAwardees = ["王昊", "许穆杨"]
-image = "/images/achievements/award-tiaozhanbei-anhui-2nd.png"
+image = "/images/achievements/award-tiaozhanbei-anhui-2nd.webp"
 
 [[awards]]
 year = 2025
 name = "第五届江苏省大学生节能减排社会实践与科技竞赛三等奖"
 description = "NeuroSync Home：智能热舒适优化脑电驱动节能系统设计，2025年5月"
 teamMentors = ["严颖", "蔡骏"]
-image = "/images/achievements/award-jiangsu-energy-3rd.jpg"
+image = "/images/achievements/award-jiangsu-energy-3rd.webp"
 
 [[awards]]
 year = 2025
 name = "第十届汇创青春上海大学生文创活动一等奖"
 description = "互联网+文化创意类，南京信息工程大学，2025年8月"
 teamMentors = ["严颖"]
-image = "/images/achievements/award-huichuang-youth-1st.png"
+image = "/images/achievements/award-huichuang-youth-1st.webp"
 
 [[awards]]
 year = 2024
 name = "江苏省大学生机器人大赛空中巡逻救援项目一等奖（冠军）"
 description = "第十二届江苏省大学生机器人大赛，南京信息工程大学腾蛟队，空中巡逻救援项目"
 teamMentors = ["严颖"]
-image = "/images/achievements/award-jiangsu-robot-1st.png"
+image = "/images/achievements/award-jiangsu-robot-1st.webp"
 
 [[awards]]
 year = 2025
 name = "第27届中国机器人及人工智能大赛全国总决赛一等奖"
 description = "机器人任务挑战赛（智慧药房），安徽建筑大学，2025年8月"
 teamAwardees = ["许穆杨"]
-image = "/images/achievements/award-robot-ai-1st.png"
+image = "/images/achievements/award-robot-ai-1st.webp"
 
 [[awards]]
 year = 2025
 name = "第21届全国大学生智能汽车竞赛一等奖"
 description = "室外5G远程驾驶无人车赛，安徽建筑大学，2025年12月"
 teamAwardees = ["许穆杨"]
-image = "/images/achievements/award-smart-car-1st.png"
+image = "/images/achievements/award-smart-car-1st.webp"
 
 [[awards]]
 year = 2025
 name = "RAICOM机器人开发者大赛全国总决赛二等奖"
 description = "“银龄守护”适老化服务机器人创新竞赛，安徽建筑大学，2025年10月"
 teamAwardees = ["许穆杨"]
-image = "/images/achievements/award-raicom-2nd.png"
+image = "/images/achievements/award-raicom-2nd.webp"
 
 [[awards]]
 year = 2025
@@ -99,21 +99,21 @@ name = "第八届全国大学生嵌入式芯片与系统设计竞赛中部赛区
 description = "基于 STM32G431RBT6 的非侵入式脑电采集与机械臂控制人机交互系统"
 teamMentors = ["严颖", "蔡骏"]
 teamAwardees = ["许穆杨"]
-image = "/images/achievements/award-embedded-chip-2nd.png"
+image = "/images/achievements/award-embedded-chip-2nd.webp"
 
 [[awards]]
 year = 2024
 name = "科创江北高价值专利培育大赛二等奖"
 description = '江北新区第四届“科创江北、博动未来”高价值专利培育大赛，2024年4月'
 teamAwardees = ["严颖", "蔡骏"]
-image = "/images/achievements/award-kehuang-jb-2nd.jpg"
+image = "/images/achievements/award-kehuang-jb-2nd.webp"
 
 [[awards]]
 year = 2024
 name = "科创江北高价值专利培育大赛三等奖"
 description = '江北新区第四届“科创江北、博动未来”高价值专利培育大赛，2024年4月'
 teamAwardees = ["严颖", "蔡骏"]
-image = "/images/achievements/award-kehuang-jb-3rd.jpg"
+image = "/images/achievements/award-kehuang-jb-3rd.webp"
 
 [[awards]]
 year = 2023
@@ -121,6 +121,6 @@ name = "江苏省自动化学会科学技术奖三等奖"
 description = "智能建筑暖通空调系统的故障诊断与预测研究，南京，2024年2月"
 teamAwardees = ["严颖"]
 images = [
-  "/images/achievements/award-jiangsu-automation-cert.jpg",
-  "/images/achievements/award-jiangsu-automation-ceremony.jpg",
+  "/images/achievements/award-jiangsu-automation-cert.webp",
+  "/images/achievements/award-jiangsu-automation-ceremony.webp",
 ]
