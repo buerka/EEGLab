@@ -87,3 +87,7 @@ python -m unittest discover -s tests -v
 - [前端开发说明](frontend/README.md)
 - [论文后端说明](backend/README.md)
 - [论文平台设计](docs/publications-platform.md)
+
+## 版权
+
+Copyright © 2026 buerka. All rights reserved. 本项目为专有项目，未经版权所有者事先书面许可，不得使用、复制、修改或分发。详见 [LICENSE](LICENSE)。

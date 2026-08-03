@@ -1,5 +1,7 @@
 # dependencies
 node_modules/
+.venv/
+venv/
 __pycache__/
 *.py[cod]
 backend/data/*.db
@@ -8,16 +10,30 @@ backend/data/*.db-*
 # build output
 dist/
 .astro/
+coverage/
+htmlcov/
+*.tsbuildinfo
+
+# test and tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
 
 # logs
 *.log
-output/playwright/
+/output/
 .playwright-cli/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .codex-dev-server*.log
+
+# temporary assets
+/frontend/public/temp/
 
 # environment
 .env
