@@ -1,0 +1,14 @@
+[[researchers]]
+slug = "ying-yan"
+name = "严颖"
+name_en = "Ying Yan"
+orcid = "0000-0002-3609-0496"
+openalex_author_id = "A5101638873"
+google_scholar_id = "lkDrRmoAAAAJ"
+affiliation = "南京信息工程大学"
+avatar_url = "/images/team/yan-ying.png"
+active = true
+sort_order = 10
+
+# 增加研究者时追加同结构条目，或者调用 POST /api/admin/researchers。
+# 同一篇共同论文会在 papers 表中只保存一次，通过 researcher_papers 关联多人。

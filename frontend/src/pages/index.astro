@@ -1,0 +1,1427 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import FeaturedPublications from '../components/FeaturedPublications';
+import PublicationCount from '../components/PublicationCount';
+import galleryData from '../data/gallery.toml';
+import { research } from '../data/research';
+
+const waterfallA = (galleryData as any).waterfall_a as { src: string }[];
+const waterfallB = (galleryData as any).waterfall_b as { src: string }[];
+
+const undergrads = [
+  { name: '许穆杨', badge: '24届本科生', char: '杨', img: '/images/team/许穆杨.png' },
+  { name: '刘浩淼', badge: '25级本科生', char: '淼', img: '/images/team/刘浩淼.png' },
+  { name: '田帅',   badge: '25级本科生', char: '帅', img: '/images/team/田帅.png' },
+  { name: '章子涵', badge: '25级本科生', char: '涵', img: '/images/team/章子涵.png' },
+  { name: '王昊',   badge: '23级本科生', char: '昊', img: '/images/team/王昊.png' },
+  { name: '刘志',   badge: '23级本科生', char: '志', img: '/images/team/刘志.jpg' },
+];
+const grads = [
+  { name: '朱家琦', badge: '24级研究生', img: '/images/team/朱家琦.jpg' },
+  { name: '宗禹胄', badge: '26级研究生', img: '/images/team/宗禹胄.jpg' },
+  { name: '陆思语', badge: '26级研究生', img: '/images/team/陆思语.jpg' },
+  { name: '王宇森', badge: '26级研究生', img: '/images/team/王宇森.jpg' },
+  { name: '沈培涵', badge: '26级研究生', img: '/images/team/沈培涵.jpg' },
+];
+const coreTeam = [
+  {
+    role: '学术核心',
+    title: '副教授 · 硕士生导师',
+    name: '严颖',
+    affil: '南京信息工程大学',
+    img: '/images/team/yan-ying.png',
+    bio: '博士毕业于美国康涅狄格大学，研究方向涵盖脑电信号分析、模式识别、机器学习与深度学习。主持多项国家自然科学基金及省部级科研项目，在 IEEE 系列期刊发表论文 70 余篇。',
+    tags: ['EEG 信号分析', '模式识别', '深度学习'],
+  },
+  {
+    role: '临床核心',
+    title: '主治医生',
+    name: '刘娜',
+    affil: '南京脑科医院',
+    img: '/images/team/liu-na.jpg',
+    bio: '依托南京脑科医院（南京市胸科医院）临床场景，参与脑电数据采集、病例协作与脑科疾病辅助诊疗验证，推动实验室研究与真实医疗场景衔接。',
+    tags: ['临床数据采集', '病例协作', '诊疗验证'],
+  },
+];
+const advisors = [
+  {
+    role: '学术顾问',
+    title: '主任医师',
+    name: '方申存',
+    img: '/images/team/fang-shencun.jpg',
+    affil: '南京脑科医院（南京市胸科医院）',
+    desc: '呼吸二科主任',
+  },
+  {
+    role: '学术顾问',
+    title: '教授',
+    name: '蔡骏',
+    img: '/images/team/cai-jun.jpg',
+    affil: '南京信息工程大学',
+    desc: 'IEEE Senior Member',
+  },
+  {
+    role: '学术顾问',
+    title: '教授',
+    name: 'Adrian David Cheok',
+    img: '/images/team/adrian-david-cheok.png',
+    affil: '南京信息工程大学',
+    desc: '全职引进教授 / 曾任新加坡国立大学教授',
+  },
+  {
+    role: '学术顾问',
+    title: '教授',
+    name: '吴奇',
+    img: '/images/team/吴奇.png',
+    affil: '上海交通大学',
+    desc: '国家杰出青年基金获得者',
+  },
+  {
+    role: '学术顾问',
+    title: 'IEEE Life Fellow',
+    name: 'Peter B. Luh',
+    img: '/images/team/Peter B. Luh.jpg',
+    affil: 'University of Connecticut',
+    desc: 'Board of Trustees Distinguished Professor',
+  },
+  {
+    role: '学术顾问',
+    title: 'IEEE Life Fellow',
+    name: 'Krishna R. Pattipati',
+    img: '/images/team/Krishna Pattipati.jpg',
+    affil: 'University of Connecticut',
+    desc: 'Board of Trustees Distinguished Professor Emeritus',
+  },
+];
+---
+
+<Layout title="金牛湖脑机实验室 · 南京信息工程大学">
+  <Nav active="home" />
+
+  <!-- ── RIGHT SECTION NAV ──────────────────────────────── -->
+  <nav id="section-nav" aria-label="页面导航">
+    <button class="sn-dot active" data-target="hero">
+      <span class="sn-label">首页</span>
+      <span class="sn-line"></span>
+    </button>
+    <button class="sn-dot" data-target="statement">
+      <span class="sn-label">理念</span>
+      <span class="sn-line"></span>
+    </button>
+    <button class="sn-dot" data-target="research">
+      <span class="sn-label">研究</span>
+      <span class="sn-line"></span>
+    </button>
+    <button class="sn-dot" data-target="team">
+      <span class="sn-label">团队</span>
+      <span class="sn-line"></span>
+    </button>
+    <button class="sn-dot" data-target="papers">
+      <span class="sn-label">论文</span>
+      <span class="sn-line"></span>
+    </button>
+    <button class="sn-dot" data-target="contact">
+      <span class="sn-label">联系</span>
+      <span class="sn-line"></span>
+    </button>
+  </nav>
+
+  <!-- ── FULL-PAGE SCROLL CONTAINER ────────────────────── -->
+  <div id="fp-container">
+
+    <!-- 01 · HERO ─────────────────────────────────────── -->
+    <section id="hero" class="fp-section fp-hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="/videos/promo.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Brain-Computer Interface Lab · NUIST</p>
+        <h1 class="hero-title">让<em>思想</em><br/>驱动未来</h1>
+        <div class="hero-actions">
+          <a href="/research" class="btn btn-dark">探索研究方向</a>
+          <a href="/achievements" class="btn btn-outline hero-btn-outline">查看科研成果</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 · SLOGAN + STATS ─────────────────────────── -->
+    <section id="statement" class="fp-section fp-statement">
+      <div class="stmt-left">
+        <p class="statement-text">
+          从<strong>脑电信号</strong>到运动控制，<br/>
+          让<strong>思想</strong>驱动<span id="tw-word">未来</span><span class="tw-cursor"></span>
+        </p>
+        <p class="statement-en fade-up delay-1">From EEG Signal to Motion Control — Let Thought Drive the Future</p>
+        <div class="stmt-stats">
+          <div class="stat-item fade-up delay-2">
+            <span class="stat-num"><PublicationCount type="journal" client:load /></span>
+            <span class="stat-label">期刊论文</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item fade-up delay-3">
+            <span class="stat-num">16<sup>+</sup></span>
+            <span class="stat-label">授权专利</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item fade-up delay-4">
+            <span class="stat-num">5</span>
+            <span class="stat-label">核心研究方向</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item fade-up delay-5">
+            <span class="stat-num">7</span>
+            <span class="stat-label">代表性奖项</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stmt-gallery" aria-hidden="true">
+        <div class="gallery-col gallery-col-a">
+          {waterfallA.map(img => <img src={img.src} alt="" />)}
+          {waterfallA.map(img => <img src={img.src} alt="" />)}
+        </div>
+        <div class="gallery-col gallery-col-b">
+          {waterfallB.map(img => <img src={img.src} alt="" />)}
+          {waterfallB.map(img => <img src={img.src} alt="" />)}
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · RESEARCH ────────────────────────────────── -->
+    <section id="research" class="fp-section fp-research">
+      <div class="container">
+        <div class="split-header">
+          <div>
+            <div class="section-label fade-up">Research Directions</div>
+            <h2 class="section-title fade-up delay-1">五大研究方向</h2>
+          </div>
+          <p class="section-desc fade-up delay-2">围绕脑机接口核心技术，探索从信号采集到运动控制的完整链路。</p>
+        </div>
+
+        <div class="research-grid fade-up delay-3">
+          {research.map(r => (
+            <a href={`/research/${r.slug}`} class="r-card">
+              <div class="r-card-head">
+                <span class="r-num">{r.num}</span>
+                <svg class="r-arrow" viewBox="0 0 18 18" fill="none">
+                  <path d="M2 16L16 2M16 2H6M16 2V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="r-title">{r.title}</h3>
+              <p class="r-subtitle">{r.subtitle}</p>
+              <div class="r-img-wrap">
+                <img src={`/images/research/${r.slug}.jpg`} alt={r.title} class="r-img" />
+              </div>
+              <p class="r-desc">{r.desc}</p>
+              <div class="r-tags">
+                {r.tags.slice(0, 3).map(tag => <span class="r-tag">{tag}</span>)}
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div class="section-cta fade-up delay-4">
+          <a href="/research" class="arrow-link">
+            查看全部研究方向
+            <span class="arrow-icon">
+              <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+              <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · TEAM ────────────────────────────────────── -->
+    <section id="team" class="fp-section fp-team">
+      <div class="container">
+        <div class="split-header">
+          <div>
+            <div class="section-label fade-up">Team</div>
+            <h2 class="section-title fade-up delay-1">核心团队</h2>
+          </div>
+          <p class="section-desc fade-up delay-2">汇聚神经工程、信号处理、机器人控制等多学科背景的研究人员，共同推进脑机接口前沿探索。</p>
+        </div>
+
+        <div class="team-showcase fade-up delay-2">
+          <div class="team-core-grid">
+            {coreTeam.map((member) => (
+              <article class="core-card">
+                <div class="core-card-head">
+                  <span class="core-kicker">{member.role}</span>
+                  <span class="core-title">{member.title}</span>
+                </div>
+                <div class="core-profile">
+                  <img src={member.img} alt={member.name} class="core-avatar" />
+                  <div class="core-body">
+                    <h3 class="core-name">{member.name}</h3>
+                    {member.affil && <span class="core-affil">{member.affil}</span>}
+                    <p class="core-bio">{member.bio}</p>
+                  </div>
+                </div>
+                <div class="core-tags">
+                  {member.tags.map((tag) => <span>{tag}</span>)}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div class="advisor-strip fade-up delay-3">
+          <div class="advisor-strip-head">
+            <span>学术顾问</span>
+            <strong>6</strong>
+          </div>
+          <div class="advisor-grid">
+            {advisors.map((advisor) => (
+              <article class="advisor-card">
+                <img src={advisor.img} alt={advisor.name} class="advisor-avatar" />
+                <div class="advisor-info">
+                  <span class="advisor-role">{advisor.role} · {advisor.title}</span>
+                  <span class="advisor-name">{advisor.name}</span>
+                  <span class="advisor-affil">{advisor.affil}</span>
+                  <span class="advisor-title">{advisor.desc}</span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div class="member-pills fade-up delay-4">
+          <div class="pills-track-wrap">
+            <div class="pills-track">
+              {undergrads.map((m) => (
+                <div class="member-pill">
+                  {m.img ? (
+                    <img src={m.img} alt={m.name} class="pill-avatar pill-img" />
+                  ) : (
+                    <span class="pill-avatar">{m.char}</span>
+                  )}
+                  <span class="pill-name">{m.name}</span>
+                  <span class="pill-badge">{m.badge}</span>
+                </div>
+              ))}
+            </div>
+            <div class="pills-track" aria-hidden="true">
+              {undergrads.map((m) => (
+                <div class="member-pill">
+                  {m.img ? (
+                    <img src={m.img} alt={m.name} class="pill-avatar pill-img" />
+                  ) : (
+                    <span class="pill-avatar">{m.char}</span>
+                  )}
+                  <span class="pill-name">{m.name}</span>
+                  <span class="pill-badge">{m.badge}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="pills-track-wrap">
+            <div class="pills-track pills-track-slow">
+              {grads.map((m) => (
+                <div class="member-pill">
+                  <img src={m.img} alt={m.name} class="pill-avatar pill-img" />
+                  <span class="pill-name">{m.name}</span>
+                  <span class="pill-badge">{m.badge}</span>
+                </div>
+              ))}
+            </div>
+            <div class="pills-track pills-track-slow" aria-hidden="true">
+              {grads.map((m) => (
+                <div class="member-pill">
+                  <img src={m.img} alt={m.name} class="pill-avatar pill-img" />
+                  <span class="pill-name">{m.name}</span>
+                  <span class="pill-badge">{m.badge}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="section-cta fade-up delay-4">
+          <a href="/team" class="arrow-link">
+            查看完整团队
+            <span class="arrow-icon">
+              <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+              <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · PAPERS ──────────────────────────────────── -->
+    <section id="papers" class="fp-section fp-papers">
+      <div class="container">
+        <div class="split-header">
+          <div>
+            <div class="section-label fade-up">Publications</div>
+            <h2 class="section-title fade-up delay-1">代表论文</h2>
+          </div>
+          <p class="section-desc fade-up delay-2">汇总实验室成员在脑机接口、EEG 信号分析等领域的代表性论文。</p>
+        </div>
+
+        <div class="fade-up delay-2">
+          <FeaturedPublications client:load />
+        </div>
+
+        <div class="section-cta fade-up delay-3">
+          <a href="/achievements" class="arrow-link">
+            查看全部科研成果
+            <span class="arrow-icon">
+              <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+              <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 · CONTACT ─────────────────────────────────── -->
+    <section id="contact" class="fp-section fp-contact">
+      <div class="container contact-wrap">
+        <div class="contact-inner">
+          <div class="contact-left fade-up">
+            <div class="section-label">Contact</div>
+            <h2 class="section-title">共筑脑机未来</h2>
+            <p class="section-desc">汇聚跨学科智慧，诚邀各界英才共同探索脑机接口前沿</p>
+            <a href="mailto:ying.yan@nuist.edu.cn" class="btn btn-dark btn-sm" style="margin-top:32px">
+              发送邮件
+            </a>
+          </div>
+          <div class="contact-right fade-up delay-2">
+            <div class="cd-row">
+              <span class="cd-label">邮箱</span>
+              <span class="cd-value">ying.yan@nuist.edu.cn</span>
+            </div>
+            <div class="cd-row">
+              <span class="cd-label">电话</span>
+              <span class="cd-value">+86 152-0517-6357</span>
+            </div>
+            <div class="cd-row">
+              <span class="cd-label">地址</span>
+              <span class="cd-value">南京信息工程大学 · 金牛湖产教融合园区</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <Footer />
+    </section>
+
+  </div>
+</Layout>
+
+<!-- ── SCRIPTS ──────────────────────────────────────────── -->
+<script>
+  /* ── 0. Setup: make html/body allow the custom scroller ── */
+  document.documentElement.style.height = '100%';
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.height = '100%';
+  document.body.style.overflow = 'hidden';
+
+  const container = document.getElementById('fp-container')!;
+  const fpSections = [...document.querySelectorAll<HTMLElement>('.fp-section')];
+  const snDots = [...document.querySelectorAll<HTMLButtonElement>('.sn-dot')];
+  const badge = document.getElementById('nav-section-badge')!;
+
+  /* Section metadata */
+  const sectionMeta: Record<string, { label: string; navHref: string | null }> = {
+    hero:      { label: '首页',   navHref: null },
+    statement: { label: '理念',   navHref: null },
+    research:  { label: '研究方向', navHref: '/research' },
+    team:      { label: '团队成员', navHref: '/team' },
+    papers:    { label: '科研成果', navHref: '/achievements' },
+    contact:   { label: '联系我们', navHref: '/contact' },
+  };
+
+  let currentIdx = 0;
+
+  /* ── 1. Dash nav: click to jump ── */
+  snDots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      container.scrollTo({ top: fpSections[i].offsetTop, behavior: 'smooth' });
+    });
+  });
+
+  /* ── 2. Update active state in dash nav + navbar ── */
+  function setActive(idx: number) {
+    if (idx === currentIdx) return;
+    currentIdx = idx;
+
+    // Dash nav
+    snDots.forEach((d, i) => d.classList.toggle('active', i === idx));
+
+    // Navbar links
+    const sectionId = fpSections[idx]?.id ?? '';
+    const meta = sectionMeta[sectionId];
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    if (meta?.navHref) {
+      const link = document.querySelector<HTMLAnchorElement>(
+        `.nav-links a[href="${meta.navHref}"]`
+      );
+      link?.classList.add('active');
+    }
+
+    // Badge
+    if (meta) {
+      badge.textContent = meta.label;
+      badge.classList.add('visible');
+    }
+  }
+
+  /* ── 3. Track sections via IntersectionObserver ── */
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+        const idx = fpSections.indexOf(entry.target as HTMLElement);
+        if (idx !== -1) setActive(idx);
+      }
+    });
+  }, { root: container, threshold: 0.5 });
+
+  fpSections.forEach(s => sectionObserver.observe(s));
+
+  /* ── 4. Fade-up animations (root = scroll container) ── */
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        fadeObserver.unobserve(e.target);
+      }
+    });
+  }, { root: container, threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+
+  document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+  /* ── 5. Wheel → scroll one section at a time ── */
+  let isScrolling = false;
+  container.addEventListener('wheel', (e: WheelEvent) => {
+    e.preventDefault();
+    if (isScrolling) return;
+    isScrolling = true;
+
+    const dir = e.deltaY > 0 ? 1 : -1;
+    const next = Math.max(0, Math.min(fpSections.length - 1, currentIdx + dir));
+    container.scrollTo({ top: fpSections[next].offsetTop, behavior: 'smooth' });
+
+    // Unlock after animation (~700ms)
+    setTimeout(() => { isScrolling = false; }, 700);
+  }, { passive: false });
+
+  /* ── 6. Touch swipe support ── */
+  let touchStartY = 0;
+  container.addEventListener('touchstart', (e: TouchEvent) => {
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+  container.addEventListener('touchend', (e: TouchEvent) => {
+    if (isScrolling) return;
+    const dy = touchStartY - e.changedTouches[0].clientY;
+    if (Math.abs(dy) < 30) return;
+    isScrolling = true;
+    const dir = dy > 0 ? 1 : -1;
+    const next = Math.max(0, Math.min(fpSections.length - 1, currentIdx + dir));
+    container.scrollTo({ top: fpSections[next].offsetTop, behavior: 'smooth' });
+    setTimeout(() => { isScrolling = false; }, 700);
+  }, { passive: true });
+
+  /* ── 7. Keyboard navigation ── */
+  document.addEventListener('keydown', (e: KeyboardEvent) => {
+    if (isScrolling) return;
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+      e.preventDefault();
+      isScrolling = true;
+      const next = Math.min(fpSections.length - 1, currentIdx + 1);
+      container.scrollTo({ top: fpSections[next].offsetTop, behavior: 'smooth' });
+      setTimeout(() => { isScrolling = false; }, 700);
+    }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+      e.preventDefault();
+      isScrolling = true;
+      const next = Math.max(0, currentIdx - 1);
+      container.scrollTo({ top: fpSections[next].offsetTop, behavior: 'smooth' });
+      setTimeout(() => { isScrolling = false; }, 700);
+    }
+  });
+
+  /* ── 8. Initial badge ── */
+  setActive(0);
+
+  /* ── 9. Typewriter on statement section ── */
+  {
+    const words = ['未来', '机器', '世界', '生命'];
+    let wordIdx = 0;
+    let charIdx = words[0].length; // start fully typed
+    let isDeleting = false;
+    let twStarted = false;
+    const twWordEl = document.getElementById('tw-word')!;
+
+    function typeStep() {
+      const target = words[wordIdx];
+      if (isDeleting) {
+        charIdx--;
+        twWordEl.textContent = target.slice(0, charIdx);
+        if (charIdx === 0) {
+          isDeleting = false;
+          wordIdx = (wordIdx + 1) % words.length;
+          setTimeout(typeStep, 380);
+          return;
+        }
+        setTimeout(typeStep, 90);
+      } else {
+        charIdx++;
+        twWordEl.textContent = words[wordIdx].slice(0, charIdx);
+        if (charIdx === words[wordIdx].length) {
+          isDeleting = true;
+          setTimeout(typeStep, 2400);
+          return;
+        }
+        setTimeout(typeStep, 140);
+      }
+    }
+
+    const stmtSection = document.getElementById('statement')!;
+    new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !twStarted) {
+          twStarted = true;
+          setTimeout(() => { isDeleting = true; typeStep(); }, 1200);
+        }
+      });
+    }, { root: container, threshold: 0.5 }).observe(stmtSection);
+  }
+
+  /* ── 10. Gallery waterfall: measure heights after load ── */
+  {
+    const GAP = 10;
+    function measureCol(col: HTMLElement) {
+      const imgs = [...col.querySelectorAll<HTMLImageElement>('img')];
+      const half = imgs.length / 2;
+      let h = 0;
+      for (let i = 0; i < half; i++) {
+        const oh = imgs[i].offsetHeight;
+        if (oh > 0) h += oh + GAP;
+      }
+      if (h > GAP) {
+        col.style.setProperty('--scroll-dist', `-${h}px`);
+        (col as HTMLElement).style.animationPlayState = 'running';
+      }
+    }
+
+    document.querySelectorAll<HTMLElement>('.gallery-col').forEach(col => {
+      const imgs = [...col.querySelectorAll<HTMLImageElement>('img')];
+      const half = imgs.length / 2;
+      const firstHalf = imgs.slice(0, half);
+      let settled = 0;
+
+      function onSettled() {
+        settled++;
+        if (settled === firstHalf.length) requestAnimationFrame(() => measureCol(col));
+      }
+
+      firstHalf.forEach((img, i) => {
+        if (img.complete) {
+          if (!img.naturalWidth) {
+            img.style.display = 'none';
+            imgs[i + half].style.display = 'none';
+          }
+          onSettled();
+        } else {
+          img.addEventListener('load', onSettled, { once: true });
+          img.addEventListener('error', () => {
+            img.style.display = 'none';
+            imgs[i + half].style.display = 'none';
+            onSettled();
+          }, { once: true });
+        }
+      });
+    });
+  }
+
+</script>
+
+<style>
+  /* ── FULLPAGE SCROLL CONTAINER ──────────────────────── */
+  #fp-container {
+    position: fixed;
+    inset: 0;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  #fp-container::-webkit-scrollbar { display: none; }
+
+  /* ── SECTION BASE ────────────────────────────────────── */
+  .fp-section {
+    height: 100vh;
+    scroll-snap-align: start;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 68px; /* clear fixed nav */
+    box-sizing: border-box;
+  }
+
+  /* ── RIGHT SIDE SECTION NAV ──────────────────────────── */
+  #section-nav {
+    position: fixed;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-end;
+  }
+  .sn-dot {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 3px 0;
+  }
+  .sn-label {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: var(--text-3);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .sn-line {
+    display: block;
+    height: 1.5px;
+    width: 12px;
+    background: rgba(0,0,0,0.18);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                background 0.3s ease;
+    flex-shrink: 0;
+  }
+  .sn-dot:hover .sn-label { opacity: 1; transform: none; }
+  .sn-dot:hover .sn-line { background: rgba(0,0,0,0.35); width: 16px; }
+  .sn-dot.active .sn-label { opacity: 1; transform: none; color: var(--accent); }
+  .sn-dot.active .sn-line { width: 21px; background: var(--accent); }
+
+  @media (max-width: 768px) { #section-nav { display: none; } }
+
+  /* ═══════════════════════════════════════════════════
+     01 HERO
+  ═══════════════════════════════════════════════════ */
+  .fp-hero {
+    justify-content: flex-end;
+    align-items: stretch;
+    background: #000;
+    border-bottom: none;
+    padding-top: 0;
+  }
+  .hero-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.20); 
+    /* 视频太暗或太亮，可以调整 hero-overlay 的 rgba(0,0,0,0.52) 这个透明度 */
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 6vw clamp(48px, 7vw, 88px) 6vw;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.45);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .hero-title {
+    font-size: clamp(38px, 5.5vw, 72px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: #fff;
+    margin-bottom: 40px;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--accent);
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .hero-btn-outline {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  .hero-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     02 SLOGAN
+  ═══════════════════════════════════════════════════ */
+  .fp-statement {
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0;
+    overflow: hidden;
+  }
+  .stmt-left {
+    flex: 0 0 54%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 5vw 80px 6vw;
+  }
+  .statement-text {
+    font-size: clamp(26px, 4vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.3;
+    color: var(--text);
+    margin: 0 0 20px;
+  }
+  .statement-text strong {
+    color: var(--text);
+    position: relative;
+  }
+  .statement-text strong::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    border-radius: 2px;
+  }
+  .statement-en {
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--text-3);
+    letter-spacing: 2px;
+  }
+  .tw-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 0.78em;
+    background: var(--accent);
+    margin-left: 3px;
+    vertical-align: -0.04em;
+    border-radius: 1.5px;
+    animation: tw-blink 1s step-end infinite;
+  }
+  @keyframes tw-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+  }
+
+  /* ── STATS BAR (inside statement section) ───────── */
+  .stmt-stats {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    margin-top: 52px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-md);
+    width: 100%;
+  }
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 0 clamp(16px, 3vw, 44px);
+  }
+  .stat-item:first-child { padding-left: 0; }
+  .stat-divider {
+    width: 1px;
+    height: 44px;
+    background: var(--border-md);
+    flex-shrink: 0;
+  }
+  .stat-num {
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: var(--text);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .stat-num sup {
+    font-size: 0.45em;
+    vertical-align: super;
+    font-weight: 700;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-3);
+    font-family: var(--font-mono);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* ── GALLERY WATERFALL ───────────────────────────── */
+  .stmt-gallery {
+    flex: 1;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    gap: 10px;
+    padding: 0 24px 0 0;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%);
+  }
+  .gallery-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    will-change: transform;
+  }
+  .gallery-col img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+  }
+  .gallery-col-a { animation: gal-up 48s linear infinite; animation-play-state: paused; }
+  .gallery-col-b { animation: gal-up 36s linear infinite; animation-play-state: paused; margin-top: -80px; }
+  @keyframes gal-up {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(var(--scroll-dist, -50%)); }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     04 RESEARCH
+  ═══════════════════════════════════════════════════ */
+  .fp-research {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    justify-content: center;
+    gap: 0;
+  }
+  .split-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .split-header .section-desc { margin-bottom: 0; max-width: 380px; }
+  .section-cta { margin-top: 20px; }
+
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+  }
+
+  .r-card {
+    background: #FAFAFC;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 18px 18px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .r-card:hover {
+    border-color: var(--border-md);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+
+  .r-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .r-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+  .r-arrow {
+    width: 14px; height: 14px;
+    color: var(--text-3);
+    transition: color 0.2s, transform 0.2s;
+    flex-shrink: 0;
+  }
+  .r-card:hover .r-arrow {
+    color: var(--accent);
+    transform: translate(2px, -2px);
+  }
+
+  .r-title {
+    font-size: 24px; font-weight: 700;
+    letter-spacing: -0.02em; line-height: 1.15;
+    margin-bottom: 6px;
+  }
+  .r-subtitle {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--text-3);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .r-img-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 0.8;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: #FAFAFC;
+    margin-bottom: 14px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .r-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .r-num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .r-desc {
+    font-size: 13px; color: var(--text-2); line-height: 1.7;
+    flex: 1;
+    margin-bottom: 14px;
+  }
+  .r-subtitle {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--text-3);
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .r-img-wrap {
+    width: 100%;
+    aspect-ratio: 1 / 0.8;
+    overflow: hidden;
+    border-radius: var(--radius-md);
+    background: #FAFAFC;
+    margin-bottom: 14px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .r-img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .r-card:hover .r-img { transform: scale(1.03); }
+
+  .r-desc {
+    font-size: 14px; color: var(--text-2); line-height: 1.8;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  .r-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+  .r-tag {
+    font-size: 11px; font-family: var(--font-mono);
+    color: var(--text-2);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill); padding: 3px 12px;
+  }
+
+  @media (max-width: 1100px) {
+    .research-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 680px) {
+    .research-grid { grid-template-columns: repeat(2, 1fr); }
+    .r-title { font-size: 22px; }
+  }
+  @media (max-width: 440px) {
+    .research-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     05 TEAM
+  ═══════════════════════════════════════════════════ */
+  .fp-team { background: var(--bg-surface); border-bottom: 1px solid var(--border); }
+
+  .team-showcase {
+    margin-bottom: 18px;
+  }
+  .team-core-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 22px;
+  }
+  .core-card,
+  .advisor-strip {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg);
+  }
+  .core-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding: 14px 20px;
+  }
+  .core-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+  .core-kicker,
+  .core-title {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+  }
+  .core-kicker { color: var(--accent); }
+  .core-title { color: var(--text-3); }
+  .core-profile {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+  .core-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-mid);
+    object-fit: cover;
+    object-position: top;
+    flex-shrink: 0;
+  }
+  .core-body {
+    min-width: 0;
+  }
+  .core-name {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .core-affil {
+    display: block;
+    font-size: 11px;
+    color: var(--text-3);
+    font-family: var(--font-mono);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .core-bio {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.65;
+  }
+  .core-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 10px;
+  }
+  .core-tags span {
+    font-size: 10px; font-family: var(--font-mono);
+    padding: 4px 9px; border-radius: var(--radius-sm);
+    background: var(--bg-elevated); color: var(--text-2);
+  }
+  .advisor-strip {
+    padding: 12px;
+    margin-bottom: 14px;
+  }
+  .advisor-strip-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 0 2px;
+  }
+  .advisor-strip-head span {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .advisor-strip-head strong {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--bg-elevated);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .advisor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .advisor-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-height: 0;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+  }
+  .advisor-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-md);
+    object-fit: cover;
+    object-position: top;
+    flex-shrink: 0;
+  }
+  .advisor-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+  .advisor-role {
+    font-size: 9px; font-family: var(--font-mono);
+    letter-spacing: 1.3px; color: var(--text-3); text-transform: uppercase;
+  }
+  .advisor-name {
+    font-size: 15px; font-weight: 700;
+    color: var(--text); letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+  .advisor-affil {
+    font-size: 11px; color: var(--text-2);
+    line-height: 1.35;
+  }
+  .advisor-title {
+    font-size: 10px; color: var(--text-3);
+    line-height: 1.35;
+  }
+  @media (max-width: 980px) {
+    .team-core-grid,
+    .advisor-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 840px) {
+    .advisor-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 560px) {
+    .core-card { min-height: 0; padding: 20px; }
+    .core-profile { grid-template-columns: 1fr; gap: 14px; }
+    .core-avatar { width: 72px; height: 72px; }
+    .core-name { font-size: 24px; }
+    .advisor-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .fp-team {
+      justify-content: flex-start;
+      padding-top: 84px;
+    }
+    .fp-team .split-header {
+      margin-bottom: 14px;
+    }
+    .fp-team .section-desc,
+    .fp-team .member-pills {
+      display: none;
+    }
+    .fp-team .section-title {
+      margin-bottom: 0;
+    }
+    .fp-team .team-core-grid {
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .fp-team .core-card {
+      padding: 18px;
+    }
+    .fp-team .core-avatar {
+      width: 64px;
+      height: 64px;
+    }
+    .fp-team .advisor-card {
+      padding: 10px;
+    }
+    .fp-team .advisor-avatar {
+      width: 40px;
+      height: 40px;
+    }
+    .fp-team .section-cta {
+      margin-top: 0;
+    }
+  }
+  .member-pills {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 20px;
+    margin-bottom: 4px;
+  }
+  .pills-track-wrap {
+    display: flex;
+    gap: 10px;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  }
+  .pills-track {
+    display: flex;
+    flex-shrink: 0;
+    min-width: 100%;
+    gap: 10px;
+    will-change: transform;
+    animation: pills-rtl 18s linear infinite;
+  }
+  .pills-track-slow {
+    animation-duration: 14s;
+  }
+  @keyframes pills-rtl {
+    from { transform: translateX(0); }
+    to   { transform: translateX(calc(-100% - 10px)); }
+  }
+  .member-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px 8px 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--bg-surface);
+  }
+  .pill-avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-mid);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    flex-shrink: 0;
+  }
+  .pill-img {
+    object-fit: cover;
+    object-position: top;
+  }
+  .pill-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .pill-badge { font-size: 10px; font-family: var(--font-mono); color: var(--text-3); }
+
+  /* ═══════════════════════════════════════════════════
+     06 PAPERS
+  ═══════════════════════════════════════════════════ */
+  .fp-papers { background: var(--bg); border-bottom: 1px solid var(--border); }
+
+  .paper-list { border-top: 1px solid var(--border); }
+  .paper-row {
+    display: flex; align-items: center; gap: 24px;
+    padding: 20px 0; border-bottom: 1px solid var(--border);
+    text-decoration: none; color: inherit;
+    transition: background 0.2s, padding 0.2s;
+    border-radius: var(--radius-sm);
+  }
+  .paper-row:hover { padding-left: 10px; padding-right: 10px; background: var(--bg-surface); }
+  .paper-row:hover .pr-icon { opacity: 1; transform: translate(3px, -3px); color: var(--accent); }
+  .pr-year { font-family: var(--font-mono); font-size: 11px; color: var(--accent); min-width: 38px; flex-shrink: 0; }
+  .pr-body { flex: 1; min-width: 0; }
+  .pr-title {
+    font-size: 14px; font-weight: 500; color: var(--text);
+    line-height: 1.5; margin-bottom: 3px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .pr-journal { font-size: 11px; font-family: var(--font-mono); color: var(--text-3); }
+  .pr-icon {
+    width: 14px; height: 14px; color: var(--text-3); flex-shrink: 0; opacity: 0;
+    transition: opacity 0.2s, transform 0.25s, color 0.2s;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     07 CONTACT
+  ═══════════════════════════════════════════════════ */
+  .fp-contact {
+    background: var(--bg-surface);
+    justify-content: flex-start; /* footer pins to bottom */
+  }
+  .contact-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+  .contact-right { display: flex; flex-direction: column; padding-top: 8px; }
+  .cd-row {
+    display: flex; flex-direction: column; gap: 5px;
+    padding: 18px 0; border-bottom: 1px solid var(--border);
+  }
+  .cd-label {
+    font-size: 9px; font-family: var(--font-mono);
+    letter-spacing: 2.5px; color: var(--text-3); text-transform: uppercase;
+  }
+  .cd-value { font-size: 15px; color: var(--text); font-weight: 500; line-height: 1.5; }
+  @media (max-width: 768px) {
+    .contact-inner { grid-template-columns: 1fr; gap: 32px; }
+    .split-header { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 28px; }
+    .split-header .btn { align-self: auto; }
+    .stats-grid { flex-wrap: wrap; }
+    .stat-divider { display: none; }
+    .stat-item { width: 50%; padding: 16px; border-bottom: 1px solid var(--border); }
+    .stat-item:nth-child(2n+1) { border-right: 1px solid var(--border); }
+    .fp-statement { flex-direction: column; }
+    .stmt-left { flex: none; padding: 60px 6vw 40px; }
+    .stmt-gallery { display: none; }
+  }
+</style>

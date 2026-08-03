@@ -1,0 +1,211 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import RelatedPublications from '../../components/RelatedPublications';
+import { research } from '../../data/research';
+---
+
+<Layout title="研究方向 · 金牛湖脑机实验室" description="脑机接口核心技术研究方向总览">
+  <Nav active="home" />
+
+  <div class="page-header">
+    <div class="container">
+      <a href="/" class="back-link">
+        <svg viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        返回主页
+      </a>
+      <div class="section-label">RESEARCH DIRECTIONS</div>
+      <h1 class="ph-title">研究方向</h1>
+      <p class="ph-desc">围绕脑机接口核心技术，探索从信号采集到运动控制的完整链路，实现脑意图向机械动作的精准映射。</p>
+    </div>
+  </div>
+
+  <div class="dirs-body">
+    <div class="container">
+      {research.map((r, i) => {
+        return (
+          <div class="dir-section" id={r.slug}>
+            <div class="dir-header">
+              <div>
+                <span class="dir-num">{r.num}</span>
+                <h2 class="dir-title">{r.title}</h2>
+                <p class="dir-en">{r.titleEn}</p>
+              </div>
+              <a href={`/research/${r.slug}`} class="arrow-link dir-detail-link">
+                查看详情
+                <span class="arrow-icon">
+                  <svg class="arrow-out" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+                  <svg class="arrow-in" viewBox="0 0 18 18"><path d="M2 16L16 2M16 2H6M16 2V12"/></svg>
+                </span>
+              </a>
+            </div>
+
+            <p class="dir-overview">{r.overview}</p>
+
+            <div class="method-grid">
+              {r.methods.map((m, j) => (
+                <div class="method-card">
+                  <div class="method-num">{String(j + 1).padStart(2, '0')}</div>
+                  <div class="method-body">
+                    <h4 class="method-title">{m.title}</h4>
+                    <p class="method-desc">{m.body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div class="dir-tags">
+              {r.tags.map(t => <span class="dir-tag">{t}</span>)}
+            </div>
+
+            <RelatedPublications tags={r.tags} limit={4} variant="overview" client:load />
+
+            {i < research.length - 1 && <div class="dir-divider"></div>}
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-header {
+    padding: 140px 0 72px;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: var(--text-3); text-decoration: none;
+    margin-bottom: 32px; transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--text-2); }
+  .back-link svg { width: 16px; height: 16px; }
+
+  .ph-title {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 700; letter-spacing: -0.03em;
+    line-height: 1.05; margin-bottom: 16px;
+    margin-top: 12px;
+  }
+  .ph-desc {
+    font-size: 17px; color: var(--text-2);
+    line-height: 1.7; max-width: 580px;
+  }
+
+  /* ── DIRECTIONS ───────────────────────────────────── */
+  .dirs-body { padding: 80px 0 120px; }
+
+  .dir-section { scroll-margin-top: 88px; }
+
+  .dir-header {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 32px;
+    margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .dir-num {
+    font-family: var(--font-mono); font-size: 13px;
+    color: var(--accent); opacity: 0.7;
+    margin-bottom: 8px; display: block;
+    font-variant-numeric: tabular-nums;
+  }
+  .dir-title {
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .dir-en {
+    font-size: 14px; font-family: var(--font-mono);
+    color: var(--text-3); letter-spacing: 0.05em;
+  }
+  .dir-detail-link { flex-shrink: 0; margin-top: 8px; font-size: 15px; }
+
+  .dir-overview {
+    font-size: 16px; color: var(--text-2);
+    line-height: 1.85; max-width: 680px;
+    margin-bottom: 48px;
+  }
+
+  /* methods */
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  .method-card {
+    background: var(--bg);
+    padding: 32px 28px;
+    transition: background 0.2s;
+  }
+  .method-card:hover { background: var(--bg-surface); }
+  .method-num {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--accent); opacity: 0.6; margin-bottom: 16px;
+    font-variant-numeric: tabular-nums;
+  }
+  .method-title { font-size: 15px; font-weight: 600; margin-bottom: 10px; letter-spacing: -0.01em; }
+  .method-desc { font-size: 14px; color: var(--text-2); line-height: 1.75; }
+
+  .dir-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 40px; }
+  .dir-tag {
+    font-size: 11px; font-family: var(--font-mono);
+    padding: 4px 12px; border-radius: 100px;
+    border: 1px solid var(--border);
+    color: var(--text-3); letter-spacing: 0.5px;
+  }
+
+  /* papers */
+  .dir-papers { margin-bottom: 8px; }
+  .dp-label {
+    font-size: 11px; font-family: var(--font-mono);
+    letter-spacing: 2px; color: var(--text-3);
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .dp-list {
+    display: flex; flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .dp-item {
+    display: flex; align-items: center; gap: 20px;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none; color: inherit;
+    transition: background 0.15s;
+  }
+  .dp-item:last-child { border-bottom: none; }
+  .dp-item:hover { background: var(--bg-surface); }
+  .dp-year {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--accent); opacity: 0.7; min-width: 40px;
+  }
+  .dp-title {
+    font-size: 14px; font-weight: 500; flex: 1;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .dp-journal {
+    font-size: 11px; font-family: var(--font-mono);
+    color: var(--text-3); flex-shrink: 0;
+  }
+
+  .dir-divider {
+    border: none; border-top: 1px solid var(--border);
+    margin: 64px 0;
+  }
+
+  @media (max-width: 900px) {
+    .method-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 680px) {
+    .dir-header { flex-direction: column; }
+    .dp-title { white-space: normal; }
+    .dp-journal { display: none; }
+  }
+</style>

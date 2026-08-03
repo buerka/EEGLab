@@ -1,0 +1,201 @@
+# Google Scholar 人工审核规则。
+# citation_id 是稳定主键；accept 永久确认，exclude 永久排除或并入其他版本。
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:hC7cP41nSMkC"
+decision = "accept"
+target_doi = "10.54517/m.v5i2.2858"
+notes = "采用 Metaverse 2024 正式版本；合并另一 DOI 和 Research Square 预印本"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:M3NEmzRMIkIC"
+decision = "accept"
+target_doi = "10.32388/w806m1"
+notes = "采用 Qeios 版本；合并 Research Square 预印本"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:LPZeul_q3PIC"
+decision = "accept"
+notes = "严颖与蔡骏等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:eflP2zaiRacC"
+decision = "accept"
+notes = "严颖与蔡骏、Adrian David Cheok 等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:5Ul4iDaHHb8C"
+decision = "accept"
+notes = "严颖与蔡骏等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:p2g8aNsByqUC"
+decision = "accept"
+notes = "严颖与蔡骏、Adrian David Cheok 等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:VOx2b1Wkg3QC"
+decision = "accept"
+notes = "严颖与蔡骏、Adrian David Cheok 等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:8AbLer7MMksC"
+decision = "accept"
+notes = "严颖与蔡骏、Adrian David Cheok 等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:QIV2ME_5wuYC"
+decision = "accept"
+notes = "采用英文标题作为中英文重复版本的主记录"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:geHnlv5EZngC"
+decision = "accept"
+notes = "严颖与蔡骏等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:7PzlFSSx8tAC"
+decision = "accept"
+notes = "严颖与蔡骏、Adrian David Cheok 等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:eJXPG6dFmWUC"
+decision = "accept"
+notes = "严颖与蔡骏等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:BrmTIyaxlBUC"
+decision = "accept"
+notes = "严颖与蔡骏等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:RHpTSmoSYBkC"
+decision = "accept"
+notes = "严颖与蔡骏、Adrian David Cheok 等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:YFjsv_pBGBYC"
+decision = "accept"
+notes = "严颖与蔡骏、Adrian David Cheok 等已确认合作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:tS2w5q8j5-wC"
+decision = "accept"
+notes = "采用完整书籍章节标题作为 Virtual Hearts 主记录"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:UebtZRa9Y70C"
+decision = "exclude"
+notes = "中文标题版本并入 lkDrRmoAAAAJ:QIV2ME_5wuYC"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:K3LRdlH-MEoC"
+decision = "exclude"
+notes = "短标题版本并入 lkDrRmoAAAAJ:tS2w5q8j5-wC"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:hMod-77fHWUC"
+decision = "exclude"
+notes = "Expression of Concern；撤稿事件链不展示"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:J_g5lzvAfSwC"
+decision = "exclude"
+notes = "原论文已撤稿，不展示"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:isC4tDSrTZIC"
+decision = "exclude"
+notes = "Retraction Notice；不展示"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:9ZlFYXVOiuMC"
+decision = "exclude"
+notes = "RETRACTED；不展示"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:fQNAKQ3IYiAC"
+decision = "accept"
+notes = "用户确认是严颖论文：EEG 虚拟现实晕动检测"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:D_sINldO8mEC"
+decision = "accept"
+notes = "用户确认是严颖论文：时空风电预测"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:ZHo1McVdvXMC"
+decision = "exclude"
+notes = "用户确认排除"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:RGFaLdJalmkC"
+decision = "exclude"
+notes = "用户确认排除"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:XiSMed-E-HIC"
+decision = "exclude"
+notes = "用户确认排除：同名作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:4fKUyHm3Qg0C"
+decision = "exclude"
+notes = "用户确认排除：同名作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:sSrBHYA8nusC"
+decision = "exclude"
+notes = "用户确认排除：同名作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:uWQEDVKXjbEC"
+decision = "exclude"
+notes = "用户确认排除：同名作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:nb7KW1ujOQ8C"
+decision = "exclude"
+notes = "用户确认排除：同名作者"
+
+[[reviews]]
+researcher_slug = "ying-yan"
+citation_id = "lkDrRmoAAAAJ:fPk4N6BV_jEC"
+decision = "exclude"
+notes = "用户确认排除：同名作者"
+
+[[paper_merges]]
+canonical_doi = "10.1016/j.tsep.2023.101883"
+duplicate_dois = ["10.2139/ssrn.4374706"]
+notes = "同标题正式期刊版与 SSRN 预印本合并；保留正式期刊版本"

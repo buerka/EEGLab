@@ -4,11 +4,12 @@
 - 南京信息工程大学 · 金牛湖脑机实验室（Brain-Computer Interface Lab · NUIST）
 - Astro 5 + React 18 静态网站，`@astrojs/react` 集成（React 仅 HeroEEG.tsx 使用）
 - **亮色主题**（Neuralink 风格），主题色 `#0057FF`（蓝）
-- 10 个静态页面，`npm run dev` → localhost:4321
+- 前端位于 `frontend/`，10 个静态页面；`cd frontend && npm run dev` → localhost:4321
+- 后端位于 `backend/`，根目录 `docker-compose.yml` 负责完整编排
 
 ## 文件结构
 ```
-src/
+frontend/src/
 ├── pages/
 │   ├── index.astro            # 首页（全屏滚动：hero / statement / research / team / papers / contact）
 │   ├── achievements.astro     # 科研成果（论文筛选 + 奖项时间线 + 成果图库筛选）
@@ -81,7 +82,7 @@ description = "描述"
 
 ## 图片资产
 ```
-public/images/
+frontend/public/images/
 ├── achievements/   # 42张（产品/演示/临床/合作/专利/论文/获奖）
 │   └── award-*    # 18张获奖证书/现场图，命名规范 award-{描述}.{ext}
 ├── research/       # 每方向各 .jpg + .png（arm/diagnosis/drone/glove/hand）
@@ -90,7 +91,7 @@ public/images/
 ├── nuist-logo.png / nuist-logo.jpg
 └── ahjzu-logo.png
 
-public/videos/
+frontend/public/videos/
 ├── demo-eeg-cap.mp4   # 脑电帽演示录屏
 └── promo.mp4          # 宣传视频
 ```
@@ -129,4 +130,4 @@ public/videos/
 - 联系标语：「汇聚跨学科智慧，诚邀各界英才共筑脑机未来」
 - HeroEEG.tsx 4 通道 EEG 波形动画，通道标签 Fp1/C3/Pz/O2
 - Nav 含 NUIST（www.nuist.edu.cn）和 AHJZU（www.ahjzu.edu.cn）外链
-- 新增图片统一放入 `public/temp/` 后，按规范命名移至对应 `public/images/` 子目录，并同步更新 `gallery.toml` 和 `README.md`
+- 新增图片统一放入 `frontend/public/temp/` 后，按规范命名移至对应 `frontend/public/images/` 子目录，并同步更新 `gallery.toml` 和 `README.md`
