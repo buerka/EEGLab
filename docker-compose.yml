@@ -7,6 +7,7 @@ services:
       - backend/.env
     environment:
       PAPERS_DATABASE_PATH: /data/papers.db
+      ANALYTICS_DATABASE_PATH: /data/analytics.db
     volumes:
       - paper-data:/data
     restart: unless-stopped

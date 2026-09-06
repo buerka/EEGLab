@@ -1,6 +1,10 @@
 # 论文后端
 
-独立后端负责研究者配置、OpenAlex + Google Scholar 双源同步、人工字段保护、SQLite 持久化和公开 JSON API。Astro 前端不接触任何上游 Key，也不直接读取论文 TOML。
+腾讯云国内站部署入口见 [Makers + SCF + COS 指南](../docs/tencent-makers.md)。
+云端由 `cloud_api.py` 提供无状态 API，`cloud_runtime.py` 执行同步，COS 保存完整快照与统计；
+以下 SQLite 常驻服务说明适用于本地开发和 Docker。
+
+独立后端负责研究者配置、OpenAlex + Google Scholar 双源同步、人工字段保护、访问统计、SQLite 持久化和公开 JSON API。Astro 前端不接触任何上游 Key，也不直接读取论文 TOML。
 
 ## 双源策略
 
@@ -90,6 +94,8 @@ Authorization: Bearer <PAPERS_SYNC_TOKEN>
 - `GET /api/papers?tag=EEG&year=2026`
 - `GET /api/papers/version`
 - `GET /api/sync/status`
+- `POST /api/analytics/pageview`
+- `GET /api/analytics/summary`
 
 论文接口返回 `ETag` 和可配置的 `Cache-Control`。默认 CDN 最多缓存 60 秒，浏览器每次会重新验证。
 
@@ -105,6 +111,31 @@ Authorization: Bearer <PAPERS_SYNC_TOKEN>
 ```
 
 `GET /api/sync/status` 会给出两侧抓取数量、Scholar 匹配数、候选数和降级警告。
+
+## 隐私友好访问统计
+
+访问统计使用独立的 `analytics.db`，避免与论文同步事务争用。全局布局会向
+`POST /api/analytics/pageview` 上报当前页面路径，页脚再从
+`GET /api/analytics/summary` 读取累计浏览、今日访问和今日访客。
+
+- 不使用 Cookie，不保存原始 IP、Referer 或逐条访问日志。
+- 服务端使用 `HMAC(日期 + IP + User-Agent)` 生成仅当天有效的匿名访客标识。
+- 同一匿名访客在 30 秒内重复打开同一页面只计一次，可通过
+  `ANALYTICS_DEDUPE_SECONDS` 调整。
+- 只接受站内 10 个公开页面路径，并过滤常见机器人 User-Agent。
+- 匿名访客明细仅保留 32 天；永久保存的只有每日聚合数和累计浏览量。
+- 汇总接口允许 CDN 短缓存，上报接口始终返回 `Cache-Control: no-store`。
+
+生产环境应单独设置足够长的 `ANALYTICS_HMAC_SECRET`。如果未设置，系统会回退到
+`PAPERS_SYNC_TOKEN`；仅本地开发且两者都未设置时才使用固定开发值。若需要排除
+管理员自己的浏览器，可在控制台执行：
+
+```js
+localStorage.setItem('eeglab.analytics.optout', '1')
+```
+
+删除该键即可恢复统计。浏览器启用 Do Not Track 或 Global Privacy Control 时，
+前端也不会发送访问记录。
 
 需要人工检查未匹配/歧义记录时，可使用受保护接口：
 
@@ -136,7 +167,7 @@ docker compose up -d --build
 - `frontend`：Nginx 托管 Astro 静态文件，并反向代理 `/api/`。
 - `paper-api`：Starlette + Uvicorn，只提供 API。
 - `paper-scheduler`：独立进程，启动后立即同步，之后按间隔同步。
-- `paper-data`：SQLite 持久卷。
+- `paper-data`：同时持久化 `papers.db` 与独立的 `analytics.db`。
 
 外层 CDN 应长期缓存 `/_astro/` 指纹资源、短缓存 HTML，并尊重 `/api/papers` 的 `ETag` 与 `Cache-Control`。
 

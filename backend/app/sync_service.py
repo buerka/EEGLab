@@ -96,8 +96,9 @@ def sync_all_researchers(settings: Settings) -> SyncResult:
                     _validate_scholar_count(settings, researcher, profile)
                     scholar_profiles[researcher['id']] = profile
                 except Exception as exc:
-                    message = f'{researcher["name"]} 的 Google Scholar 同步失败: {exc}'
-                    scholar_errors[researcher['id']] = str(exc)[:1000]
+                    detail = _safe_error(exc, settings)
+                    message = f'{researcher["name"]} 的 Google Scholar 同步失败: {detail}'
+                    scholar_errors[researcher['id']] = detail[:1000]
                     warnings.append(message)
 
         inserted_ids: set[int] = set()
@@ -203,9 +204,17 @@ def sync_all_researchers(settings: Settings) -> SyncResult:
                 SET finished_at=?, status='failed', error_message=?
                 WHERE id=?
                 """,
-                (finished_at, str(exc)[:2000], run_id),
+                (finished_at, _safe_error(exc, settings)[:2000], run_id),
             )
         raise
+
+
+def _safe_error(error: Exception, settings: Settings) -> str:
+    message = str(error)
+    for secret in (settings.openalex_api_key, settings.serpapi_api_key, settings.sync_token):
+        if secret:
+            message = message.replace(secret, '[redacted]')
+    return message
 
 
 def _validate_count(settings: Settings, researcher: sqlite3.Row, works: list[dict]) -> None:

@@ -49,6 +49,34 @@ class BackendTestCase(unittest.TestCase):
         self.assertTrue(any(paper['impactFactor'] for paper in data['papers']))
         self.assertTrue(any(paper['isTop'] for paper in data['papers']))
 
+    def test_hidden_papers_are_excluded_from_researcher_counts(self) -> None:
+        before = get_publications(self.settings, {'limit': 500})
+        paper_title = before['papers'][0]['title']
+        with connect(self.settings.database_path) as connection:
+            internal_id = connection.execute(
+                'SELECT id FROM papers WHERE title = ?', (paper_title,)
+            ).fetchone()['id']
+            connection.execute(
+                """
+                INSERT INTO paper_overrides (paper_id, hidden, updated_at)
+                VALUES (?, 1, '2026-08-04T00:00:00Z')
+                ON CONFLICT(paper_id) DO UPDATE SET hidden=1
+                """,
+                (internal_id,),
+            )
+
+        after = get_publications(self.settings, {'limit': 500})
+        self.assertEqual(after['total'], before['total'] - 1)
+        self.assertEqual(
+            after['researchers'][0]['paperCount'],
+            before['researchers'][0]['paperCount'] - 1,
+        )
+        self.assertEqual(
+            after['researchers'][0]['currentPaperCount'],
+            before['researchers'][0]['currentPaperCount'] - 1,
+        )
+        self.assertLessEqual(after['researchers'][0]['paperCount'], after['total'])
+
     def test_api_etag_filters_and_multi_researcher_contract(self) -> None:
         from app import main
 

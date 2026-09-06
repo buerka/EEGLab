@@ -1,6 +1,9 @@
 # 网站前端
 
-金牛湖脑机实验室网站的独立前端应用，使用 Astro 6、React 18 和 TypeScript 构建。生产输出为静态文件，论文数据在浏览器运行时从后端 `/api` 获取。
+腾讯云国内站从**仓库根目录**导入 Makers，使用根目录的 `edgeone.json` 和 `npm run build`，
+同步部署 Python API。详见 [部署指南](../docs/tencent-makers.md)。
+
+金牛湖脑机实验室网站的独立前端应用，使用 Astro 6、React 18 和 TypeScript 构建。生产输出为静态文件，论文数据与访问统计在浏览器运行时从后端 `/api` 获取。
 
 ## 技术栈
 
@@ -72,6 +75,13 @@ npm run clean     # 清理 dist/ 和 .astro/
 - `GET /api/sync/status`
 
 论文列表支持成员、代表作、标签和关键词筛选，并显示 OpenAlex/Google Scholar 双来源状态。论文更新发生在后端 SQLite 快照中，不需要修改 TOML 或重新构建前端。
+
+## 访问统计
+
+`src/layouts/Layout.astro` 会在每个公开页面加载时上报页面访问，
+`src/components/Footer.astro` 展示累计浏览、今日访问和今日访客。统计请求保持同域，
+不使用 Cookie；Do Not Track、Global Privacy Control 或本地 opt-out 生效时不发送。
+统计数字来自运行时 API，因此数字刷新不需要重新构建前端。
 
 ## 页面与资源维护
 

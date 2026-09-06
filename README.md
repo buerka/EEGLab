@@ -1,6 +1,6 @@
 # 金牛湖脑机实验室网站
 
-南京信息工程大学金牛湖脑机实验室网站。项目采用前后端分目录结构：Astro 静态前端负责页面展示，Starlette 后端负责 OpenAlex + Google Scholar 论文同步与公开 API。
+南京信息工程大学金牛湖脑机实验室网站。项目采用前后端分目录结构：Astro 静态前端负责页面展示，Starlette 后端负责 OpenAlex + Google Scholar 论文同步、隐私友好访问统计与公开 API。
 
 ## 目录结构
 
@@ -56,6 +56,15 @@ python -m app.cli sync
 OpenAlex 提供规范论文元数据，Google Scholar（经 SerpAPI）用于第二来源核验和引用指标。详细设计、环境变量及审核接口见 [backend/README.md](backend/README.md)。
 
 ## 生产部署
+
+### 腾讯云国内站（低费用方案）
+
+已支持 **EdgeOne Makers 托管网页/API + SCF 定时同步 + 国内 COS 私有存储**，无需常驻数据库。
+详细配置见 [腾讯云国内站部署指南](docs/tencent-makers.md)，环境变量模板见
+[deploy/tencent/.env.example](deploy/tencent/.env.example)。
+GitHub Actions 负责测试及 SCF 打包，Makers 负责网站构建发布。
+
+### 自有服务器 / Docker
 
 填写 `backend/.env` 后，在项目根目录执行：
 

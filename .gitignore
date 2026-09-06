@@ -31,6 +31,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .codex-dev-server*.log
+.edgeone/
+/cloud-functions/api/_vendor/
 
 # temporary assets
 /frontend/public/temp/

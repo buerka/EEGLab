@@ -1,4 +1,5 @@
 ---
+const icpNumber = import.meta.env.PUBLIC_ICP_NUMBER?.trim();
 ---
 <footer>
   <div class="footer-row">
@@ -12,6 +13,18 @@
         <span>金牛湖脑机实验室</span>
       </div>
       <p class="footer-copy"> &copy; 2025 Brain-Computer Interface Lab · NUIST</p>
+      {icpNumber && <p class="footer-copy"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">{icpNumber}</a></p>}
+      <div
+        class="footer-stats"
+        data-analytics-summary
+        data-state="loading"
+        aria-live="polite"
+        title="隐私友好统计：不使用 Cookie，不保存原始 IP"
+      >
+        <span class="footer-stat"><strong data-stat="totalViews">—</strong>累计浏览</span>
+        <span class="footer-stat"><strong data-stat="todayViews">—</strong>今日访问</span>
+        <span class="footer-stat"><strong data-stat="todayVisitors">—</strong>今日访客</span>
+      </div>
     </div>
 
     <nav class="footer-nav">
@@ -68,6 +81,40 @@
     font-family: var(--font-mono);
     letter-spacing: 0.3px;
   }
+  .footer-stats {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 18px;
+    color: var(--text-3);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    transition: opacity 0.2s ease;
+  }
+  .footer-stats[data-state="loading"] { opacity: 0.55; }
+  .footer-stats[data-state="error"] { display: none; }
+  .footer-stat {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 4px;
+    white-space: nowrap;
+  }
+  .footer-stat + .footer-stat::before {
+    content: '';
+    width: 2px;
+    height: 2px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--border-md);
+    align-self: center;
+  }
+  .footer-stat strong {
+    color: var(--text-2);
+    font-size: 11px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
   .footer-nav {
     display: flex;
     gap: 28px;
@@ -104,6 +151,45 @@
       text-align: center;
     }
     .footer-left { align-items: center; }
+    .footer-stats { justify-content: center; flex-wrap: wrap; row-gap: 6px; }
     .footer-nav { flex-wrap: wrap; justify-content: center; gap: 16px; }
   }
 </style>
+
+<script>
+  type AnalyticsSummary = {
+    totalViews: number;
+    todayViews: number;
+    todayVisitors: number;
+    trackingSince: string;
+  };
+
+  const root = document.querySelector<HTMLElement>('[data-analytics-summary]');
+  const analyticsWindow = window as Window & {
+    __eeglabAnalyticsReady?: Promise<boolean>;
+  };
+
+  const loadSummary = async () => {
+    if (!root) return;
+    try {
+      await (analyticsWindow.__eeglabAnalyticsReady ?? Promise.resolve(false));
+      const response = await fetch('/api/analytics/summary', {
+        headers: { Accept: 'application/json' },
+        credentials: 'same-origin',
+      });
+      if (!response.ok) throw new Error(`Analytics summary failed: ${response.status}`);
+      const summary = await response.json() as AnalyticsSummary;
+      const numberFormat = new Intl.NumberFormat('zh-CN');
+      for (const key of ['totalViews', 'todayViews', 'todayVisitors'] as const) {
+        const target = root.querySelector<HTMLElement>(`[data-stat="${key}"]`);
+        if (target) target.textContent = numberFormat.format(summary[key]);
+      }
+      root.title = `自 ${summary.trackingSince} 起统计 · 不使用 Cookie · 不保存原始 IP`;
+      root.dataset.state = 'ready';
+    } catch {
+      root.dataset.state = 'error';
+    }
+  };
+
+  void loadSummary();
+</script>

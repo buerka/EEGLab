@@ -2,11 +2,12 @@ from __future__ import annotations
 
 import json
 import random
-import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
+
+from .budget import remaining_timeout, retry_sleep
 
 
 SERPAPI_URL = 'https://serpapi.com/search.json'
@@ -39,6 +40,7 @@ def fetch_author_profile(
     seen_page_signatures: set[tuple[str, ...]] = set()
     seen_citation_ids: set[str] = set()
     for page_number in range(20):
+        remaining_timeout(timeout)
         params = {
             'engine': 'google_scholar_author',
             'author_id': scholar_id,
@@ -149,7 +151,7 @@ def _request_json(url: str, *, timeout: int, max_attempts: int) -> dict:
             },
         )
         try:
-            with urllib.request.urlopen(request, timeout=timeout) as response:
+            with urllib.request.urlopen(request, timeout=remaining_timeout(timeout)) as response:
                 return json.load(response)
         except urllib.error.HTTPError as exc:
             last_error = exc
@@ -158,12 +160,12 @@ def _request_json(url: str, *, timeout: int, max_attempts: int) -> dict:
                 raise ScholarError(f'SerpAPI HTTP {exc.code}: {detail[:500]}') from exc
             retry_after = exc.headers.get('Retry-After')
             delay = min(60.0, float(retry_after)) if retry_after else _backoff(attempt)
-            time.sleep(delay)
+            retry_sleep(delay)
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
             last_error = exc
             if attempt == max_attempts - 1:
                 raise ScholarError(f'SerpAPI request failed: {exc}') from exc
-            time.sleep(_backoff(attempt))
+            retry_sleep(_backoff(attempt))
     raise ScholarError(f'SerpAPI request failed: {last_error}')
 
 

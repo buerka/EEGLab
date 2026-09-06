@@ -12,10 +12,19 @@ def list_researchers(settings: Settings) -> list[dict]:
         rows = connection.execute(
             """
             SELECT r.*,
-                   COUNT(rp.paper_id) AS paper_count,
-                   SUM(CASE WHEN rp.missing_since IS NULL THEN 1 ELSE 0 END) AS current_count
+                   COUNT(CASE
+                       WHEN rp.paper_id IS NOT NULL AND COALESCE(po.hidden, 0) = 0
+                       THEN 1
+                   END) AS paper_count,
+                   COUNT(CASE
+                       WHEN rp.paper_id IS NOT NULL
+                        AND rp.missing_since IS NULL
+                        AND COALESCE(po.hidden, 0) = 0
+                       THEN 1
+                   END) AS current_count
             FROM researchers r
             LEFT JOIN researcher_papers rp ON rp.researcher_id = r.id
+            LEFT JOIN paper_overrides po ON po.paper_id = rp.paper_id
             WHERE r.active = 1
             GROUP BY r.id
             ORDER BY r.sort_order, r.id

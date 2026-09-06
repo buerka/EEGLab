@@ -52,10 +52,18 @@ class Settings:
     scholar_match_threshold: float = 0.94
     scholar_minimum_ratio: float = 0.5
     scholar_reviews_seed_path: Path | None = None
+    analytics_database_path: Path | None = None
+    analytics_hmac_secret: str | None = None
+    analytics_cache_control: str = (
+        'public, max-age=15, s-maxage=60, stale-while-revalidate=300'
+    )
+    analytics_dedupe_seconds: int = 30
+    analytics_initial_total: int = 0
 
 
 def get_settings() -> Settings:
     _load_env_file(BACKEND_ROOT / '.env')
+    sync_token = os.getenv('PAPERS_SYNC_TOKEN') or None
     return Settings(
         database_path=Path(
             os.getenv('PAPERS_DATABASE_PATH', BACKEND_ROOT / 'data' / 'papers.db')
@@ -67,7 +75,7 @@ def get_settings() -> Settings:
             os.getenv('PAPERS_SEED_PATH', BACKEND_ROOT / 'data' / 'papers.toml')
         ).resolve(),
         openalex_api_key=os.getenv('OPENALEX_API_KEY') or None,
-        sync_token=os.getenv('PAPERS_SYNC_TOKEN') or None,
+        sync_token=sync_token,
         allowed_origins=_split_csv(
             os.getenv('PAPERS_ALLOWED_ORIGINS', 'http://localhost:4321')
         ),
@@ -94,4 +102,22 @@ def get_settings() -> Settings:
                 BACKEND_ROOT / 'data' / 'scholar_reviews.toml',
             )
         ).resolve(),
+        analytics_database_path=Path(
+            os.getenv(
+                'ANALYTICS_DATABASE_PATH', BACKEND_ROOT / 'data' / 'analytics.db'
+            )
+        ).resolve(),
+        analytics_hmac_secret=(
+            os.getenv('ANALYTICS_HMAC_SECRET') or sync_token or None
+        ),
+        analytics_cache_control=os.getenv(
+            'ANALYTICS_CACHE_CONTROL',
+            'public, max-age=15, s-maxage=60, stale-while-revalidate=300',
+        ),
+        analytics_dedupe_seconds=max(
+            5, min(3600, int(os.getenv('ANALYTICS_DEDUPE_SECONDS', '30')))
+        ),
+        analytics_initial_total=max(
+            0, int(os.getenv('ANALYTICS_INITIAL_TOTAL', '0'))
+        ),
     )

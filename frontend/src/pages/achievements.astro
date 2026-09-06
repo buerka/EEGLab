@@ -45,8 +45,8 @@ const galleryGrid = (galleryData as any).grid as { src: string; label: string; t
         </div>
         <div class="stats-row">
           <div class="stat-item">
-            <div class="stat-num"><PublicationCount type="journal" client:load /></div>
-            <div class="stat-label">期刊论文</div>
+            <div class="stat-num"><PublicationCount client:load /></div>
+            <div class="stat-label">论文总数</div>
           </div>
           <div class="stat-item">
             <div class="stat-num">16+</div>
@@ -99,7 +99,6 @@ const galleryGrid = (galleryData as any).grid as { src: string; label: string; t
       <section id="papers" class="ach-section">
         <div class="section-header">
           <h2 class="section-heading">期刊与会议论文</h2>
-          <span class="section-note">多研究者 · OpenAlex 自动同步</span>
         </div>
         <PublicationsExplorer client:load />
       </section>

@@ -2,10 +2,11 @@ from __future__ import annotations
 
 import json
 import random
-import time
 import urllib.error
 import urllib.parse
 import urllib.request
+
+from .budget import remaining_timeout, retry_sleep
 
 
 OPENALEX_BASE_URL = 'https://api.openalex.org/works'
@@ -29,7 +30,12 @@ def fetch_author_works(
     """使用 cursor 获取一名 OpenAlex 作者的全部论文。"""
     cursor = '*'
     works: list[dict] = []
+    seen_cursors: set[str] = set()
     while cursor:
+        remaining_timeout(timeout)
+        if cursor in seen_cursors or len(seen_cursors) >= 100:
+            raise OpenAlexError('OpenAlex 分页未前进或超过 100 页')
+        seen_cursors.add(cursor)
         params = {
             'filter': f'authorships.author.id:{author_id}',
             'per_page': 100,
@@ -60,7 +66,7 @@ def _request_json(url: str, *, timeout: int, max_attempts: int) -> dict:
             },
         )
         try:
-            with urllib.request.urlopen(request, timeout=timeout) as response:
+            with urllib.request.urlopen(request, timeout=remaining_timeout(timeout)) as response:
                 return json.load(response)
         except urllib.error.HTTPError as exc:
             last_error = exc
@@ -69,12 +75,12 @@ def _request_json(url: str, *, timeout: int, max_attempts: int) -> dict:
                 raise OpenAlexError(f'OpenAlex HTTP {exc.code}: {detail[:500]}') from exc
             retry_after = exc.headers.get('Retry-After')
             delay = min(60.0, float(retry_after)) if retry_after else _backoff(attempt)
-            time.sleep(delay)
+            retry_sleep(delay)
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
             last_error = exc
             if attempt == max_attempts - 1:
                 raise OpenAlexError(f'OpenAlex request failed: {exc}') from exc
-            time.sleep(_backoff(attempt))
+            retry_sleep(_backoff(attempt))
     raise OpenAlexError(f'OpenAlex request failed: {last_error}')
 
 

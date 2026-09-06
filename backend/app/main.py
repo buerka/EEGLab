@@ -12,6 +12,13 @@ from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
 from starlette.routing import Route
 
+from .analytics import (
+    get_analytics_summary,
+    initialize_analytics,
+    make_analytics_etag,
+    normalize_public_path,
+    record_pageview,
+)
 from .config import get_settings
 from .database import initialize
 from .repository import (
@@ -32,6 +39,7 @@ sync_lock = asyncio.Lock()
 @asynccontextmanager
 async def lifespan(_: Starlette):
     await run_in_threadpool(initialize, settings)
+    await run_in_threadpool(initialize_analytics, settings)
     yield
 
 
@@ -83,6 +91,51 @@ async def sync_status(_: Request) -> JSONResponse:
     return _public_json(await run_in_threadpool(get_sync_status, settings))
 
 
+async def analytics_pageview(request: Request) -> Response:
+    if not _analytics_origin_allowed(request):
+        return JSONResponse(
+            {'error': '不允许的请求来源'},
+            status_code=403,
+            headers={'Cache-Control': 'no-store'},
+        )
+    content_length = _optional_int(request.headers.get('content-length')) or 0
+    if content_length > 1024:
+        return JSONResponse(
+            {'error': '请求体过大'},
+            status_code=413,
+            headers={'Cache-Control': 'no-store'},
+        )
+    try:
+        payload = await request.json()
+        path = normalize_public_path(payload.get('path') if isinstance(payload, dict) else None)
+        if path is None:
+            raise ValueError('无效的页面路径')
+    except (ValueError, json.JSONDecodeError):
+        return JSONResponse(
+            {'error': '无效的访问记录'},
+            status_code=400,
+            headers={'Cache-Control': 'no-store'},
+        )
+
+    await run_in_threadpool(
+        record_pageview,
+        settings,
+        path=path,
+        client_ip=_analytics_client_ip(request),
+        user_agent=request.headers.get('user-agent', ''),
+    )
+    return Response(status_code=204, headers={'Cache-Control': 'no-store'})
+
+
+async def analytics_summary(request: Request) -> Response:
+    data = await run_in_threadpool(get_analytics_summary, settings)
+    etag = make_analytics_etag(data)
+    headers = {'ETag': etag, 'Cache-Control': settings.analytics_cache_control}
+    if request.headers.get('if-none-match') == etag:
+        return Response(status_code=304, headers=headers)
+    return JSONResponse(data, headers=headers)
+
+
 async def trigger_sync(request: Request) -> JSONResponse:
     unauthorized = _require_admin(request)
     if unauthorized:
@@ -129,6 +182,28 @@ def _require_admin(request: Request) -> JSONResponse | None:
     return None
 
 
+def _analytics_origin_allowed(request: Request) -> bool:
+    origin = (request.headers.get('origin') or '').rstrip('/')
+    if not origin:
+        return request.headers.get('sec-fetch-site', '') in ('', 'same-origin', 'same-site')
+    request_origin = f'{request.url.scheme}://{request.url.netloc}'.rstrip('/')
+    allowed = {value.rstrip('/') for value in settings.allowed_origins}
+    return origin == request_origin or origin in allowed
+
+
+def _analytics_client_ip(request: Request) -> str:
+    cloudflare_ip = request.headers.get('cf-connecting-ip')
+    if cloudflare_ip:
+        return cloudflare_ip.strip()
+    forwarded = request.headers.get('x-forwarded-for')
+    if forwarded:
+        return forwarded.split(',', 1)[0].strip()
+    real_ip = request.headers.get('x-real-ip')
+    if real_ip:
+        return real_ip.strip()
+    return request.client.host if request.client else 'unknown'
+
+
 def _public_json(payload: dict, *, headers: dict | None = None) -> JSONResponse:
     response_headers = {'Cache-Control': settings.cache_control, **(headers or {})}
     return JSONResponse(payload, headers=response_headers)
@@ -149,6 +224,8 @@ routes = [
     Route('/api/papers', papers),
     Route('/api/papers/version', papers_version),
     Route('/api/sync/status', sync_status),
+    Route('/api/analytics/pageview', analytics_pageview, methods=['POST']),
+    Route('/api/analytics/summary', analytics_summary),
     Route('/api/admin/sync', trigger_sync, methods=['POST']),
     Route('/api/admin/researchers', add_researcher, methods=['POST']),
     Route('/api/admin/scholar-candidates', scholar_candidates),

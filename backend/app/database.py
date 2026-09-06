@@ -3,13 +3,18 @@ from __future__ import annotations
 import json
 import re
 import sqlite3
-import tomllib
+try:
+    import tomllib
+except ModuleNotFoundError:  # Makers Python 3.10
+    import tomli as tomllib
 from contextlib import contextmanager
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from collections.abc import Iterator
 
 from .config import Settings
+
+UTC = timezone.utc
 
 
 SCHEMA = """

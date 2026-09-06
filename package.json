@@ -1,0 +1,13 @@
+{
+  "name": "eeglab-deployment",
+  "private": true,
+  "version": "1.0.0",
+  "engines": { "node": ">=22.12.0" },
+  "scripts": {
+    "build": "node scripts/prepare-makers.mjs && npm --prefix frontend run build",
+    "dev": "npm --prefix frontend run dev",
+    "prepare:makers": "node scripts/prepare-makers.mjs",
+    "test:backend": "cd backend && python -m unittest discover -s tests -v",
+    "package:scf": "python scripts/package_scf.py"
+  }
+}

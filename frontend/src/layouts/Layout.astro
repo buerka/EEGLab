@@ -19,6 +19,34 @@ const {
   <meta name="description" content={description} />
   <title>{title}</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script is:inline>
+    (() => {
+      const shouldSkip = (() => {
+        if (navigator.doNotTrack === '1' || navigator.globalPrivacyControl === true) return true;
+        try {
+          return localStorage.getItem('eeglab.analytics.optout') === '1';
+        } catch {
+          return false;
+        }
+      })();
+
+      window.__eeglabAnalyticsReady = (async () => {
+        if (shouldSkip) return false;
+        try {
+          const response = await fetch('/api/analytics/pageview', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ path: window.location.pathname }),
+            credentials: 'same-origin',
+            keepalive: true,
+          });
+          return response.ok;
+        } catch {
+          return false;
+        }
+      })();
+    })();
+  </script>
 </head>
 <body>
   <slot />
