@@ -56,6 +56,8 @@ SQLite 仅在每次函数调用的临时目录中用于查询/核验。写入者
 
 所有 API 由 `cloud-functions/api/[[default]].py` 处理，公开路径保持 `/api/papers`、`/api/researchers`、`/api/analytics/*`。健康检查为 `/api/health`。管理入口要求 `Authorization: Bearer <PAPERS_SYNC_TOKEN>`。
 
+Python Handler 必须显式定义 `do_GET`、`do_POST` 等方法。不要使用链式赋值把它们指向同一个函数：实际 Makers 部署会漏掉 POST，导致访问统计请求在进入后端之前返回 405。运行时回源的 `Host` 也可能与公开域名不同，因此生产环境必须填写 `PAPERS_ALLOWED_ORIGINS`，不能只依赖同源 Host 判断。
+
 宣传视频 `frontend/public/videos/promo.mp4` 已从约 33 MB 压缩至约 20.5 MB，分辨率与时长保持不变，AAC 音轨直接复制，旧版本可通过 Git 找回。CI 会拒绝任何超过 25 MB 的静态文件，避免后续上传失败。参考 [国内站限制与配额](https://cloud.tencent.com/document/product/1552/132789)。
 
 ## 3. 环境变量
@@ -128,4 +130,4 @@ SCF 每日先汇总统计，再同步论文；因此上游论文服务出错也�
 - [COS 条件创建与版本控制限制](https://cloud.tencent.com/document/product/436/7749)
 - [SCF 定时触发器](https://cloud.tencent.com/document/product/583/9708)
 
-配置和文档核对日期：2026-09-06。实际资源创建、凭据配置、国内地域联网和正式部署需要在腾讯云账户中验证。
+配置和文档核对日期：2026-09-06。实际生产资源和验证结果见 [生产部署记录](tencent-production.md)。
