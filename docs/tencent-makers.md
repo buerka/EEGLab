@@ -2,6 +2,8 @@
 
 本方案针对 `console.cloud.tencent.com/edgeone/makers`。默认使用上海地域和北京时间，不依赖海外数据库，也不需要常驻服务器。网页和公开 API 在 Makers，论文同步在腾讯云 SCF，所有持久化数据在国内 COS 私有桶。
 
+本项目已经部署，正式地址为 [eeg.yanyinglab.cn](https://eeg.yanyinglab.cn)。首次接管先读 [接管说明](handoff.md) 与 [生产记录](tencent-production.md)。以下创建步骤用于理解或新环境部署；维护现有生产站时更新已有资源，不重复创建同名项目、函数、桶或凭据。
+
 ## CI 与发布的分工
 
 | 平台 | 职责 |
@@ -10,7 +12,9 @@
 | EdgeOne Makers | 从 GitHub 导入仓库，执行生产构建和网站/API 自动部署 |
 | 腾讯云 SCF | 运行每日同步与访问统计汇总，不负责构建网站 |
 
-`.github/workflows/ci.yml` 不持有云密钥，也不上传网站。Makers 的 Git 自动部署和 GitHub CI 独立；若希望生产发布必须经过测试，应对生产分支设置保护，要求 `validate` 成功后才能合并。Makers 预览部署使用独立的 `COS_PREFIX`（如 `eeglab/preview`）及测试密钥，不能与生产共用前缀。
+`.github/workflows/ci.yml` 不持有云密钥，也不上传网站或更新 SCF。Makers 的 Git 自动部署和 GitHub CI 独立，当前没有 CI 发布门禁；若希望生产发布必须经过测试，应另行配置生产分支保护，要求 `validate` 成功后才能合并。
+
+当前预览分支自动部署关闭，生产密钥仅分配给生产环境。若以后启用预览，须配置独立 `COS_PREFIX`（如 `eeglab/preview`）和仅允许该前缀的测试权限。生产部署的限时预览链接仍属于生产环境，不能误认为独立预览数据环境。
 
 ## 1. 创建一个 COS 私有桶
 
@@ -22,7 +26,9 @@
 - 桶名必须包含 APPID，例如 `lab-data-1250000000`。
 - 不对整个 `eeglab/production` 前缀设置自动过期规则，否则可能删除最新论文快照或累计统计。
 
-Makers 配置一个专用 CAM 子账号密钥，仅授权这个桶/前缀。所需操作为 `cos:GetBucketVersioning`、`cos:GetBucket`（列举）、`cos:GetObject`、`cos:PutObject`、`cos:DeleteObject`（删除已汇总且过期的匿名统计）。桶级列举/版本检查与对象级权限应分别配置。SCF 建议使用执行角色，配置相同权限，使用运行时注入的临时凭据。
+Makers 配置专用 CAM 子账号密钥，仅授权这个桶/前缀。所需操作为 `cos:GetBucketVersioning`、`cos:GetBucket`（列举）、`cos:GetObject`、`cos:PutObject`；`cos:DeleteObject` 仅用于 `analytics/events/*` 下已汇总且过期的匿名统计。桶级列举/版本检查与对象级权限分别配置。
+
+当前 Makers 与 SCF 都使用 `eeglab-runtime` 的专用程序密钥。代码也支持未来改用 SCF 执行角色注入临时凭据，但该模式尚未启用；`SCF_QcsRole` 是腾讯云服务管理角色，不是已绑定的运行角色。
 
 数据布局：
 
@@ -44,7 +50,7 @@ SQLite 仅在每次函数调用的临时目录中用于查询/核验。写入者
 | 配置 | 值 |
 | --- | --- |
 | 根目录 | `./` |
-| 框架 | Astro；若预设覆盖字段，以以下自定义值为准 |
+| 框架 | 当前使用 Other，自定义下列构建字段 |
 | 安装命令 | `npm --prefix frontend ci` |
 | 构建命令 | `npm run build` |
 | 输出目录 | `frontend/dist` |
@@ -53,6 +59,8 @@ SQLite 仅在每次函数调用的临时目录中用于查询/核验。写入者
 | 加速区域 | 按实际域名选择中国大陆；该控制台设置不由 `edgeone.json` 代填 |
 
 根目录 `edgeone.json` 已保存构建与函数配置。构建时 `scripts/prepare-makers.mjs` 将共享后端模块和三个种子 TOML 文件复制到云函数私有目录。它不会复制 `.env`、实时数据库或其他本机文件。Makers 的 Python 构建器从 `cloud-functions/requirements.txt` 安装依赖。不要把 `_vendor` 或 `cloud-functions` 复制进 `frontend/public` / `frontend/dist`。
+
+仓库配置可覆盖控制台显示的默认 Node/地域值，实际使用值应结合 `edgeone.json` 和构建日志核对。现有 `cloudFunctions.mainlandRegions`、`cloudFunctions.python.maxDuration` 在上线构建中被兼容并给出弃用提示；字段迁移列为后续待办，当前未修改已验证配置。
 
 所有 API 由 `cloud-functions/api/[[default]].py` 处理，公开路径保持 `/api/papers`、`/api/researchers`、`/api/analytics/*`。健康检查为 `/api/health`。管理入口要求 `Authorization: Bearer <PAPERS_SYNC_TOKEN>`。
 
@@ -70,11 +78,11 @@ Python Handler 必须显式定义 `do_GET`、`do_POST` 等方法。不要使用�
 python -c "import secrets; print(secrets.token_urlsafe(32))"
 ```
 
-`PAPERS_ALLOWED_ORIGINS` 填实际站点 HTTPS 地址。`PUBLIC_PAPERS_API_URL` 保持 `/api`；`PUBLIC_ICP_NUMBER` 仅填写已取得的真实备案号，留空则页脚不显示。
+`PAPERS_ALLOWED_ORIGINS` 填实际站点 HTTPS 地址，多个来源以逗号分隔。当前 Makers 为 `https://eeg.yanyinglab.cn,https://eeglab-hvlwg3wh.zh-cn.edgeone.cool`。`PUBLIC_PAPERS_API_URL` 保持 `/api`；`PUBLIC_ICP_NUMBER` 当前未填写，仅在确认真实备案号后设置，留空则页脚不显示。Makers 环境变量修改需要重新部署才能生效。
 
 `OPENALEX_API_KEY` / `SERPAPI_API_KEY` 在 SCF 配置。若希望 Makers 的受保护手动同步也可用，在 Makers 也配置相同上游密钥。不配置 SerpAPI 时继续使用 OpenAlex，Scholar 标记为 disabled。
 
-SCF 若使用执行角色，不配置 `COS_SECRET_ID` / `COS_SECRET_KEY`，由 SDK 读取 `TENCENTCLOUD_SECRETID` / `TENCENTCLOUD_SECRETKEY` / `TENCENTCLOUD_SESSIONTOKEN`。每次事件重新创建客户端，避免复用过期凭据。
+SCF 若以后使用执行角色，不配置 `COS_SECRET_ID` / `COS_SECRET_KEY`，由 `CosStore` 读取 `TENCENTCLOUD_SECRETID` / `TENCENTCLOUD_SECRETKEY` / `TENCENTCLOUD_SESSIONTOKEN` 传给 SDK。每次事件重新创建客户端，避免复用过期凭据。
 
 不要把本地 `PAPERS_DATABASE_PATH`、`ANALYTICS_DATABASE_PATH` 或 Docker 卷路径当作云端存储设置。COS 前缀才是数据环境的标识。
 
@@ -98,7 +106,9 @@ SCF 若使用执行角色，不配置 `COS_SECRET_ID` / `COS_SECRET_KEY`，由 S
 
 环境变量与 Makers 共用生产桶/前缀。先在控制台用 `{}` 测试事件执行一次，再启用每日定时触发。每日成功后重复事件会跳过上游同步；人工需要重跑时可调用 Makers 受保护的 `POST /api/admin/sync`，其同步预算为 70 秒。SCF 同步预算为 200 秒，总任务预算 250 秒，为快照提交和清理留出时间。
 
-SCF 定时触发器与 Makers `schedules` 是两个不同入口，本项目只启用前者，不要再增加第二个每日任务。上游分页与重试共享时间预算；超时则继续提供上次完整快照。网络连通性和上游配额仍需在实际上海函数环境中确认。
+SCF 定时触发器与 Makers `schedules` 是两个不同入口，本项目只启用前者，不要再增加第二个每日任务。当前触发器为 `eeglab-daily-0330`，Cron 为 `0 30 3 * * * *`，控制台按 UTC+8 北京时间解释。上游分页与重试共享时间预算；超时则继续提供上次完整快照。2026-09-06 的上海函数手动执行已验证双源联网成功，后续仍需检查定时结果及上游配额。
+
+更新后端共享代码、云端依赖或审核/研究者种子时，除 Makers 自动部署，还需将成功 CI 生成的新内部 ZIP 上传到现有 `eeglab-paper-sync`，保持环境变量、执行方法与定时器。论文原始种子仅在空库导入，修改它不能自动更新已有线上论文字段。CI artifact 保留 14 天，过期后重新运行工作流生成。
 
 若在本机 Linux Python 3.10 构建，可运行 `python scripts/package_scf.py`。Windows 上 `--source-only` 只生成审阅源码包，不包含 Linux 运行依赖，不能直接作为部署包。
 
@@ -106,7 +116,7 @@ SCF 定时触发器与 Makers `schedules` 是两个不同入口，本项目只�
 
 云端统计采用默认 30 秒的**固定时间窗口**去重。同一天同一匿名访客、同一页面、同一窗口只写一个不可覆盖对象；跨窗口可能再次计数，与本地 SQLite 的滑动 30 秒去重略有不同。今日访客按当日 HMAC 去重，原始 IP、User-Agent 不写入存储。
 
-SCF 每日先汇总统计，再同步论文；因此上游论文服务出错也不会阻断已执行的汇总。已汇总且超过 32 天的匿名记录由任务分批清理，累计/每日聚合永久保存。若定时任务停用，清理也会停止，应检查 SCF 失败告警。最近未汇总事件一次最多扫描 50000 条，超过时返回明确错误而不展示错误计数；该方案面向访问量较低的实验室网站，大访问量应迁移到数据库/专门统计服务。
+SCF 每日先汇总统计，再同步论文；因此上游论文服务出错也不会阻断已执行的汇总。已汇总且超过 32 天的匿名记录由任务分批清理，累计/每日聚合永久保存。若定时任务停用，清理也会停止。当前未配置项目失败通知、未开启 SCF CLS 日志投递，应核对 `/api/sync/status` 及 COS `papers/runs/`；失败告警为待办。最近未汇总事件一次最多扫描 50000 条，超过时返回明确错误而不展示错误计数；该方案面向访问量较低的实验室网站，大访问量应迁移到数据库/专门统计服务。
 
 没有常驻数据库费用，但 COS 存储/请求、SCF 执行和 SerpAPI 配额按各自账户套餐计算，不承诺永久免费。论文快照每天约一个版本，保留历史便于回滚。
 
@@ -120,6 +130,8 @@ SCF 每日先汇总统计，再同步论文；因此上游论文服务出错也�
 6. 检查未携带口令的 `/api/admin/sync` 返回 401，以及预览环境没有写入生产前缀。
 
 国内加速绑定自定义域名时，按 Makers 控制台完成域名备案与所有权验证，再填写备案号。代码不能代办备案或替代控制台的域名验证。
+
+当前域名归属验证及 CNAME 已完成，平台免费证书自动签发/续期，HTTP 跳转 HTTPS。DNS 在另一个账号维护；访问 CNAME 必须保留。归属 TXT 当前建议保留，不能把它与网站访问 CNAME 或证书 DNS 委派记录混淆。具体主机记录见生产记录与接管说明。
 
 ## 国内站官方文档
 
