@@ -4,6 +4,8 @@
 
 先读 [项目接管说明](docs/handoff.md)，再运行 `git status --short`、`git branch --show-current`、`git log -5 --oneline`，确认当前分支和已有修改。本文与接管说明记录截至 2026-09-06 的状态，线上资源和数据需按任务重新核对；不要将历史验证当作实时结果。
 
+审计报告、扫描明细和复现结果只保存在 Git 已忽略的 `output/`，不要提交或推送到仓库，除非用户明确要求。
+
 ## 项目概览
 - 南京信息工程大学 · 金牛湖脑机实验室（Brain-Computer Interface Lab · NUIST）
 - Astro 6 + React 18 静态网站，React 用于动态论文组件；HeroEEG.tsx 保留但当前页面未引用
