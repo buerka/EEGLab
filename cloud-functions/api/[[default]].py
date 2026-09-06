@@ -29,4 +29,21 @@ class handler(BaseHTTPRequestHandler):
         if self.command != 'HEAD':
             self.wfile.write(body)
 
-    do_GET = do_POST = do_OPTIONS = do_HEAD = do_PUT = do_DELETE = _handle
+    # Makers discovers supported methods from explicit handler definitions.
+    def do_GET(self):
+        self._handle()
+
+    def do_POST(self):
+        self._handle()
+
+    def do_OPTIONS(self):
+        self._handle()
+
+    def do_HEAD(self):
+        self._handle()
+
+    def do_PUT(self):
+        self._handle()
+
+    def do_DELETE(self):
+        self._handle()
