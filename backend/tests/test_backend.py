@@ -12,7 +12,7 @@ from starlette.testclient import TestClient
 from app.config import BACKEND_ROOT, Settings
 from app.database import connect, get_metadata, initialize
 from app.repository import create_researcher, get_publications, list_scholar_candidates
-from app.sync_service import sync_all_researchers
+from app.sync_service import _upsert_work, sync_all_researchers
 from app.scholar import ScholarProfile
 from app.review_service import apply_scholar_review_rules
 
@@ -145,6 +145,53 @@ class BackendTestCase(unittest.TestCase):
                 sync_all_researchers(self.settings)
         with connect(self.settings.database_path) as connection:
             self.assertEqual(get_metadata(connection, 'snapshot_version'), version_before_failure)
+
+    def test_duplicate_doi_keeps_existing_value_instead_of_failing(self) -> None:
+        now = '2026-11-05T00:00:00Z'
+        with connect(self.settings.database_path) as connection:
+            connection.execute(
+                """
+                INSERT INTO papers (
+                    openalex_id, doi, normalized_title, title, authors, venue,
+                    publication_year, work_type, cited_by_count, field, tags_json,
+                    created_at, updated_at
+                ) VALUES (?, ?, ?, ?, '', '', 2024, 'journal', 0, '其他', '["其他"]', ?, ?)
+                """,
+                ('W-DUPLICATE-A', '10.5555/conflict', 'conflictpaper',
+                 'Conflict paper', now, now),
+            )
+            second = connection.execute(
+                """
+                INSERT INTO papers (
+                    openalex_id, doi, normalized_title, title, authors, venue,
+                    publication_year, work_type, cited_by_count, field, tags_json,
+                    created_at, updated_at
+                ) VALUES (?, ?, ?, ?, '', '', 2024, 'journal', 0, '其他', '["其他"]', ?, ?)
+                """,
+                ('W-DUPLICATE-B', '10.5555/old', 'oldpaper',
+                 'Old DOI paper', now, now),
+            ).lastrowid
+        work = {
+            'id': 'https://openalex.org/W-DUPLICATE-B',
+            'doi': 'https://doi.org/10.5555/conflict',
+            'title': 'Updated duplicate paper',
+            'publication_year': 2024,
+            'authorships': [],
+            'primary_location': {},
+            'topics': [],
+            'cited_by_count': 3,
+            'type': 'article',
+        }
+        with connect(self.settings.database_path) as connection:
+            paper_id, inserted = _upsert_work(connection, work, now)
+            row = connection.execute(
+                'SELECT doi, title, cited_by_count FROM papers WHERE id=?', (paper_id,)
+            ).fetchone()
+        self.assertFalse(inserted)
+        self.assertEqual(paper_id, second)
+        self.assertEqual(row['doi'], '10.5555/old')
+        self.assertEqual(row['title'], 'Updated duplicate paper')
+        self.assertEqual(row['cited_by_count'], 3)
 
     def test_scholar_reconciles_without_publishing_unmatched_candidates(self) -> None:
         scholar_settings = replace(self.settings, serpapi_api_key='serp-secret')

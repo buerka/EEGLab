@@ -323,6 +323,15 @@ def _upsert_work(
         return int(cursor.lastrowid), True
 
     paper_id = int(row['id'])
+    update_doi = doi
+    if doi:
+        conflict = connection.execute(
+            'SELECT 1 FROM papers WHERE doi=? AND id<>?', (doi, paper_id)
+        ).fetchone()
+        if conflict:
+            # Duplicate OpenAlex records can end up sharing one DOI. Keep the
+            # DOI already stored on this row instead of failing the whole sync.
+            update_doi = None
     connection.execute(
         """
         UPDATE papers SET
@@ -333,7 +342,7 @@ def _upsert_work(
         WHERE id=?
         """,
         (
-            openalex_id, doi, normalized_title, title, authors, venue,
+            openalex_id, update_doi, normalized_title, title, authors, venue,
             int(work.get('publication_year') or 0), work.get('publication_date'),
             work_type, int(work.get('cited_by_count') or 0), field,
             json.dumps(tags, ensure_ascii=False), seen_at, seen_at, paper_id,
