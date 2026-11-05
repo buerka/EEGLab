@@ -80,7 +80,7 @@ python -c "import secrets; print(secrets.token_urlsafe(32))"
 
 `PAPERS_ALLOWED_ORIGINS` 填实际站点 HTTPS 地址，多个来源以逗号分隔。当前 Makers 为 `https://eeg.yanyinglab.cn,https://eeglab-hvlwg3wh.zh-cn.edgeone.cool`。`PUBLIC_PAPERS_API_URL` 保持 `/api`；`PUBLIC_ICP_NUMBER` 当前未填写，仅在确认真实备案号后设置，留空则页脚不显示。Makers 环境变量修改需要重新部署才能生效。
 
-`OPENALEX_API_KEY` / `SERPAPI_API_KEY` 在 SCF 配置。若希望 Makers 的受保护手动同步也可用，在 Makers 也配置相同上游密钥。不配置 SerpAPI 时继续使用 OpenAlex，Scholar 标记为 disabled。
+`OPENALEX_API_KEY` / `SERPAPI_API_KEY` 在 SCF 配置；2026-11-05 起 Makers 生产环境也配置了同一 `OPENALEX_API_KEY`（仅生产），用于受保护手动同步，修改后需重新部署。不配置 SerpAPI 时继续使用 OpenAlex，Scholar 标记为 disabled。
 
 SCF 若以后使用执行角色，不配置 `COS_SECRET_ID` / `COS_SECRET_KEY`，由 `CosStore` 读取 `TENCENTCLOUD_SECRETID` / `TENCENTCLOUD_SECRETKEY` / `TENCENTCLOUD_SESSIONTOKEN` 传给 SDK。每次事件重新创建客户端，避免复用过期凭据。
 

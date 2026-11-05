@@ -46,6 +46,8 @@
 - 北京时间 13:02–13:03 手动执行 SCF 测试事件成功：OpenAlex 136 篇、Scholar 110 篇（匹配 92、候选 5），更新 136 条，无同步警告；`lastSyncAt=2026-11-05T05:03:02Z`，快照版本 `15a852505aa746e1ba410c74337c4eff`。
 - `/api/papers/version` 已返回新版本；网站继续读取 COS 快照，无需重建前端。
 - 修复通过 30 项后端测试（本地无 COS SDK 时 4 项契约测试跳过），Linux Python 3.10 CI 构建的 SCF 包已上传并部署成功。
+- Makers 生产环境已新增 `OPENALEX_API_KEY`（仅生产），并通过新建部署 `dpldteldhmt` 生效；Makers 受保护手动同步与 SCF 使用同一 Key。
+- 云监控已创建并启用 `eeglab-sync-error` 告警策略：对象为上海 `default` 命名空间的 `eeglab-paper-sync`，条件包含内存超限、执行超时、资源超限和错误次数 > 0，通知使用系统预设模板（账号默认 1 个接收人）。策略已保存，尚未经过真实失败触发验证。
 
 ## 验证边界与待办
 
