@@ -102,7 +102,9 @@ npm run clean     # 清理 dist/ 和 .astro/
 - 奖项与图库内容分别维护在 `src/data/awards.toml` 和 `src/data/gallery.toml`。
 - 当前有 17 条奖项、42 条图库记录；首页瀑布流两列分别为 16 / 14 条，复用已有图片。
 - 新图片先放 `public/temp/`，整理命名后移至对应目录，同步图库数据与 [媒体清单](public/images/achievements/README.md)。该临时目录不提交。
-- `promo.mp4` 为首页背景视频，已压缩至 20,535,541 字节，旧版本通过 Git 查阅；`demo-eeg-cap.mp4` 目前仅保存为素材。
+- 首页 Hero 循环提供三个编码源，按声明顺序自动择优：`promo-hero-hevc-v1.mp4`（HEVC，约 1.4 MB）→ `promo-hero-av1-v1.mp4`（AV1，约 1.6 MB）→ `promo-hero-v1.mp4`（H.264 兜底，约 2.4 MB）；三者均为 15 s / 720p / 无音轨，浏览器只下载其中一个。`promo-hero-poster-v1.webp` 为首帧海报；60 s 原始宣传片已移出部署目录，可从 Git 历史或本地 `output/media-src/` 找回。`demo-eeg-cap.mp4` 目前仅保存为素材。
+- `<source>` 的 `codecs` 必须与文件实际参数一致（当前 HEVC Main 3.1 = `hvc1.1.6.L93.B0`，AV1 Main 3.1 = `av01.0.05M.08`）；重新编码时先 `ffprobe` 核对 profile/level，写错会跳过或回退到下一源。
+- 视频文件名带版本后缀（`-v1`），配合 `edgeone.json` 中 `/videos/*` 的 immutable 缓存；更换内容时同时改三个文件名与页面引用。
 - Makers 单个静态文件不超过 25 MB，根目录 `scripts/check_deployment.py` 会检查。
 - 首页与团队页各有一份团队数组，人员修改需同步两处。研究方向名称及 slug 以 `src/data/research.ts` 为准。
 

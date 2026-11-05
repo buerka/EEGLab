@@ -89,8 +89,11 @@ frontend/public/images/
 └── ahjzu-logo.webp
 
 frontend/public/videos/
-├── demo-eeg-cap.mp4   # 脑电帽演示素材，当前未接入页面
-└── promo.mp4          # 首页 Hero 背景视频，约 20.5 MB，旧版本由 Git 保留
+├── demo-eeg-cap.mp4          # 脑电帽演示素材，当前未接入页面
+├── promo-hero-hevc-v1.mp4    # Hero 循环 · HEVC Main 3.1，约 1.4 MB，优先给硬件解码设备
+├── promo-hero-av1-v1.mp4     # Hero 循环 · AV1 Main 3.1，约 1.6 MB，HEVC 不可用时选中
+├── promo-hero-v1.mp4         # Hero 循环 · H.264 兜底，15 s / 720p / 无音轨，约 2.4 MB
+└── promo-hero-poster-v1.webp # 首帧海报，约 52 KB，视频解码前占位
 ```
 
 ## 页面路由

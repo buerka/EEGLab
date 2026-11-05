@@ -133,8 +133,23 @@ const advisors = [
 
     <!-- 01 · HERO ─────────────────────────────────────── -->
     <section id="hero" class="fp-section fp-hero">
-      <video class="hero-video" autoplay muted loop playsinline>
-        <source src="/videos/promo.mp4" type="video/mp4" />
+      <video
+        class="hero-video"
+        poster="/videos/promo-hero-poster-v1.webp"
+        width="1280"
+        height="720"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        disablepictureinpicture
+        aria-hidden="true"
+      >
+        <!-- 按解码能力择优：HEVC（Apple/Windows 硬件解码）→ AV1 → H.264 兜底 -->
+        <source src="/videos/promo-hero-hevc-v1.mp4" type='video/mp4; codecs="hvc1.1.6.L93.B0"' />
+        <source src="/videos/promo-hero-av1-v1.mp4" type='video/mp4; codecs="av01.0.05M.08"' />
+        <source src="/videos/promo-hero-v1.mp4" type="video/mp4" />
       </video>
       <div class="hero-overlay"></div>
       <div class="hero-content">
@@ -732,6 +747,16 @@ const advisors = [
     height: 100%;
     object-fit: cover;
     z-index: 0;
+    background: #000;
+  }
+  /* 系统开启“减弱动态效果”时用首帧静图替代自动播放 */
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video { display: none; }
+    .fp-hero {
+      background-image: url('/videos/promo-hero-poster-v1.webp');
+      background-size: cover;
+      background-position: center;
+    }
   }
   .hero-overlay {
     position: absolute;

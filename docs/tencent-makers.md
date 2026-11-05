@@ -66,7 +66,9 @@ SQLite 仅在每次函数调用的临时目录中用于查询/核验。写入者
 
 Python Handler 必须显式定义 `do_GET`、`do_POST` 等方法。不要使用链式赋值把它们指向同一个函数：实际 Makers 部署会漏掉 POST，导致访问统计请求在进入后端之前返回 405。运行时回源的 `Host` 也可能与公开域名不同，因此生产环境必须填写 `PAPERS_ALLOWED_ORIGINS`，不能只依赖同源 Host 判断。
 
-宣传视频 `frontend/public/videos/promo.mp4` 已从约 33 MB 压缩至约 20.5 MB，分辨率与时长保持不变，AAC 音轨直接复制，旧版本可通过 Git 找回。CI 会拒绝任何超过 25 MB 的静态文件，避免后续上传失败。参考 [国内站限制与配额](https://cloud.tencent.com/document/product/1552/132789)。
+首页 Hero 背景视频于 2026-11-05 拆分为 15 s 循环，并提供三个编码源（同一内容，浏览器只下载一个）：`promo-hero-hevc-v1.mp4`（HEVC Main 3.1，约 1.4 MB）、`promo-hero-av1-v1.mp4`（AV1 Main 3.1，约 1.6 MB）、`promo-hero-v1.mp4`（H.264 兜底，约 2.4 MB），外加首帧海报 `promo-hero-poster-v1.webp`（约 52 KB）。三者由原 60 s 宣传片（约 20.5 MB）剪辑而来；原始片移出 `public`，不再参与部署，可从 Git 历史或本地 `output/media-src/` 找回。CI 会拒绝任何超过 25 MB 的静态文件，避免后续上传失败。参考 [国内站限制与配额](https://cloud.tencent.com/document/product/1552/132789)。
+
+`edgeone.json` 的 `headers` 已为 `/_astro/*`、`/videos/*` 配置一年 immutable，`/images/*` 配置 7 天并允许 stale-while-revalidate。视频文件带 `-v1` 版本后缀，改内容时需同时改文件名与引用。静态资源默认返回 `Cache-Control: public,max-age=0,must-revalidate`，Range 请求（206）实测曾返回 `no-store`；部署后需用 `curl -r 0-1023` 复核自定义头是否覆盖 206 响应。
 
 ## 3. 环境变量
 
