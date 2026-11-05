@@ -2,6 +2,53 @@
 # 非团队人员不写入；指导老师与获奖成员必须分别放在 teamMentors / teamAwardees。
 
 [[awards]]
+year = 2026
+name = "第十九届先进机器人及仿真技术大赛全国总决赛二等奖"
+description = "仿真技术 · 无人车仿真组，中国仿真学会，2026年10月"
+teamMentors = ["严颖", "蔡骏"]
+teamAwardees = ["王宇森", "陆思语"]
+image = "/images/achievements/award-rst19-national-2nd.webp"
+
+[[awards]]
+year = 2026
+name = "第十九届先进机器人及仿真技术大赛江苏赛区一等奖"
+description = "仿真技术 · 无人车仿真组，2026年10月"
+teamMentors = ["严颖", "蔡骏"]
+teamAwardees = ["王宇森", "陆思语"]
+image = "/images/achievements/award-rst19-jiangsu-1st.webp"
+
+[[awards]]
+year = 2026
+name = "第二十八届中国机器人及人工智能大赛全国总决赛二等奖"
+description = "Apollo 自动驾驶仿真赛，2026年8月"
+teamMentors = ["严颖"]
+teamAwardees = ["刘志"]
+image = "/images/achievements/award-craic28-autopilot-national-2nd.webp"
+
+[[awards]]
+year = 2026
+name = "第二十八届中国机器人及人工智能大赛全国总决赛三等奖"
+description = "人工智能创新赛，2026年7月"
+teamMentors = ["严颖"]
+teamAwardees = ["刘志"]
+image = "/images/achievements/award-craic28-ai-innovation-national-3rd.webp"
+
+[[awards]]
+year = 2026
+name = "第二十八届中国机器人及人工智能大赛江苏赛区一等奖"
+description = "人工智能创新赛，2026年6月"
+teamMentors = ["严颖"]
+teamAwardees = ["刘志"]
+image = "/images/achievements/award-craic28-ai-innovation-jiangsu-1st.webp"
+
+[[awards]]
+year = 2026
+name = "斯坦福/爱思唯尔全球前2%顶尖科学家榜单"
+description = "2026 年单年度影响力榜单，Engineering / Electrical & Electronic Engineering"
+teamAwardees = ["严颖"]
+image = "/images/achievements/award-yan-ying-top2pct-2026.webp"
+
+[[awards]]
 year = 2025
 name = "中国技协职工技术创新成果二等奖"
 description = "基于脑电信号与新型可解释机器学习方法的脑科疾病诊断研究，2025年3月"

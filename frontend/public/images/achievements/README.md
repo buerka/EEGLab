@@ -1,6 +1,6 @@
 # 成果展示图片说明
 
-核对日期：2026-09-06。本目录实际有 42 张 WebP，文件名清单已与磁盘核对；展示标签及排序由 [gallery.toml](../../../src/data/gallery.toml) 管理。首页两列瀑布流复用 16 / 14 条记录，成果页有 42 条 grid 记录，不能将复用数相加当作独立图片数。
+核对日期：2026-11-05。本目录实际有 52 张 WebP，文件名清单已与磁盘核对；展示标签及排序由 [gallery.toml](../../../src/data/gallery.toml) 管理。首页两列瀑布流复用 16 / 14 条记录，成果页有 52 条 grid 记录，不能将复用数相加当作独立图片数。
 
 ## 产品
 
@@ -15,6 +15,10 @@
 |--------|------|
 | `demo-bci-system-diagram.webp` | BCI 闭环系统流程图——视觉刺激（显示器）→ 脑电采集（电极帽+大脑）→ 机械手控制（两只外骨骼手套） |
 | `demo-lab-setup.webp` | 实验室 BCI 闭环演示现场——受试者佩戴 EEG Cap，连接 EEG Amplifier，配合 Monitor 与 Robotic Hand |
+| `demo-glove-training.webp` | 脑控灵巧手训练演示——受试者佩戴柔性干电极脑电帽与多通道采集盒，右手穿戴灵巧手，笔记本运行手势反馈界面 |
+| `demo-bci-game.webp` | 脑机接口游戏控制演示——受试者佩戴脑电帽注视主显示器游戏画面，笔记本同步显示原始脑电波形 |
+| `demo-eeg-monitor.webp` | 脑电信号实时监测——显示器上为多通道脑电波形，旁边笔记本运行采集与解码代码 |
+| `demo-eeg-capture.webp` | 脑电采集实验现场——受试者佩戴脑电帽坐在双屏工位前进行采集任务 |
 
 ## 临床
 
@@ -60,6 +64,12 @@
 
 | 文件名 | 内容 |
 |--------|------|
+| `award-rst19-national-2nd.webp` | 第十九届先进机器人及仿真技术大赛（RST）**国赛二等奖**——仿真技术·无人车仿真组，南京信息工程大学，指导老师：严颖、蔡骏，队长：王宇森，队员：陈刘春、杨文杰、陆思语、刘政阳，中国仿真学会，2026年10月25日，证书号 20261900B090102001 |
+| `award-rst19-jiangsu-1st.webp` | 第十九届先进机器人及仿真技术大赛（RST）**江苏赛区一等奖**——同一项目与团队，2026年10月8日，证书号 20261901B090101006 |
+| `award-craic28-autopilot-national-2nd.webp` | 第二十八届中国机器人及人工智能大赛**全国总决赛二等奖**——Apollo 自动驾驶仿真赛，刘志、徐博文、殷文哲，指导老师：严颖，2026年8月，证书号 CRAIC2026-NF-M34AY0 |
+| `award-craic28-ai-innovation-national-3rd.webp` | 第二十八届中国机器人及人工智能大赛**全国总决赛三等奖**——人工智能创新赛，刘志、孙润泽、吴鑫岩，指导老师：严颖，2026年7月，证书号 CRAIC2026-NF-K01MQP |
+| `award-craic28-ai-innovation-jiangsu-1st.webp` | 第二十八届中国机器人及人工智能大赛**江苏赛区一等奖**——人工智能创新赛，同一团队，2026年6月，证书号 CRAIC2026-JS-46PC0T |
+| `award-yan-ying-top2pct-2026.webp` | 斯坦福/爱思唯尔全球前2%顶尖科学家榜单页面截图——Yan, Ying，2026 年单年度数据，Global Rank 393325，子领域排名 1887（Electrical & Electronic Engineering） |
 | `award-robot-ai-1st.webp` | 第二十七届中国机器人及人工智能大赛全国总决赛——机器人任务挑战赛（智慧药房）**一等奖**，安徽建筑大学代表队 |
 | `award-smart-car-1st.webp` | 2025年第二十届全国大学生智能汽车竞赛全国总决赛——5G远程驾驶无人车赛 **一等奖**，安徽建筑大学·头文字T队 |
 | `award-raicom-2nd.webp` | 2025年睿抗机器人开发者大赛（RAICOM）全国总决赛——银龄守护适老化服务机器人创新竞赛 **二等奖**，安徽建筑大学 |
@@ -84,6 +94,13 @@
 | 文件名 | 位置 | 内容 |
 |--------|------|------|
 | `demo-eeg-cap.mp4` | `frontend/public/videos/` | 脑电帽演示素材，当前页面未引用 |
-| `promo.mp4` | `frontend/public/videos/` | 首页 Hero 背景视频，20,535,541 字节（约 20.5 MB）；已压缩，旧版本由 Git 保留 |
+| `promo-hero-hevc-v1.mp4` | `frontend/public/videos/` | Hero 循环 HEVC 源：Main 3.1、15 s、1280×720、无音轨，1,512,802 字节（约 1.4 MB），声明顺序第一 |
+| `promo-hero-av1-v1.mp4` | `frontend/public/videos/` | Hero 循环 AV1 源：Main 3.1、15 s、1280×720、无音轨，1,667,220 字节（约 1.6 MB），HEVC 不可用时选中 |
+| `promo-hero-v1.mp4` | `frontend/public/videos/` | Hero 循环 H.264 兜底：15 s、1280×720、30 fps、无音轨，2,535,221 字节（约 2.4 MB） |
+| `promo-hero-poster-v1.webp` | `frontend/public/videos/` | 上述循环的首帧海报，1280×720 WebP，约 52 KB |
+
+三个视频源内容一致，浏览器按 `<source>` 顺序只下载第一个可解码的源（实测 Chrome 选 HEVC，伪造不支持类型时自动跳到 AV1）。
+
+原 60 s 宣传片（20,535,541 字节）已移出 `public`，避免每次部署上传无引用的大文件；本地存档在 `output/media-src/promo-source-60s.mp4`，Git 历史仍可找回。
 
 新增图片先放入 `frontend/public/temp/`，整理命名后移至对应图片目录，同步本清单、图库 TOML 和相关页面。公开静态单个文件不能超过 25 MB，根目录部署检查会验证；不得将密钥、实时数据库或后端种子放入 `public`。

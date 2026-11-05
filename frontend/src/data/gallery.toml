@@ -272,3 +272,53 @@ tag = "获奖"
 src = "/images/achievements/award-tiaozhanbei-anhui-2nd.webp"
 label = "挑战杯安徽省大学生科技作品竞赛 二等奖"
 tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-rst19-national-2nd.webp"
+label = "第十九届先进机器人及仿真技术大赛 国赛二等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-rst19-jiangsu-1st.webp"
+label = "第十九届先进机器人及仿真技术大赛 江苏赛区一等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-craic28-autopilot-national-2nd.webp"
+label = "中国机器人及人工智能大赛 Apollo 自动驾驶仿真赛 全国二等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-craic28-ai-innovation-national-3rd.webp"
+label = "中国机器人及人工智能大赛 人工智能创新赛 全国三等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-craic28-ai-innovation-jiangsu-1st.webp"
+label = "中国机器人及人工智能大赛 人工智能创新赛 江苏赛区一等奖"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/award-yan-ying-top2pct-2026.webp"
+label = "严颖入选斯坦福/爱思唯尔全球前2%科学家（2026）"
+tag = "获奖"
+
+[[grid]]
+src = "/images/achievements/demo-glove-training.webp"
+label = "脑控灵巧手训练演示"
+tag = "演示"
+
+[[grid]]
+src = "/images/achievements/demo-bci-game.webp"
+label = "脑机接口游戏控制演示"
+tag = "演示"
+
+[[grid]]
+src = "/images/achievements/demo-eeg-monitor.webp"
+label = "脑电信号实时监测"
+tag = "演示"
+
+[[grid]]
+src = "/images/achievements/demo-eeg-capture.webp"
+label = "脑电采集实验现场"
+tag = "演示"
