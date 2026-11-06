@@ -3,6 +3,14 @@
 
 [[awards]]
 year = 2026
+name = "2026中英青年创新大赛暨中国国际大学生创新大赛（2026）英国区域赛二等奖"
+description = "项目 NeurLynx：Portable Monitoring and Diagnosis Device for Neurological Disorders，英国区域赛组委会"
+teamMentors = ["严颖", "蔡骏", "Adrian David Cheok"]
+teamAwardees = ["朱家琦"]
+image = "/images/achievements/award-china-uk-innovation-2nd.webp"
+
+[[awards]]
+year = 2026
 name = "“华为杯”第八届中国研究生人工智能创新大赛二等奖"
 description = "基于地面与高空气象数据融合及差分多项式建模的地面阵风预测模型，中国学位与研究生教育学会，2026年10月"
 teamMentors = ["严颖"]

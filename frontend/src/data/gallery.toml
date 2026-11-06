@@ -304,6 +304,11 @@ label = "严颖入选斯坦福/爱思唯尔全球前2%科学家（2026）"
 tag = "获奖"
 
 [[grid]]
+src = "/images/achievements/award-china-uk-innovation-2nd.webp"
+label = "中英青年创新大赛暨中国国际大学生创新大赛（2026）英国区域赛 二等奖"
+tag = "获奖"
+
+[[grid]]
 src = "/images/achievements/award-huawei-cup-8th-2nd.webp"
 label = "“华为杯”第八届中国研究生人工智能创新大赛 二等奖"
 tag = "获奖"
