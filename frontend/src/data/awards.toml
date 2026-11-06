@@ -3,6 +3,14 @@
 
 [[awards]]
 year = 2026
+name = "“华为杯”第八届中国研究生人工智能创新大赛二等奖"
+description = "基于地面与高空气象数据融合及差分多项式建模的地面阵风预测模型，中国学位与研究生教育学会，2026年10月"
+teamMentors = ["严颖"]
+teamAwardees = ["朱家琦"]
+image = "/images/achievements/award-huawei-cup-8th-2nd.webp"
+
+[[awards]]
+year = 2026
 name = "第十九届先进机器人及仿真技术大赛全国总决赛二等奖"
 description = "仿真技术 · 无人车仿真组，中国仿真学会，2026年10月"
 teamMentors = ["严颖", "蔡骏"]
