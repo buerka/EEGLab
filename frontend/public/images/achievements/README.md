@@ -71,7 +71,7 @@
 | `award-craic28-autopilot-national-2nd.webp` | 第二十八届中国机器人及人工智能大赛**全国总决赛二等奖**——Apollo 自动驾驶仿真赛，刘志、徐博文、殷文哲，指导老师：严颖，2026年8月，证书号 CRAIC2026-NF-M34AY0 |
 | `award-craic28-ai-innovation-national-3rd.webp` | 第二十八届中国机器人及人工智能大赛**全国总决赛三等奖**——人工智能创新赛，刘志、孙润泽、吴鑫岩，指导老师：严颖，2026年7月，证书号 CRAIC2026-NF-K01MQP |
 | `award-craic28-ai-innovation-jiangsu-1st.webp` | 第二十八届中国机器人及人工智能大赛**江苏赛区一等奖**——人工智能创新赛，同一团队，2026年6月，证书号 CRAIC2026-JS-46PC0T |
-| `award-yan-ying-top2pct-2026.webp` | 斯坦福/爱思唯尔全球前2%顶尖科学家榜单页面截图——Yan, Ying，2026 年单年度数据，Global Rank 393325，子领域排名 1887（Electrical & Electronic Engineering） |
+| `award-yan-ying-top2pct-2026-photo.webp` | 斯坦福/爱思唯尔全球前2%顶尖科学家榜单页面（带本人照片版，由官方 PDF 渲染）——Yan, Ying，2026 年单年度数据，Global Rank 393325，子领域排名 1887（Electrical & Electronic Engineering）；1400×1133，约 66 KB |
 | `award-robot-ai-1st.webp` | 第二十七届中国机器人及人工智能大赛全国总决赛——机器人任务挑战赛（智慧药房）**一等奖**，安徽建筑大学代表队 |
 | `award-smart-car-1st.webp` | 2025年第二十届全国大学生智能汽车竞赛全国总决赛——5G远程驾驶无人车赛 **一等奖**，安徽建筑大学·头文字T队 |
 | `award-raicom-2nd.webp` | 2025年睿抗机器人开发者大赛（RAICOM）全国总决赛——银龄守护适老化服务机器人创新竞赛 **二等奖**，安徽建筑大学 |
